@@ -123,7 +123,7 @@
       "id": "mgrx8",
       "nombre": "MG RX8 4x4",
       "ficha": {"potencia": "221 hp", "torque": "350 Nm (258 lb-pie)", "transmision": "Automática de 6 velocidades con paletas", "traccion": "4x4 de verdad: reductora (4L), bloqueo del diferencial trasero y chasis de escalera", "traccion_corta": "4x4 con reductora", "transmision_corta": "Automática 6 vel.", "despeje": "No encontrado (ángulos de ataque y salida de 23°)", "modos": "Auto, Nieve, Off Road, Sport, 2H y 4L", "pendiente": "Control de descenso y arranque en pendiente", "bolsas": "6", "rendimiento": "≈10 km/l combinado (8.4 ciudad, 13.2 carretera, Kavak)", "valle": "La más capaz para terracería, lodo y lluvia fuerte: la única con reductora y bloqueo. En contra: es pesada y la que más gasolina gasta.", "fuentes": [{"nombre": "Xataka", "url": "https://www.xataka.com.mx/automovil/mg-rx8-precio-lanzamiento-oficial-mexico-suv-todoterreno-mg-motor-para-siete-pasajeros"}, {"nombre": "Autocosmos", "url": "https://noticias.autocosmos.com.mx/2021/09/27/mg-rx8-2021-llega-a-mexico-3-filas-de-asientos-y-serias-capacidades-4x4"}, {"nombre": "Kavak", "url": "https://www.kavak.com/mx/usado/mg-rx8-20_elegance_auto_4wd-suv-2023?id=539261"}]},
-      "calificaciones": { "seguridad": 2, "espacio": 3.5, "montana": 5, "estetica": 4, "costo": 3.5, "confiabilidad": 1.5, "consumo": 3, "equipamiento": 3, "agencia": 3 },
+      "calificaciones": { "seguridad": 2, "espacio": 3.5, "montana": 5, "estetica": 4, "costo": 2.5, "confiabilidad": 1.5, "consumo": 3, "equipamiento": 3, "agencia": 3 },
       "alerta": "Descontinuada: en China su sucesora es la RX9 y en México MG ya vende la RX9 (desde nov. 2024). MG sigue en México, pero hay que confirmar refacciones y garantía antes de comprar.",
       "por_que": "La más todoterreno; sin pruebas de choque, descontinuada, y la marca sale mal en confiabilidad (J.D. Power México 2025, lugar 19 de 21).",
       "unidades": [
@@ -140,6 +140,51 @@
           "ciudad": "CDMX", "vendedor": "Kavak",
           "anuncio": "https://www.kavak.com/mx/usado/mg-rx8-20_elegance_auto_4wd-suv-2023?id=539261",
           "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }
+        }
+      ]
+    },
+    {
+      "id": "mgrx9",
+      "nombre": "MG RX9 2.0T AWD",
+      "ficha": {"potencia": "201 hp", "torque": "350 Nm (258 lb-pie)", "transmision": "Automática de 9 velocidades", "traccion": "Integral (AWD) en la versión Premier; sin reductora", "traccion_corta": "AWD", "transmision_corta": "Automática 9 vel.", "despeje": "No encontrado", "modos": "Seis modos, incluido Todo Terreno (sitio de MG México)", "pendiente": "No encontrado", "bolsas": "No encontrado", "rendimiento": "No encontrado", "valle": "La sucesora de la RX8, pero de otro tipo: chasis de auto con tracción integral, sin reductora ni bloqueo. Buena para lluvia y empedrado; para subir es más justa que la Pro Max (201 hp en una camioneta más grande).", "fuentes": [{"nombre": "MG México", "url": "https://www.mgmotor.com.mx/vehiculos/RX9"}, {"nombre": "Xataka", "url": "https://www.xataka.com.mx/automovil/mg-rx9-llega-a-mexico-motor-2-0-litros-turbo-rines-21-pulgadas-espacio-para-siete-pasajeros-precio-lanzamiento"}]},
+      "calificaciones": { "seguridad": 3.5, "espacio": 4.5, "montana": 4, "estetica": 4, "costo": 2, "confiabilidad": 1.5, "consumo": 2.5, "equipamiento": 5, "agencia": 3 },
+      "por_que": "Calificación provisional: revísala. Es la versión nueva de la RX8: más grande y cómoda, con tracción integral, pero sin reductora. Nueva cuesta unos $777,000–870,000; seminueva 2025 desde unos $525,000, arriba del tope.",
+      "unidades": [
+        {
+          "id": "mgrx9-2025-kavak-cdmx",
+          "anio": 2025, "km": 18623, "precio": 525999, "precio_nota": "visto en búsqueda el 30-oct; confirmar",
+          "ciudad": "CDMX", "vendedor": "Kavak",
+          "anuncio": "https://www.kavak.com/mx/seminuevos?keyword=MG+rx9",
+          "descargar_fotos": false,
+          "aviso": "Todavía no tenemos el link exacto de esta unidad: el link abre la búsqueda de RX9 en Kavak. Confirmar precio, km y que sea Premier 4WD.",
+          "tres_filas": { "confirmado": true, "nota": "La RX9 es de 7 pasajeros (2+3+2), según MG México." }
+        }
+      ]
+    },
+    {
+      "id": "gs8awd",
+      "nombre": "GAC GS8 2.0T AWD (GX)",
+      "ficha": {"potencia": "248 hp", "torque": "400 Nm", "transmision": "Automática de 8 velocidades", "traccion": "Integral (AWD/4WD) en la versión GX", "traccion_corta": "AWD", "transmision_corta": "Automática 8 vel.", "despeje": "No encontrado", "modos": "No encontrado", "pendiente": "Control de descenso y arranque en pendiente", "bolsas": "6 o 7 (las fuentes no coinciden)", "rendimiento": "No encontrado", "valle": "El torque más alto del grupo, caja de 8 y tracción integral: con la GX sí se aprovecha toda la fuerza en empedrado mojado. Es la versión que le faltaba a la GS8.", "fuentes": [{"nombre": "Autocosmos", "url": "https://noticias.autocosmos.com.mx/2024/02/09/gac-gs8-una-camioneta-mediana-con-todo-lo-que-gusta-en-mexico"}, {"nombre": "Mercado Libre (anuncios GX AWD 2024)", "url": "https://autos.mercadolibre.com.mx/gs8/4x4/2024/"}]},
+      "calificaciones": { "seguridad": 3.5, "espacio": 4.5, "montana": 4.5, "estetica": 2, "costo": 2, "confiabilidad": 2, "consumo": 2, "equipamiento": 5, "agencia": 2 },
+      "por_que": "La GS8 que ya teníamos, pero en versión GX con tracción integral. La más grande y equipada; gasta más gasolina y GAC tiene pocas agencias. Hay unidades 2024 justo en el tope del presupuesto.",
+      "unidades": [
+        {
+          "id": "gs8awd-2024-kavak-cdmx",
+          "anio": 2024, "km": 17000, "precio": 481999, "precio_nota": "visto en búsqueda el 30-oct; confirmar",
+          "ciudad": "Gustavo A. Madero, CDMX", "vendedor": "Kavak",
+          "anuncio": "https://autos.mercadolibre.com.mx/gac/4x4/_Tienda_all",
+          "descargar_fotos": false,
+          "aviso": "Todavía no tenemos el link exacto de esta unidad: el link abre la búsqueda de GAC 4x4. Otra búsqueda mostró una GX 4WD 2024 de Kavak con 50,422 km entre $461,000 y $539,000: confirmar que sea la de 17,000 km.",
+          "tres_filas": { "confirmado": true, "nota": "La GS8 es de 7 pasajeros." }
+        },
+        {
+          "id": "gs8awd-2024-dalton-guadalajara",
+          "anio": 2024, "km": 23089, "precio": 483956, "precio_nota": "de liquidación; visto en búsqueda el 30-oct",
+          "ciudad": "Guadalajara", "vendedor": "Dalton Seminuevos",
+          "anuncio": "https://www.daltonseminuevos.com.mx/autos/gac-gs8-seminuevo-2024-90237",
+          "descargar_fotos": false,
+          "aviso": "Otra búsqueda mostró esta misma unidad (23,089 km) en $561,090: confirmar el precio vigente.",
+          "tres_filas": { "confirmado": true, "nota": "La GS8 es de 7 pasajeros." }
         }
       ]
     },
@@ -231,6 +276,10 @@
     { "nombre": "Geely Okavango", "motivo": "Unos $640,000 con poco kilometraje." },
     { "nombre": "Minivans (Honda Odyssey, Toyota Sienna, Chrysler Pacifica)", "motivo": "Arriba de $510,000, y de Pacifica no hay modelos 2023 o más recientes." },
     { "nombre": "Kia Carnival, Chirey Tiggo 9 y Changan CS95", "motivo": "No se consiguen seminuevas 2023 o más recientes en México." },
+    { "nombre": "Mitsubishi Montero Sport", "motivo": "4x4 de verdad con 3 filas, pero las 2023 se ven en $549,000–629,000 y con unos 50,000 km: pasa el tope de precio y de kilometraje." },
+    { "nombre": "Chirey Tiggo 8 Pro e+ (híbrida enchufable)", "motivo": "Casi no hay seminuevas en México; nueva cuesta unos $899,900." },
+    { "nombre": "GAC GS8 híbrida (HEV)", "motivo": "Las 2025 seminuevas se ven en unos $800,000–843,000." },
+    { "nombre": "Jetour X90 Plus", "motivo": "3 filas y motor 2.0T, pero no encontré que se venda en México." },
     { "nombre": "Chirey Tiggo 7 Pro", "motivo": "Es de 2 filas (5 pasajeros)." },
     { "nombre": "Hyundai Creta Grand, Mitsubishi Xpander y Suzuki XL7", "motivo": "Motores 1.5 sin turbo para las subidas y tercera fila de emergencia." }
   ]
