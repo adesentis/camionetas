@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="googlebot" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="referrer" content="no-referrer">
+<title>Comparador de camionetas</title>
+<style>
+:root {
+  --bg: #f6f6f4; --card: #ffffff; --text: #1d1d1f; --muted: #66666c; --line: #e3e3e0;
+  --accent: #2f5d8a; --accent-soft: #e6eef6;
+  --verde: #2e8b57; --azul: #3a7bd5; --rojo: #d1453b; --track: #ecece9;
+  --ok-bg: #e7f4ec; --ok-tx: #1f6b42; --warn-bg: #fdf0e3; --warn-tx: #9a5a12;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121214; --card: #1c1c1f; --text: #ececee; --muted: #a0a0a8; --line: #2e2e33;
+    --accent: #7fb0e3; --accent-soft: #1f2a36;
+    --verde: #4cbb7f; --azul: #5c9cf0; --rojo: #ef6a60; --track: #2a2a2f;
+    --ok-bg: #173325; --ok-tx: #8fd9ad; --warn-bg: #3a2a16; --warn-tx: #f1bf7c;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 56px; }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 0 16px 48px; }
+h1 { font-size: 1.5rem; line-height: 1.25; margin: 24px 0 4px; }
+h2 { font-size: 1.2rem; margin: 0 0 12px; }
+h3 { font-size: 1.05rem; margin: 0; }
+p { margin: 0 0 8px; }
+a { color: var(--accent); }
+.muted { color: var(--muted); font-size: .9rem; }
+nav { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line);
+  display: flex; gap: 6px; overflow-x: auto; padding: 8px 16px; scrollbar-width: none; }
+nav::-webkit-scrollbar { display: none; }
+nav a { flex: none; text-decoration: none; font-size: .85rem; padding: 6px 12px; border-radius: 999px;
+  background: var(--card); border: 1px solid var(--line); color: var(--text); }
+section { margin-top: 28px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; margin-bottom: 14px; }
+ul.lista { margin: 0; padding-left: 20px; }
+ul.lista li { margin-bottom: 6px; }
+
+/* Cómo calificamos */
+.crit { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.crit:last-child { border-bottom: 0; }
+.crit b { font-weight: 600; }
+.crit .peso { font-weight: 600; color: var(--accent); }
+.crit .muted { grid-column: 1 / -1; }
+.leyenda { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; font-size: .85rem; color: var(--muted); }
+.leyenda i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+
+/* Ranking */
+ol.ranking { list-style: none; margin: 0; padding: 0; counter-reset: r; }
+ol.ranking li { counter-increment: r; display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+ol.ranking li:last-child { border-bottom: 0; }
+ol.ranking li::before { content: counter(r); flex: none; width: 28px; height: 28px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-weight: 700; }
+ol.ranking .nom { flex: 1; min-width: 0; }
+ol.ranking .pts { font-weight: 700; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+ol.ranking a { color: inherit; text-decoration: none; }
+.aviso { font-size: .85rem; background: var(--warn-bg); color: var(--warn-tx); padding: 8px 10px; border-radius: 8px; margin-bottom: 10px; }
+.aviso button { margin-left: 6px; }
+
+/* Tarjetas */
+.cab { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+.score { text-align: right; flex: none; }
+.score b { display: block; font-size: 1.6rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.score span { font-size: .75rem; color: var(--muted); }
+.barras { margin: 6px 0 14px; }
+.barra { display: grid; grid-template-columns: 9.5em 1fr 2.2em; align-items: center; gap: 8px; font-size: .85rem; margin: 5px 0; }
+.barra .t { height: 10px; background: var(--track); border-radius: 5px; overflow: hidden; }
+.barra .f { height: 100%; border-radius: 5px; }
+.barra .v { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+.porque { background: var(--accent-soft); border-radius: 10px; padding: 10px 12px; font-size: .95rem; margin-bottom: 14px; }
+.unidad { border-top: 1px solid var(--line); padding-top: 14px; margin-top: 14px; }
+.gal { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 8px; border-radius: 10px; scrollbar-width: none; }
+.gal::-webkit-scrollbar { display: none; }
+.gal figure { flex: 0 0 100%; margin: 0; scroll-snap-align: center; }
+.gal img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; background: var(--track); display: block; }
+.gal figcaption { font-size: .78rem; color: var(--muted); margin-top: 4px; }
+.galnav { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; font-size: .8rem; color: var(--muted); }
+.galnav button { border: 1px solid var(--line); background: var(--card); color: var(--text); border-radius: 8px; padding: 2px 10px; font-size: 1rem; cursor: pointer; }
+.sinfoto { aspect-ratio: 4 / 3; display: grid; place-items: center; background: var(--track); border-radius: 10px; color: var(--muted); font-size: .9rem; }
+dl.datos { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 12px 0 8px; font-size: .92rem; }
+dl.datos dt { color: var(--muted); }
+dl.datos dd { margin: 0; font-variant-numeric: tabular-nums; }
+.badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 10px; }
+.badge { font-size: .78rem; padding: 3px 8px; border-radius: 999px; background: var(--ok-bg); color: var(--ok-tx); }
+.badge.warn { background: var(--warn-bg); color: var(--warn-tx); }
+.btn, button { font: inherit; }
+.btn { display: inline-block; text-decoration: none; padding: 8px 14px; border-radius: 10px; border: 1px solid var(--line);
+  background: var(--card); color: var(--accent); font-size: .9rem; font-weight: 600; }
+.btn.prim { background: #1f9d55; border-color: #1f9d55; color: #fff; }
+
+/* Comparación */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.chips label { font-size: .82rem; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); cursor: pointer; }
+.chips input { margin: 0 5px 0 0; vertical-align: -2px; }
+.tabla { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+table { border-collapse: collapse; font-size: .85rem; min-width: 100%; }
+th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; min-width: 130px; }
+th { position: sticky; left: 0; background: var(--card); color: var(--muted); font-weight: 500; min-width: 92px; z-index: 1; }
+td img { width: 130px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; display: block; }
+tr:last-child th, tr:last-child td { border-bottom: 0; }
+
+/* Opinión */
+.op { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.op img, .op .ph { width: 64px; height: 48px; object-fit: cover; border-radius: 6px; background: var(--track); flex: none; }
+.op .nom { flex: 1; min-width: 140px; font-size: .92rem; }
+.estrellas { display: flex; gap: 4px; }
+.estrellas button { width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); font-weight: 600; cursor: pointer; }
+.estrellas button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--card); }
+textarea { width: 100%; min-height: 96px; font: inherit; padding: 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--text); margin: 6px 0 12px; }
+
+/* Pesos */
+.slider { padding: 8px 0; border-bottom: 1px solid var(--line); }
+.slider label { display: flex; justify-content: space-between; font-size: .92rem; }
+.slider input { width: 100%; accent-color: var(--accent); }
+.suma { font-size: .85rem; color: var(--muted); margin: 10px 0; }
+footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
+@media (min-width: 600px) { .gal figure { flex-basis: 85%; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="#necesitamos">Qué necesitamos</a>
+  <a href="#calificamos">Cómo calificamos</a>
+  <a href="#ranking">Ranking</a>
+  <a href="#opciones">Opciones</a>
+  <a href="#comparar">Comparar</a>
+  <a href="#revisar">Por revisar</a>
+  <a href="#opinion">Tu opinión</a>
+  <a href="#pesos">Mover pesos</a>
+</nav>
+<main>
+  <h1 id="titulo"></h1>
+  <p class="muted" id="subtitulo"></p>
+
+  <section id="necesitamos"><h2>Qué necesitamos</h2><div class="card"><ul class="lista" id="requisitos"></ul></div></section>
+
+  <section id="calificamos"><h2>Cómo calificamos</h2>
+    <div class="card">
+      <p class="muted">Cada criterio se califica de 1 a 5. El peso dice cuánto cuenta (suman 100). Puntaje final = suma de (calificación × peso) ÷ 100.</p>
+      <div id="criterios"></div>
+      <div class="leyenda"><span><i style="background:var(--verde)"></i>4 a 5: bien</span><span><i style="background:var(--azul)"></i>2.5 a 3.5: regular</span><span><i style="background:var(--rojo)"></i>2 o menos: flojo</span></div>
+    </div>
+  </section>
+
+  <section id="ranking"><h2>Ranking</h2><div class="card"><div id="avisoPesos"></div><ol class="ranking" id="listaRanking"></ol></div></section>
+
+  <section id="opciones"><h2>Opciones</h2><div id="tarjetas"></div></section>
+
+  <section id="comparar"><h2>Comparar lado a lado</h2>
+    <p class="muted">Elige las unidades que quieras comparar.</p>
+    <div class="chips" id="chipsComparar"></div>
+    <div class="tabla"><table id="tablaComparar"></table></div>
+  </section>
+
+  <section id="revisar"><h2>Lo que hay que revisar antes de comprar</h2><div class="card"><ul class="lista" id="porRevisar"></ul></div></section>
+
+  <section id="opinion"><h2>Tu opinión</h2>
+    <div class="card">
+      <p>¿Qué tanto te gusta cómo se ve cada una? De 1 (nada) a 5 (me encanta). Tu calificación reemplaza la mía en <b id="nomCritOpinion"></b>.</p>
+      <div id="listaOpinion"></div>
+      <h3 style="margin-top:16px">Comentarios</h3>
+      <textarea id="comentario" placeholder="Lo que quieras decirme de las opciones…"></textarea>
+      <h3>Ranking con tu calificación</h3>
+      <ol class="ranking" id="rankingOpinion"></ol>
+      <p style="margin-top:14px"><a class="btn prim" id="btnWhats" href="#" target="_blank" rel="noopener">Mandarme tu opinión por WhatsApp</a></p>
+      <p class="muted">Abre WhatsApp con el mensaje ya escrito; tú eliges a quién mandarlo. No se guarda nada en ningún servidor.</p>
+    </div>
+  </section>
+
+  <section id="pesos"><h2>Mover los pesos</h2>
+    <div class="card">
+      <p class="muted">Mueve los pesos para ver cómo cambiaría el ranking. Si no suman 100, se reparten en proporción.</p>
+      <div id="sliders"></div>
+      <p class="suma" id="sumaPesos"></p>
+      <ol class="ranking" id="rankingPesos"></ol>
+      <p style="margin-top:12px"><button class="btn" id="btnReset" type="button">Volver a mis pesos originales</button></p>
+    </div>
+  </section>
+
+  <footer>Las fotos son de los anuncios de cada vendedor y se muestran solo aquí, con el link a su anuncio original. Esta página no aparece en buscadores.</footer>
+</main>
+
+<script>
+/*DATOS*/
+</script>
+<script>
+(function () {
+  const D = DATOS;
+  const C = D.criterios;
+  const F = D.filtros || {};
+  const PESOS_ORIG = Object.fromEntries(C.map(c => [c.id, c.peso]));
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+  const dinero = n => new Intl.NumberFormat("es-MX", { style: "currency", currency: "MXN", maximumFractionDigits: 0 }).format(n);
+  const num = n => new Intl.NumberFormat("es-MX").format(n);
+  const fmt = n => n.toFixed(2);
+  const color = v => v >= 4 ? "var(--verde)" : v >= 2.5 ? "var(--azul)" : "var(--rojo)";
+  const critOp = D.criterio_opinion;
+
+  const guardar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+  const leer = (k, d) => { try { const v = JSON.parse(localStorage.getItem(k)); return v ?? d; } catch (e) { return d; } };
+
+  let pesos = { ...PESOS_ORIG };
+  let opinion = leer("opinion", {});
+  let comentario = leer("comentario", "");
+
+  // Puntaje redondeado sobre el entero (evita que 3.335 se vuelva 3.33 por decimales binarios).
+  function puntaje(op, w, propia) {
+    let suma = 0, total = 0;
+    for (const c of C) {
+      let v = op.calificaciones[c.id];
+      if (propia && c.id === critOp && propia[op.id]) v = propia[op.id];
+      suma += v * w[c.id]; total += w[c.id];
+    }
+    return total ? Math.round(suma * 100 / total) / 100 : 0;
+  }
+  const ordenar = (w, propia) => D.opciones.map(o => ({ o, p: puntaje(o, w, propia) })).sort((a, b) => b.p - a.p);
+  const pesosCambiados = () => C.some(c => pesos[c.id] !== PESOS_ORIG[c.id]);
+  const fotoPrincipal = op => (op.unidades.find(u => u.fotos.length) || {}).fotos?.[0];
+
+  function cumple(u) {
+    const b = [];
+    if (F.anio_minimo && u.anio < F.anio_minimo) b.push(["warn", `Modelo ${u.anio}: antes de ${F.anio_minimo}`]);
+    if (F.km_maximo && u.km > F.km_maximo) b.push(["warn", `${num(u.km)} km: pasa del máximo (${num(F.km_maximo)})`]);
+    if (F.venta_actual != null && F.diferencia_maxima) {
+      const dif = u.precio - F.venta_actual;
+      if (dif > F.diferencia_maxima) b.push(["warn", `Diferencia de ${dinero(dif)}: pasa del máximo`]);
+    }
+    if (!b.length && Object.keys(F).length) b.push(["", "Cumple año, km y presupuesto"]);
+    return b;
+  }
+
+  // --- Secciones fijas ---
+  $("titulo").textContent = D.titulo;
+  $("subtitulo").textContent = D.subtitulo || "";
+  document.title = D.titulo;
+  $("requisitos").innerHTML = D.requisitos.map(r => `<li>${esc(r)}</li>`).join("");
+  $("porRevisar").innerHTML = D.por_revisar.map(r => `<li>${esc(r)}</li>`).join("");
+  $("criterios").innerHTML = C.map(c => `<div class="crit"><b>${esc(c.nombre)}</b><span class="peso">${c.peso}</span><span class="muted">${esc(c.explicacion)}</span></div>`).join("");
+  $("nomCritOpinion").textContent = (C.find(c => c.id === critOp) || {}).nombre || "";
+
+  function galeria(u) {
+    if (!u.fotos.length) return `<div class="sinfoto">Sin fotos todavía</div>`;
+    const figs = u.fotos.map((f, i) => `<figure><img src="${esc(f)}" alt="Foto ${i + 1} de la unidad" loading="${i ? "lazy" : "eager"}" decoding="async"><figcaption>Foto del anuncio de ${esc(u.vendedor)} · <a href="${esc(u.anuncio)}" target="_blank" rel="noopener">ver anuncio</a></figcaption></figure>`).join("");
+    return `<div class="gal" data-gal>${figs}</div><div class="galnav"><button type="button" data-prev aria-label="Foto anterior">‹</button><span data-cont>1 / ${u.fotos.length}</span><button type="button" data-next aria-label="Foto siguiente">›</button></div>`;
+  }
+
+  function tarjeta(op) {
+    const barras = C.map(c => {
+      const v = op.calificaciones[c.id];
+      return `<div class="barra"><span>${esc(c.nombre)}</span><div class="t"><div class="f" style="width:${v / 5 * 100}%;background:${color(v)}"></div></div><span class="v">${v}</span></div>`;
+    }).join("");
+    const unidades = op.unidades.map(u => {
+      const dif = F.venta_actual != null ? u.precio - F.venta_actual : null;
+      return `<div class="unidad">${galeria(u)}
+        <dl class="datos">
+          <dt>Año</dt><dd>${u.anio}</dd>
+          <dt>Kilometraje</dt><dd>${num(u.km)} km</dd>
+          <dt>Precio</dt><dd>${dinero(u.precio)}${u.precio_nota ? ` <span class="muted">(${esc(u.precio_nota)})</span>` : ""}</dd>
+          ${dif != null ? `<dt>Diferencia</dt><dd>${dinero(dif)} <span class="muted">después de vender la actual</span></dd>` : ""}
+          <dt>Ciudad</dt><dd>${esc(u.ciudad)}</dd>
+          <dt>Vendedor</dt><dd>${esc(u.vendedor)}</dd>
+        </dl>
+        <div class="badges">${cumple(u).map(([k, t]) => `<span class="badge ${k}">${esc(t)}</span>`).join("")}</div>
+        <a class="btn" href="${esc(u.anuncio)}" target="_blank" rel="noopener">Ver anuncio en ${esc(u.vendedor)}</a>
+      </div>`;
+    }).join("");
+    return `<article class="card" id="op-${esc(op.id)}">
+      <div class="cab"><h3>${esc(op.nombre)}</h3><div class="score"><b data-score="${esc(op.id)}"></b><span>de 5</span></div></div>
+      <div class="barras">${barras}</div>
+      <div class="porque"><b>Por qué quedó aquí:</b> ${esc(op.por_que)}</div>
+      ${unidades}
+    </article>`;
+  }
+
+  $("tarjetas").innerHTML = ordenar(PESOS_ORIG).map(x => tarjeta(x.o)).join("");
+
+  document.querySelectorAll("[data-gal]").forEach(gal => {
+    const nav = gal.nextElementSibling, cont = nav.querySelector("[data-cont]"), n = gal.children.length;
+    const actual = () => Math.round(gal.scrollLeft / gal.children[0].offsetWidth);
+    const ir = i => gal.children[Math.max(0, Math.min(n - 1, i))].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    gal.addEventListener("scroll", () => { cont.textContent = `${Math.min(n, actual() + 1)} / ${n}`; }, { passive: true });
+    nav.querySelector("[data-prev]").onclick = () => ir(actual() - 1);
+    nav.querySelector("[data-next]").onclick = () => ir(actual() + 1);
+  });
+
+  // --- Comparación ---
+  const todas = D.opciones.flatMap(o => o.unidades.map(u => ({ o, u })));
+  const elegidas = new Set(D.opciones.map(o => o.unidades[0].id));
+  $("chipsComparar").innerHTML = todas.map(({ o, u }) => `<label><input type="checkbox" value="${esc(u.id)}" ${elegidas.has(u.id) ? "checked" : ""}>${esc(o.nombre)} · ${esc(u.vendedor)} · ${num(u.km)} km</label>`).join("");
+  $("chipsComparar").addEventListener("change", e => { e.target.checked ? elegidas.add(e.target.value) : elegidas.delete(e.target.value); pintarTabla(); });
+
+  function pintarTabla() {
+    const cols = todas.filter(x => elegidas.has(x.u.id));
+    if (!cols.length) { $("tablaComparar").innerHTML = `<tr><td>Elige al menos una unidad.</td></tr>`; return; }
+    const fila = (t, f) => `<tr><th>${t}</th>${cols.map(x => `<td>${f(x)}</td>`).join("")}</tr>`;
+    $("tablaComparar").innerHTML = [
+      fila("Foto", ({ u }) => u.fotos[0] ? `<img src="${esc(u.fotos[0])}" alt="" loading="lazy">` : `<span class="muted">Sin foto</span>`),
+      fila("Opción", ({ o }) => `<b>${esc(o.nombre)}</b>`),
+      fila("Puntaje", ({ o }) => `<b>${fmt(puntaje(o, pesos))}</b>`),
+      fila("Año", ({ u }) => u.anio),
+      fila("Kilometraje", ({ u }) => `${num(u.km)} km`),
+      fila("Precio", ({ u }) => dinero(u.precio) + (u.precio_nota ? `<br><span class="muted">${esc(u.precio_nota)}</span>` : "")),
+      F.venta_actual != null ? fila("Diferencia", ({ u }) => dinero(u.precio - F.venta_actual)) : "",
+      fila("Ciudad", ({ u }) => esc(u.ciudad)),
+      fila("Vendedor", ({ u }) => esc(u.vendedor)),
+      fila("Requisitos", ({ u }) => cumple(u).map(([k, t]) => `<span class="badge ${k}">${esc(t)}</span>`).join(" ")),
+      ...C.map(c => fila(esc(c.nombre), ({ o }) => `<span style="color:${color(o.calificaciones[c.id])};font-weight:600">${o.calificaciones[c.id]}</span>`)),
+      fila("Anuncio", ({ u }) => `<a href="${esc(u.anuncio)}" target="_blank" rel="noopener">Ver anuncio</a>`),
+    ].join("");
+  }
+
+  // --- Opinión ---
+  $("listaOpinion").innerHTML = D.opciones.map(o => {
+    const f = fotoPrincipal(o);
+    const botones = [1, 2, 3, 4, 5].map(n => `<button type="button" data-op="${esc(o.id)}" data-v="${n}" aria-pressed="false" aria-label="${n} de 5">${n}</button>`).join("");
+    return `<div class="op">${f ? `<img src="${esc(f)}" alt="" loading="lazy">` : `<span class="ph"></span>`}<span class="nom">${esc(o.nombre)}</span><div class="estrellas">${botones}</div></div>`;
+  }).join("");
+  $("listaOpinion").addEventListener("click", e => {
+    const b = e.target.closest("button[data-op]"); if (!b) return;
+    const id = b.dataset.op, v = +b.dataset.v;
+    if (opinion[id] === v) delete opinion[id]; else opinion[id] = v;
+    guardar("opinion", opinion); pintar();
+  });
+  $("comentario").value = comentario;
+  $("comentario").addEventListener("input", e => { comentario = e.target.value; guardar("comentario", comentario); pintarWhats(); });
+
+  function textoWhats() {
+    const nomCrit = (C.find(c => c.id === critOp) || {}).nombre || "Estética";
+    const lineas = [`Mi opinión sobre: ${D.titulo}`, "", `${nomCrit} (1 a 5):`];
+    D.opciones.forEach(o => lineas.push(`• ${o.nombre}: ${opinion[o.id] ?? "sin calificar"}`));
+    lineas.push("", "Ranking con mi calificación:");
+    ordenar(pesos, opinion).forEach((x, i) => lineas.push(`${i + 1}. ${x.o.nombre}: ${fmt(x.p)}`));
+    if (pesosCambiados()) lineas.push("", "Pesos que usé: " + C.map(c => `${c.nombre} ${pesos[c.id]}`).join(", "));
+    if (comentario.trim()) lineas.push("", "Comentarios:", comentario.trim());
+    return lineas.join("\n");
+  }
+  function pintarWhats() { $("btnWhats").href = "https://wa.me/?text=" + encodeURIComponent(textoWhats()); }
+
+  // --- Pesos ---
+  $("sliders").innerHTML = C.map(c => `<div class="slider"><label for="w-${c.id}"><span>${esc(c.nombre)}</span><b id="wv-${c.id}"></b></label><input type="range" id="w-${c.id}" data-c="${c.id}" min="0" max="40" step="1"></div>`).join("");
+  $("sliders").addEventListener("input", e => { if (e.target.dataset.c) { pesos[e.target.dataset.c] = +e.target.value; pintar(); } });
+  $("btnReset").onclick = () => { pesos = { ...PESOS_ORIG }; pintar(); };
+
+  const li = (x, conLink) => `<li><span class="nom">${conLink ? `<a href="#op-${esc(x.o.id)}">${esc(x.o.nombre)}</a>` : esc(x.o.nombre)}</span><span class="pts">${fmt(x.p)}</span></li>`;
+
+  function pintar() {
+    const r = ordenar(pesos);
+    $("listaRanking").innerHTML = r.map(x => li(x, true)).join("");
+    $("avisoPesos").innerHTML = pesosCambiados() ? `<div class="aviso">Este ranking usa los pesos que moviste abajo.<button class="btn" type="button" id="reset2">Volver a los originales</button></div>` : "";
+    if ($("reset2")) $("reset2").onclick = () => { pesos = { ...PESOS_ORIG }; pintar(); };
+    r.forEach(x => { const el = document.querySelector(`[data-score="${x.o.id}"]`); if (el) el.textContent = fmt(x.p); });
+    $("rankingPesos").innerHTML = r.map(x => li(x)).join("");
+    $("rankingOpinion").innerHTML = ordenar(pesos, opinion).map(x => li(x)).join("");
+    document.querySelectorAll("#listaOpinion button").forEach(b => b.setAttribute("aria-pressed", opinion[b.dataset.op] === +b.dataset.v));
+    C.forEach(c => { $("w-" + c.id).value = pesos[c.id]; $("wv-" + c.id).textContent = pesos[c.id]; });
+    const suma = C.reduce((s, c) => s + pesos[c.id], 0);
+    $("sumaPesos").textContent = `Suma de pesos: ${suma}` + (suma !== 100 ? " (se reparte en proporción)" : "");
+    pintarTabla(); pintarWhats();
+  }
+  pintar();
+})();
+</script>
+</body>
+</html>

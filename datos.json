@@ -1,0 +1,112 @@
+{
+  "titulo": "Camionetas para reemplazar la CX-5",
+  "subtitulo": "Las opciones que estoy considerando, cómo las califiqué y tu opinión.",
+
+  "requisitos": [
+    "Tres filas de asientos.",
+    "Que quepan dos sillas infantiles.",
+    "Vivimos en Valle de Bravo: subidas largas, empedrado y lluvia. Viajamos seguido a CDMX y Querétaro.",
+    "Seminueva, modelo 2023 o más reciente, con menos de 30,000 km.",
+    "Pagar como máximo $250,000 de diferencia después de vender la CX-5 (Kavak ofrece unos $238,000).",
+    "Nada 100% eléctrico."
+  ],
+
+  "filtros": {
+    "anio_minimo": 2023,
+    "km_maximo": 30000,
+    "venta_actual": 238000,
+    "diferencia_maxima": 250000
+  },
+
+  "criterios": [
+    { "id": "seguridad",     "nombre": "Seguridad",              "peso": 15, "explicacion": "Pruebas de choque, bolsas de aire, frenado automático y llamados a revisión." },
+    { "id": "espacio",       "nombre": "Espacio y tercera fila", "peso": 15, "explicacion": "Que quepan dos sillas infantiles, acceso atrás y cajuela." },
+    { "id": "montana",       "nombre": "Montaña y lluvia",       "peso": 15, "explicacion": "Potencia en subidas con la familia arriba y tracción en agua y empedrado." },
+    { "id": "estetica",      "nombre": "Estética",               "peso": 10, "explicacion": "Qué tanto nos gusta cómo se ve; es gusto personal." },
+    { "id": "costo",         "nombre": "Costo",                  "peso": 19, "explicacion": "Precio de compra, depreciación, servicios y seguro." },
+    { "id": "confiabilidad", "nombre": "Confiabilidad",          "peso": 12, "explicacion": "Estudios de fallas, quejas de dueños y respaldo de la marca." },
+    { "id": "consumo",       "nombre": "Consumo",                "peso": 10, "explicacion": "Rendimiento por litro y si pide gasolina Premium." },
+    { "id": "equipamiento",  "nombre": "Equipamiento",           "peso": 3,  "explicacion": "Pantallas, cámaras y comodidades." },
+    { "id": "agencia",       "nombre": "Agencia cerca",          "peso": 1,  "explicacion": "Casi no pesa porque en Toluca y Metepec están todas las marcas." }
+  ],
+
+  "criterio_opinion": "estetica",
+
+  "opciones": [
+    {
+      "id": "tiggo8pro",
+      "nombre": "Chirey Tiggo 8 Pro 1.6T 2025",
+      "calificaciones": { "seguridad": 3.5, "espacio": 2.5, "montana": 3, "estetica": 5, "costo": 3.5, "confiabilidad": 2, "consumo": 4, "equipamiento": 5, "agencia": 3 },
+      "por_que": "Misma camioneta por fuera que la Pro Max; más barata y gasta menos gasolina, pero sube con menos fuerza.",
+      "unidades": [
+        {
+          "id": "tiggo8pro-izcalli",
+          "anio": 2025, "km": 15133, "precio": 379990, "precio_nota": "",
+          "ciudad": "Cuautitlán Izcalli", "vendedor": "Chevrolet Excelencia",
+          "anuncio": "https://www.seminuevos.com/vehicle/autos-chirey-tiggo_8_pro-cuautitlan_izcalli-2025/4836822"
+        },
+        {
+          "id": "tiggo8pro-kavak-cdmx",
+          "anio": 2025, "km": 7785, "precio": 401999, "precio_nota": "más tarifa de servicio",
+          "ciudad": "CDMX", "vendedor": "Kavak",
+          "anuncio": "https://www.kavak.com/mx/usado/chirey-tiggo_8_pro-16_premium_dct-suv-2025"
+        }
+      ]
+    },
+    {
+      "id": "tiggo8promax",
+      "nombre": "Chirey Tiggo 8 Pro Max 2.0T AWD 2024",
+      "calificaciones": { "seguridad": 3.5, "espacio": 2.5, "montana": 4.5, "estetica": 5, "costo": 3, "confiabilidad": 2, "consumo": 2.5, "equipamiento": 5, "agencia": 3 },
+      "por_que": "La más potente (250 hp) y con tracción integral; gasta más gasolina (~8.5 km/l) y la cajuela es chica con tres filas (117 L).",
+      "unidades": [
+        {
+          "id": "tiggo8promax-puebla",
+          "anio": 2024, "km": 21135, "precio": 439900, "precio_nota": "",
+          "ciudad": "Puebla", "vendedor": "Kia Seminuevos Serdán",
+          "anuncio": "https://seminuevos.com/vehicle/4829748"
+        }
+      ]
+    },
+    {
+      "id": "mgrx8",
+      "nombre": "MG RX8 4x4 2023-2024",
+      "calificaciones": { "seguridad": 2, "espacio": 3.5, "montana": 5, "estetica": 4, "costo": 3.5, "confiabilidad": 1.5, "consumo": 3, "equipamiento": 3, "agencia": 3 },
+      "por_que": "La más todoterreno y barata; sin pruebas de choque, descontinuada, y la marca sale mal en confiabilidad (J.D. Power México 2025, lugar 19 de 21).",
+      "unidades": [
+        {
+          "id": "mgrx8-2024-kavak-cdmx",
+          "anio": 2024, "km": 15849, "precio": 341999, "precio_nota": "",
+          "ciudad": "CDMX", "vendedor": "Kavak",
+          "anuncio": "https://www.kavak.com/mx/usado/mg-rx8-20_elegance_auto_4wd-suv-2024"
+        },
+        {
+          "id": "mgrx8-2023-kavak-cdmx",
+          "anio": 2023, "km": 11482, "precio": 350999, "precio_nota": "",
+          "ciudad": "CDMX", "vendedor": "Kavak",
+          "anuncio": "https://www.kavak.com/mx/usado/mg-rx8-20_elegance_auto_4wd-suv-2023"
+        }
+      ]
+    },
+    {
+      "id": "commander",
+      "nombre": "Jeep Commander Overland 2025",
+      "calificaciones": { "seguridad": 3, "espacio": 4, "montana": 2, "estetica": 3, "costo": 2, "confiabilidad": 2, "consumo": 3.5, "equipamiento": 5, "agencia": 4 },
+      "por_que": "La más amplia; motor justo en subidas y la más cara.",
+      "unidades": [
+        {
+          "id": "commander-kavak-queretaro",
+          "anio": 2025, "km": 31131, "precio": 473999, "precio_nota": "",
+          "ciudad": "Querétaro", "vendedor": "Kavak",
+          "anuncio": "https://www.kavak.com/mx/usado/jeep-commander-13_overland_auto-suv-2025"
+        }
+      ]
+    }
+  ],
+
+  "por_revisar": [
+    "Cajuela con las dos sillas infantiles puestas.",
+    "Prueba de manejo en subida con la familia arriba.",
+    "Recall de frenos de Australia en las versiones 2.0: revisar por número de serie (VIN) en Chirey Metepec.",
+    "Depreciación alta de las marcas chinas."
+  ]
+}
