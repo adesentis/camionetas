@@ -16,13 +16,14 @@
     "anio_referencia": 2026,
     "km_maximo": 30000,
     "venta_actual": 238000,
-    "diferencia_maxima": 250000
+    "diferencia_maxima": 250000,
+    "montana_minima": 3
   },
 
   "criterios": [
     { "id": "seguridad",     "nombre": "Seguridad",              "peso": 18, "explicacion": "Pruebas de choque, bolsas de aire, frenado automático y llamados a revisión." },
     { "id": "espacio",       "nombre": "Espacio y tercera fila", "peso": 18, "explicacion": "Que quepan dos sillas infantiles, acceso atrás y cajuela." },
-    { "id": "montana",       "nombre": "Montaña y lluvia",       "peso": 35, "explicacion": "Potencia en subidas con la familia arriba y tracción en agua y empedrado. 5 = 4x4 con reductora; 4.5 = tracción integral y 250 hp; 3 = tracción delantera con mucho motor; 2 = tracción delantera con motor chico; 1.5 = la más floja." },
+    { "id": "montana",       "nombre": "Montaña y lluvia",       "peso": 35, "explicacion": "Potencia en subidas con la familia arriba y tracción en agua y empedrado. 5 = 4x4 con reductora; 4.5 = tracción integral y 250 hp; 3 = tracción delantera con mucho motor; 2 = tracción delantera con motor chico; 1.5 = la más floja. Es requisito: con menos de 3, la unidad se marca \"no sube bien\" y queda al final del ranking." },
     { "id": "estetica",      "nombre": "Estética",               "peso": 10, "explicacion": "Qué tanto nos gusta cómo se ve; es gusto personal. Puede cambiar por unidad (por ejemplo, el diseño anterior de Chirey)." },
     { "id": "costo",         "nombre": "Costo de tenerla",       "peso": 17,  "explicacion": "Depreciación, servicios y seguro. El precio de compra se califica aparte, por unidad." },
     { "id": "confiabilidad", "nombre": "Confiabilidad",          "peso": 12, "explicacion": "Estudios de fallas, quejas de dueños y respaldo de la marca." },
@@ -31,7 +32,7 @@
     { "id": "agencia",       "nombre": "Agencia cerca",          "peso": 1,  "explicacion": "Casi no pesa porque en Toluca y Metepec están casi todas las marcas." },
     { "id": "precio_unidad", "nombre": "Precio de la unidad",    "peso": 20,  "auto": "precio", "explicacion": "Se calcula solo: $238,000 (no pagas nada extra) = 5; $488,000 (el tope) = 1." },
     { "id": "km",            "nombre": "Kilometraje",            "peso": 3,  "auto": "km",     "explicacion": "Se calcula solo: 0 km = 5; 30,000 km = 1." },
-    { "id": "anio",          "nombre": "Año",                    "peso": 23,  "auto": "anio",   "explicacion": "Se calcula solo: 2026 = 5 y cada año menos resta 1 (2023 = 2)." }
+    { "id": "anio",          "nombre": "Año",                    "peso": 5,   "auto": "anio",   "explicacion": "Se calcula solo: 2026 = 5 y cada año menos resta 1 (2023 = 2)." }
   ],
 
   "criterio_opinion": "estetica",
@@ -65,6 +66,14 @@
           "anuncio": "https://www.kavak.com/mx/usado/chirey-tiggo_8_pro-16_premium_dct-suv-2023?id=483574",
           "calificaciones": { "estetica": 3 },
           "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }
+        },
+        {
+          "id": "tiggo8pro-2025-ml-tlalnepantla",
+          "anio": 2025, "km": 60, "precio": 459900, "precio_nota": "",
+          "ciudad": "Tlalnepantla, Edomex", "vendedor": "Mercado Libre",
+          "anuncio": "https://auto.mercadolibre.com.mx/MLM-6364338596-chirey-tiggo-8-pro-max-20t-premium-4wd-_JM",
+          "aviso": "El anuncio dice Pro Max 2.0T 4WD, pero en las fotos traseras el emblema dice \"Tiggo 8 Pro\" y \"290T\" (motor 1.6T, tracción delantera). La Pro Max lleva \"390T\". Por eso la calificamos como Tiggo 8 Pro 1.6T.",
+          "tres_filas": { "confirmado": false, "nota": "El anuncio dice 5 personas, pero el modelo es de 7 en México: confirmar con foto." }
         }
       ]
     },
@@ -90,13 +99,6 @@
           "anuncio": "https://auto.mercadolibre.com.mx/MLM-3485455377-chirey-tiggo-8-pro-max-20t-premium-4wd-_JM",
           "calificaciones": { "estetica": 3 },
           "tres_filas": { "confirmado": false, "nota": "El anuncio dice 5 personas, pero el modelo es de 7 en México: confirmar con foto. La ficha también dice tracción delantera aunque el título dice 4WD." }
-        },
-        {
-          "id": "tiggo8promax-2025-ml-tlalnepantla",
-          "anio": 2025, "km": 60, "precio": 459900, "precio_nota": "",
-          "ciudad": "Tlalnepantla, Edomex", "vendedor": "Mercado Libre",
-          "anuncio": "https://auto.mercadolibre.com.mx/MLM-6364338596-chirey-tiggo-8-pro-max-20t-premium-4wd-_JM",
-          "tres_filas": { "confirmado": false, "nota": "El anuncio dice 5 personas, pero el modelo es de 7 en México: confirmar con foto." }
         }
       ]
     },
@@ -203,7 +205,9 @@
     "Recall de frenos de Australia en las versiones 2.0: revisar por número de serie (VIN) en Chirey Metepec.",
     "Depreciación alta de las marcas chinas.",
     "Tiggo de Izcalli: pedir al vendedor foto de la tercera fila.",
-    "Pro Max de Mercado Libre: los anuncios dicen 5 personas; confirmar la tercera fila con foto, y en la 2023 confirmar que sí sea 4WD.",
+    "Mercado Libre: los dos anuncios dicen 5 personas; confirmar la tercera fila con foto.",
+    "Pro Max 2023 de Mercado Libre: la ficha dice tracción delantera aunque el título dice 4WD; confirmar en el emblema trasero (390T y 4WD) o con el vendedor.",
+    "Tiggo de Tlalnepantla: se anuncia como Pro Max 2.0T 4WD pero el emblema dice 290T (1.6T); si el vendedor insiste en que es Pro Max, pedir foto de la tarjeta de circulación o del VIN.",
     "Kavak cobra una tarifa de servicio aparte: pedir el precio final antes de comparar."
   ],
 

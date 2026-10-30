@@ -104,6 +104,8 @@ El link no cambia nunca: lo que ya mandaste por WhatsApp siempre muestra la vers
 Copia toda la carpeta con otro nombre, borra lo de dentro de `fotos\` y cambia `datos.json`:
 título, requisitos, criterios con sus pesos, opciones y unidades.
 - `"filtros"` revisa año, km y presupuesto; si no aplica, déjalo así: `"filtros": {}`.
+- `"montana_minima"` (dentro de `"filtros"`) es el mínimo en Montaña y lluvia. Las unidades que no llegan
+  se marcan "No sube bien" y van al final del ranking, aunque su puntaje sea alto. Hoy está en 3.
 - `"criterio_opinion"` es el criterio que la otra persona califica con los botones del 1 al 5 (hoy `"estetica"`).
 
 Para publicarla aparte necesitas otro repositorio en GitHub (ver la sección siguiente).
