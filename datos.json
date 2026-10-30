@@ -180,7 +180,7 @@
       "id": "gs8awd",
       "nombre": "GAC GS8 2.0T AWD (GX)",
       "ficha": {"potencia": "248 hp", "torque": "400 Nm", "transmision": "Automática de 8 velocidades", "traccion": "Integral (AWD/4WD) en la versión GX", "traccion_corta": "AWD", "transmision_corta": "Automática 8 vel.", "despeje": "No encontrado", "modos": "No encontrado", "pendiente": "Control de descenso y arranque en pendiente", "bolsas": "6 o 7 (las fuentes no coinciden)", "rendimiento": "No encontrado", "valle": "El torque más alto del grupo, caja de 8 y tracción integral: con la GX sí se aprovecha toda la fuerza en empedrado mojado. Es la versión que le faltaba a la GS8.", "fuentes": [{"nombre": "Autocosmos", "url": "https://noticias.autocosmos.com.mx/2024/02/09/gac-gs8-una-camioneta-mediana-con-todo-lo-que-gusta-en-mexico"}, {"nombre": "Mercado Libre (anuncios GX AWD 2024)", "url": "https://autos.mercadolibre.com.mx/gs8/4x4/2024/"}]},
-      "calificaciones": { "seguridad": 3.5, "espacio": 4.5, "montana": 4.5, "estetica": 2, "costo": 2, "confiabilidad": 2, "consumo": 2, "equipamiento": 5, "agencia": 2 },
+      "calificaciones": { "seguridad": 3.5, "espacio": 4.5, "montana": 4.5, "estetica": 1, "costo": 2, "confiabilidad": 2, "consumo": 2, "equipamiento": 5, "agencia": 2 },
       "por_que": "La GS8 que ya teníamos, pero en versión GX con tracción integral. La más grande y equipada; gasta más gasolina y GAC tiene pocas agencias. Hay unidades 2024 justo en el tope del presupuesto.",
       "unidades": [
         {
@@ -247,7 +247,7 @@
       "id": "gs8",
       "nombre": "GAC GS8 2.0T",
       "ficha": {"potencia": "248 hp", "torque": "400 Nm", "transmision": "Automática de 8 velocidades", "traccion": "Delantera (la 4x4 es otra versión)", "traccion_corta": "Tracción delantera", "transmision_corta": "Automática 8 vel.", "despeje": "No encontrado", "modos": "No encontrado", "pendiente": "Control de descenso y arranque en pendiente", "bolsas": "6 o 7 (las fuentes no coinciden)", "rendimiento": "No encontrado", "valle": "El torque más alto del grupo y caja de 8: sube con soltura. Pero al ser de tracción delantera, en empedrado mojado no aprovecha bien toda esa fuerza.", "fuentes": [{"nombre": "Autocosmos", "url": "https://noticias.autocosmos.com.mx/2024/02/09/gac-gs8-una-camioneta-mediana-con-todo-lo-que-gusta-en-mexico"}, {"nombre": "my-car.mx", "url": "https://my-car.mx/auto/gac-gs8/version/gl-fwd"}]},
-      "calificaciones": { "seguridad": 3.5, "espacio": 4.5, "montana": 3, "estetica": 2, "costo": 2, "confiabilidad": 2, "consumo": 2.5, "equipamiento": 5, "agencia": 2 },
+      "calificaciones": { "seguridad": 3.5, "espacio": 4.5, "montana": 3, "estetica": 1, "costo": 2, "confiabilidad": 2, "consumo": 2.5, "equipamiento": 5, "agencia": 2 },
       "por_que": "La más grande y equipada, con motor 2.0T. Esta versión (GL) no trae 4x4 y su precio pasa el tope por $25,999.",
       "unidades": [
         {
