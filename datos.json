@@ -94,17 +94,17 @@
         },
         {
           "id": "mgrx8-2024-kavak-cdmx",
-          "anio": 2024, "km": 15849, "precio": 406349, "precio_nota": "$386,999 de contado + $19,350 de tarifa de servicio de Kavak (5%, tope $25,000); con Kavak Crédito el auto sale en $341,999, pero el crédito cuesta mucho más; no incluye tenencia 2026",
-          "ciudad": "CDMX", "vendedor": "Kavak",
-          "revisado": {"fecha": "30-oct", "texto": "activo en Kavak", "tipo": "ok"},
+          "anio": 2024, "km": 15849, "precio": 406349, "precio_nota": "$386,999 de contado + $19,350 de tarifa (5%); financiado: $359,099 con tarifa, $47,250 menos: conviene solo si se puede liquidar el crédito en el primer mes sin penalización; no incluye tenencia 2026",
+          "ciudad": "El Rosario Town Center, CDMX", "vendedor": "Kavak",
+          "revisado": {"fecha": "30-oct", "texto": "activo en Kavak (catálogo del 30-oct)", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/mg-rx8-20_elegance_auto_4wd-suv-2024?id=517216",
           "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros. La foto de la cajuela muestra la tercera fila plegada." }
         },
         {
           "id": "mgrx8-2023-kavak-cdmx",
-          "anio": 2023, "km": 11482, "precio": 376949, "precio_nota": "$358,999 de contado + $17,950 de tarifa de servicio de Kavak (5%, tope $25,000); con Kavak Crédito el auto sale en $350,999, pero el crédito cuesta mucho más; no incluye tenencia 2026",
-          "ciudad": "CDMX", "vendedor": "Kavak",
-          "revisado": {"fecha": "30-oct", "texto": "activo en Kavak", "tipo": "ok"},
+          "anio": 2023, "km": 11482, "precio": 376949, "precio_nota": "$358,999 de contado + $17,950 de tarifa (5%); financiado: $368,549 con tarifa; no incluye tenencia 2026",
+          "ciudad": "El Rosario Town Center, CDMX", "vendedor": "Kavak",
+          "revisado": {"fecha": "30-oct", "texto": "activo en Kavak (catálogo del 30-oct)", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/mg-rx8-20_elegance_auto_4wd-suv-2023?id=539261",
           "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }
         }
@@ -119,7 +119,7 @@
       "unidades": [
         {
           "id": "mgrx9-2025-kavak-cdmx",
-          "anio": 2025, "km": 18623, "precio": 597999, "precio_nota": "$572,999 de contado + $25,000 de tarifa de servicio de Kavak (5%, tope $25,000); con Kavak Crédito el auto sale en $541,999, pero a 72 meses terminas pagando unos $830,000; no incluye tenencia 2026",
+          "anio": 2025, "km": 17622, "precio": 597999, "precio_nota": "$572,999 de contado + $25,000 de tarifa de servicio (tope que dice Kavak; sus términos dicen 5% sin tope = $28,650); financiado: $566,999 con tarifa; no incluye tenencia 2026",
           "ciudad": "CDMX (sucursal Lerma)", "vendedor": "Kavak",
           "revisado": {"fecha": "30-oct", "texto": "activo, entrega inmediata", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/mg-rx9-20_premier_auto_4wd-suv-2025?id=538276",
@@ -159,7 +159,7 @@
     "Pro Max 2023 de Mercado Libre: la ficha dice tracción delantera aunque el título dice 4WD; confirmar en el emblema trasero (390T y 4WD) o con el vendedor.",
     "MG RX8 (descontinuada): en la agencia MG de Toluca o Metepec, pedir por escrito si la garantía de 7 años pasa al nuevo dueño y cotizar piezas de choque (faro, defensa, calavera) y de servicio, con tiempo de entrega.",
     "MG RX8: revisar por número de serie (VIN) que no tenga llamados a revisión pendientes y que traiga todos sus servicios en agencia (si no, se puede perder la garantía).",
-    "Kavak cobra una tarifa de servicio del 5% del precio (tope $25,000) y su precio \"desde\" es con crédito: comparar siempre con el precio de contado más la tarifa. Su crédito a 72 meses tiene CAT de 33.1%."
+    "Kavak cobra una tarifa de servicio del 5% del precio (tope $25,000) y su precio \"desde\" es con crédito: comparar siempre con el precio de contado más la tarifa. Su crédito a 72 meses tiene CAT de 33.1%. Sus términos (sección 4.1) dicen que el precio mostrado ya incluye la tarifa, pero los anuncios dicen que no: pedir que respeten el precio del anuncio."
   ],
 
   "descartadas_intro": "Antes de quedarnos con estas opciones revisamos otras camionetas de 3 filas que se venden en México (búsqueda del 29 de octubre de 2026 en Kavak, Wahu, Albacar, Seminuevos y Mercado Libre).",
