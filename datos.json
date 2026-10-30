@@ -147,16 +147,16 @@
       "id": "mgrx9",
       "nombre": "MG RX9 2.0T AWD",
       "ficha": {"potencia": "201 hp", "torque": "350 Nm (258 lb-pie)", "transmision": "Automática de 9 velocidades", "traccion": "Integral (AWD) en la versión Premier; sin reductora", "traccion_corta": "AWD", "transmision_corta": "Automática 9 vel.", "despeje": "No encontrado", "modos": "Seis modos, incluido Todo Terreno (sitio de MG México)", "pendiente": "No encontrado", "bolsas": "No encontrado", "rendimiento": "No encontrado", "valle": "La sucesora de la RX8, pero de otro tipo: chasis de auto con tracción integral, sin reductora ni bloqueo. Buena para lluvia y empedrado; para subir es más justa que la Pro Max (201 hp en una camioneta más grande).", "fuentes": [{"nombre": "MG México", "url": "https://www.mgmotor.com.mx/vehiculos/RX9"}, {"nombre": "Xataka", "url": "https://www.xataka.com.mx/automovil/mg-rx9-llega-a-mexico-motor-2-0-litros-turbo-rines-21-pulgadas-espacio-para-siete-pasajeros-precio-lanzamiento"}]},
-      "calificaciones": { "seguridad": 3.5, "espacio": 4.5, "montana": 4, "estetica": 4, "costo": 2, "confiabilidad": 1.5, "consumo": 2.5, "equipamiento": 5, "agencia": 3 },
-      "por_que": "Calificación provisional: revísala. Es la versión nueva de la RX8: más grande y cómoda, con tracción integral, pero sin reductora. Nueva cuesta unos $777,000–870,000; seminueva 2025 desde unos $525,000, arriba del tope.",
+      "calificaciones": { "seguridad": 3.5, "espacio": 4.5, "montana": 4, "estetica": 5, "costo": 2, "confiabilidad": 1.5, "consumo": 2.5, "equipamiento": 5, "agencia": 3 },
+      "por_que": "Estética 5: la que más nos gusta. El resto es calificación provisional. Es la versión nueva de la RX8: más grande y cómoda, con tracción integral, pero sin reductora. Nueva cuesta unos $777,000–870,000; seminueva 2025 desde unos $525,000, arriba del tope.",
       "unidades": [
         {
           "id": "mgrx9-2025-kavak-cdmx",
-          "anio": 2025, "km": 18623, "precio": 525999, "precio_nota": "visto en búsqueda el 30-oct; confirmar",
+          "anio": 2025, "km": 18623, "precio": 525999, "precio_nota": "\"precio desde\" en Kavak, 30-oct",
           "ciudad": "CDMX", "vendedor": "Kavak",
           "anuncio": "https://www.kavak.com/mx/seminuevos?keyword=MG+rx9",
           "descargar_fotos": false,
-          "aviso": "Todavía no tenemos el link exacto de esta unidad: el link abre la búsqueda de RX9 en Kavak. Confirmar precio, km y que sea Premier 4WD.",
+          "aviso": "Kavak sí la anuncia (2.0 Premier 4WD, 18,623 km, desde $525,999, entrega en 11 a 15 días), pero el link abre la búsqueda de RX9: no conseguimos el link directo. El precio está muy abajo de otras RX9 2025 ($593,000–690,900): confirmar que sea precio de contado y no de financiamiento.",
           "tres_filas": { "confirmado": true, "nota": "La RX9 es de 7 pasajeros (2+3+2), según MG México." }
         }
       ]
@@ -170,20 +170,20 @@
       "unidades": [
         {
           "id": "gs8awd-2024-kavak-cdmx",
-          "anio": 2024, "km": 17000, "precio": 481999, "precio_nota": "visto en búsqueda el 30-oct; confirmar",
-          "ciudad": "Gustavo A. Madero, CDMX", "vendedor": "Kavak",
-          "anuncio": "https://autos.mercadolibre.com.mx/gac/4x4/_Tienda_all",
+          "anio": 2024, "km": 50422, "precio": 460999, "precio_nota": "en Kavak, 30-oct; en Mercado Libre se ha visto en $466,999 y $538,999",
+          "ciudad": "CDMX", "vendedor": "Kavak",
+          "anuncio": "https://www.kavak.com/mx/vehiculos/gac/gs8",
           "descargar_fotos": false,
-          "aviso": "Todavía no tenemos el link exacto de esta unidad: el link abre la búsqueda de GAC 4x4. Otra búsqueda mostró una GX 4WD 2024 de Kavak con 50,422 km entre $461,000 y $539,000: confirmar que sea la de 17,000 km.",
+          "aviso": "Una búsqueda mostró una GS8 GX 4WD 2024 de Kavak con 17,000 km en $481,999, pero no aparece en ningún otro lado: la quitamos. La que sí está en Kavak tiene 50,422 km (único dueño). El link abre la página de la GS8 en Kavak, no el anuncio directo.",
           "tres_filas": { "confirmado": true, "nota": "La GS8 es de 7 pasajeros." }
         },
         {
           "id": "gs8awd-2024-dalton-guadalajara",
-          "anio": 2024, "km": 23089, "precio": 483956, "precio_nota": "de liquidación; visto en búsqueda el 30-oct",
+          "anio": 2024, "km": 23089, "precio": 483956, "precio_nota": "de liquidación, según la ficha de Dalton (30-oct)",
           "ciudad": "Guadalajara", "vendedor": "Dalton Seminuevos",
           "anuncio": "https://www.daltonseminuevos.com.mx/autos/gac-gs8-seminuevo-2024-90237",
           "descargar_fotos": false,
-          "aviso": "Otra búsqueda mostró esta misma unidad (23,089 km) en $561,090: confirmar el precio vigente.",
+          "aviso": "La ficha de Dalton dice $483,956 de liquidación (precio de mercado $560,000) y su página de modelos GS8 la muestra en $467,156. En Mercado Libre aparece más cara. Confirmar el precio vigente con la sucursal López Mateos, Guadalajara.",
           "tres_filas": { "confirmado": true, "nota": "La GS8 es de 7 pasajeros." }
         }
       ]
@@ -272,7 +272,12 @@
     { "nombre": "Mazda CX-90", "motivo": "Unos $673,000: muy arriba del tope." },
     { "nombre": "Chevrolet Traverse", "motivo": "Una 2023 con poco kilometraje cuesta unos $557,000–565,000." },
     { "nombre": "Dodge Durango", "motivo": "Unos $576,000 y motor V6 de alto consumo." },
-    { "nombre": "Ford Explorer y Honda Pilot", "motivo": "Arriba de $780,000." },
+    { "nombre": "Honda Pilot", "motivo": "V6 con tracción integral y 3 filas de verdad, pero las 2023 con menos de 40,000 km están en $720,000–840,000. La única con menos de 30,000 km pide $799,900." },
+    { "nombre": "Honda BR-V", "motivo": "La otra Honda de 3 filas: motor 1.5 sin turbo y tercera fila de emergencia." },
+    { "nombre": "Mazda CX-9 2023", "motivo": "2.5 turbo con tracción integral, muy buena para subir, pero las Signature AWD con poco kilometraje están en $635,000–657,000. Las de $535,000 traen 75,000 km." },
+    { "nombre": "Nissan Pathfinder 2023", "motivo": "V6 4x4, pero las 2023 se ven en $600,000–700,000." },
+    { "nombre": "Volkswagen Teramont 2023", "motivo": "V6 con 4Motion, pero las 2023 arrancan en unos $629,000." },
+    { "nombre": "Ford Explorer", "motivo": "Arriba de $780,000." },
     { "nombre": "Geely Okavango", "motivo": "Unos $640,000 con poco kilometraje." },
     { "nombre": "Minivans (Honda Odyssey, Toyota Sienna, Chrysler Pacifica)", "motivo": "Arriba de $510,000, y de Pacifica no hay modelos 2023 o más recientes." },
     { "nombre": "Kia Carnival, Chirey Tiggo 9 y Changan CS95", "motivo": "No se consiguen seminuevas 2023 o más recientes en México." },
