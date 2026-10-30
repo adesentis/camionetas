@@ -164,10 +164,17 @@ def lineal(x, vale5, vale1):
     return r2(min(5, max(1, 5 - 4 * (x - vale5) / (vale1 - vale5))))
 
 
+def precio_unidad(diferencia, tope, extra=50_000):
+    """Dentro del presupuesto va de 5 ($0 de diferencia) a 3 (el tope); arriba del tope cae a 1 en tope + extra."""
+    if diferencia <= tope:
+        return r2(5 - 2 * max(0, diferencia) / tope)
+    return r2(max(1, 3 - 2 * (diferencia - tope) / extra))
+
+
 def automatica(c, u, f):
     """Criterios que se califican solos con los datos del anuncio (misma fórmula que la página)."""
     if c["auto"] == "precio":
-        return lineal(u["precio"], f["venta_actual"], f["venta_actual"] + f["diferencia_maxima"])
+        return precio_unidad(u["precio"] - f["venta_actual"], f["diferencia_maxima"])
     if c["auto"] == "km":
         return lineal(u["km"], 0, f["km_maximo"])
     if c["auto"] == "anio":
