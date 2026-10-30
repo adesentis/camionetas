@@ -120,6 +120,12 @@ textarea { width: 100%; min-height: 96px; font: inherit; padding: 10px; border-r
 .slider { padding: 8px 0; border-bottom: 1px solid var(--line); }
 .slider label { display: flex; justify-content: space-between; font-size: .92rem; }
 .slider input { width: 100%; accent-color: var(--accent); }
+/* Descartadas */
+.desc { padding: 10px 0; border-bottom: 1px solid var(--line); font-size: .92rem; }
+.unidad > .cab { margin-bottom: 8px; }
+.desc:last-child { border-bottom: 0; }
+.desc b { font-weight: 600; }
+.desc .muted { display: block; margin-top: 2px; }
 .suma { font-size: .85rem; color: var(--muted); margin: 10px 0; }
 footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
 @media (min-width: 600px) { .gal figure { flex-basis: 85%; } }
@@ -135,6 +141,7 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
   <a href="#revisar">Por revisar</a>
   <a href="#opinion">Tu opinión</a>
   <a href="#pesos">Mover pesos</a>
+  <a href="#descartadas">Descartadas</a>
 </nav>
 <main>
   <h1 id="titulo"></h1>
@@ -144,13 +151,13 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
 
   <section id="calificamos"><h2>Cómo calificamos</h2>
     <div class="card">
-      <p class="muted">Cada criterio se califica de 1 a 5. El peso dice cuánto cuenta (suman 100). Puntaje final = suma de (calificación × peso) ÷ 100.</p>
+      <p class="muted">Cada criterio se califica de 1 a 5. El peso dice cuánto cuenta (suman 100). Puntaje final = suma de (calificación × peso) ÷ 100. Los criterios marcados "automático" se calculan con los datos de cada anuncio.</p>
       <div id="criterios"></div>
       <div class="leyenda"><span><i style="background:var(--verde)"></i>4 a 5: bien</span><span><i style="background:var(--azul)"></i>2.5 a 3.5: regular</span><span><i style="background:var(--rojo)"></i>2 o menos: flojo</span></div>
     </div>
   </section>
 
-  <section id="ranking"><h2>Ranking</h2><div class="card"><div id="avisoPesos"></div><ol class="ranking" id="listaRanking"></ol></div></section>
+  <section id="ranking"><h2>Ranking por unidad</h2><p class="muted">Cada anuncio tiene su propio puntaje: comparte las calificaciones de su modelo, pero el precio, los km y el año son los suyos.</p><div class="card"><div id="avisoPesos"></div><ol class="ranking" id="listaRanking"></ol></div></section>
 
   <section id="opciones"><h2>Opciones</h2><div id="tarjetas"></div></section>
 
@@ -164,7 +171,7 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
 
   <section id="opinion"><h2>Tu opinión</h2>
     <div class="card">
-      <p>¿Qué tanto te gusta cómo se ve cada una? De 1 (nada) a 5 (me encanta). Tu calificación reemplaza la mía en <b id="nomCritOpinion"></b>.</p>
+      <p>¿Qué tanto te gusta cómo se ve cada una? De 1 (nada) a 5 (me encanta). Tu calificación reemplaza la mía en <b id="nomCritOpinion"></b>. Califica solo las que quieras.</p>
       <div id="listaOpinion"></div>
       <h3 style="margin-top:16px">Comentarios</h3>
       <textarea id="comentario" placeholder="Lo que quieras decirme de las opciones…"></textarea>
@@ -185,11 +192,18 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
     </div>
   </section>
 
+  <section id="descartadas"><h2>También revisamos</h2>
+    <div class="card">
+      <p class="muted" id="descartadasIntro"></p>
+      <div id="listaDescartadas"></div>
+    </div>
+  </section>
+
   <footer>Las fotos son de los anuncios de cada vendedor y se muestran solo aquí, con el link a su anuncio original. Esta página no aparece en buscadores.</footer>
 </main>
 
 <script>
-const DATOS = {"titulo": "Camionetas para reemplazar la CX-5", "subtitulo": "Las opciones que estoy considerando, cómo las califiqué y tu opinión.", "requisitos": ["Tres filas de asientos.", "Que quepan dos sillas infantiles.", "Vivimos en Valle de Bravo: subidas largas, empedrado y lluvia. Viajamos seguido a CDMX y Querétaro.", "Seminueva, modelo 2023 o más reciente, con menos de 30,000 km.", "Pagar como máximo $250,000 de diferencia después de vender la CX-5 (Kavak ofrece unos $238,000).", "Nada 100% eléctrico."], "filtros": {"anio_minimo": 2023, "km_maximo": 30000, "venta_actual": 238000, "diferencia_maxima": 250000}, "criterios": [{"id": "seguridad", "nombre": "Seguridad", "peso": 15, "explicacion": "Pruebas de choque, bolsas de aire, frenado automático y llamados a revisión."}, {"id": "espacio", "nombre": "Espacio y tercera fila", "peso": 15, "explicacion": "Que quepan dos sillas infantiles, acceso atrás y cajuela."}, {"id": "montana", "nombre": "Montaña y lluvia", "peso": 15, "explicacion": "Potencia en subidas con la familia arriba y tracción en agua y empedrado."}, {"id": "estetica", "nombre": "Estética", "peso": 10, "explicacion": "Qué tanto nos gusta cómo se ve; es gusto personal."}, {"id": "costo", "nombre": "Costo", "peso": 19, "explicacion": "Precio de compra, depreciación, servicios y seguro."}, {"id": "confiabilidad", "nombre": "Confiabilidad", "peso": 12, "explicacion": "Estudios de fallas, quejas de dueños y respaldo de la marca."}, {"id": "consumo", "nombre": "Consumo", "peso": 10, "explicacion": "Rendimiento por litro y si pide gasolina Premium."}, {"id": "equipamiento", "nombre": "Equipamiento", "peso": 3, "explicacion": "Pantallas, cámaras y comodidades."}, {"id": "agencia", "nombre": "Agencia cerca", "peso": 1, "explicacion": "Casi no pesa porque en Toluca y Metepec están todas las marcas."}], "criterio_opinion": "estetica", "opciones": [{"id": "tiggo8pro", "nombre": "Chirey Tiggo 8 Pro 1.6T 2025", "calificaciones": {"seguridad": 3.5, "espacio": 2.5, "montana": 3, "estetica": 5, "costo": 3.5, "confiabilidad": 2, "consumo": 4, "equipamiento": 5, "agencia": 3}, "por_que": "Misma camioneta por fuera que la Pro Max; más barata y gasta menos gasolina, pero sube con menos fuerza.", "unidades": [{"id": "tiggo8pro-izcalli", "anio": 2025, "km": 15133, "precio": 379990, "precio_nota": "", "ciudad": "Cuautitlán Izcalli", "vendedor": "Chevrolet Excelencia", "anuncio": "https://www.seminuevos.com/vehicle/autos-chirey-tiggo_8_pro-cuautitlan_izcalli-2025/4836822", "fotos": ["fotos/tiggo8pro-izcalli/01-frente.jpg", "fotos/tiggo8pro-izcalli/02-lateral.jpg", "fotos/tiggo8pro-izcalli/03-trasera.jpg", "fotos/tiggo8pro-izcalli/04-tres-cuartos.jpg", "fotos/tiggo8pro-izcalli/05-interior.jpg", "fotos/tiggo8pro-izcalli/06-tablero.jpg", "fotos/tiggo8pro-izcalli/07-segunda-fila.jpg", "fotos/tiggo8pro-izcalli/08-volante.jpg"]}, {"id": "tiggo8pro-kavak-cdmx", "anio": 2025, "km": 7785, "precio": 401999, "precio_nota": "más tarifa de servicio", "ciudad": "CDMX", "vendedor": "Kavak", "anuncio": "https://www.kavak.com/mx/usado/chirey-tiggo_8_pro-16_premium_dct-suv-2025", "fotos": ["fotos/tiggo8pro-kavak-cdmx/01-frente.jpg", "fotos/tiggo8pro-kavak-cdmx/02-lateral.jpg", "fotos/tiggo8pro-kavak-cdmx/03-trasera.jpg", "fotos/tiggo8pro-kavak-cdmx/04-interior.jpg", "fotos/tiggo8pro-kavak-cdmx/05-interior-2.jpg", "fotos/tiggo8pro-kavak-cdmx/06-segunda-fila.jpg", "fotos/tiggo8pro-kavak-cdmx/07-cajuela.jpg", "fotos/tiggo8pro-kavak-cdmx/08-tres-cuartos.jpg"]}]}, {"id": "tiggo8promax", "nombre": "Chirey Tiggo 8 Pro Max 2.0T AWD 2024", "calificaciones": {"seguridad": 3.5, "espacio": 2.5, "montana": 4.5, "estetica": 5, "costo": 3, "confiabilidad": 2, "consumo": 2.5, "equipamiento": 5, "agencia": 3}, "por_que": "La más potente (250 hp) y con tracción integral; gasta más gasolina (~8.5 km/l) y la cajuela es chica con tres filas (117 L).", "unidades": [{"id": "tiggo8promax-puebla", "anio": 2024, "km": 21135, "precio": 439900, "precio_nota": "", "ciudad": "Puebla", "vendedor": "Kia Seminuevos Serdán", "anuncio": "https://seminuevos.com/vehicle/4829748", "fotos": ["fotos/tiggo8promax-puebla/01-frente.jpg", "fotos/tiggo8promax-puebla/02-lateral.jpg", "fotos/tiggo8promax-puebla/03-trasera.jpg", "fotos/tiggo8promax-puebla/04-tres-cuartos.jpg", "fotos/tiggo8promax-puebla/05-interior.jpg", "fotos/tiggo8promax-puebla/06-asientos-delanteros.jpg", "fotos/tiggo8promax-puebla/07-segunda-fila.jpg", "fotos/tiggo8promax-puebla/08-techo-panoramico.jpg"]}]}, {"id": "mgrx8", "nombre": "MG RX8 4x4 2023-2024", "calificaciones": {"seguridad": 2, "espacio": 3.5, "montana": 5, "estetica": 4, "costo": 3.5, "confiabilidad": 1.5, "consumo": 3, "equipamiento": 3, "agencia": 3}, "por_que": "La más todoterreno y barata; sin pruebas de choque, descontinuada, y la marca sale mal en confiabilidad (J.D. Power México 2025, lugar 19 de 21).", "unidades": [{"id": "mgrx8-2024-kavak-cdmx", "anio": 2024, "km": 15849, "precio": 341999, "precio_nota": "", "ciudad": "CDMX", "vendedor": "Kavak", "anuncio": "https://www.kavak.com/mx/usado/mg-rx8-20_elegance_auto_4wd-suv-2024", "fotos": ["fotos/mgrx8-2024-kavak-cdmx/01-frente.jpg", "fotos/mgrx8-2024-kavak-cdmx/02-lateral.jpg", "fotos/mgrx8-2024-kavak-cdmx/03-trasera.jpg", "fotos/mgrx8-2024-kavak-cdmx/04-interior.jpg", "fotos/mgrx8-2024-kavak-cdmx/05-interior-2.jpg", "fotos/mgrx8-2024-kavak-cdmx/06-segunda-fila.jpg", "fotos/mgrx8-2024-kavak-cdmx/07-cajuela.jpg", "fotos/mgrx8-2024-kavak-cdmx/08-tres-cuartos.jpg"]}, {"id": "mgrx8-2023-kavak-cdmx", "anio": 2023, "km": 11482, "precio": 350999, "precio_nota": "", "ciudad": "CDMX", "vendedor": "Kavak", "anuncio": "https://www.kavak.com/mx/usado/mg-rx8-20_elegance_auto_4wd-suv-2023", "fotos": ["fotos/mgrx8-2023-kavak-cdmx/01-frente.jpg", "fotos/mgrx8-2023-kavak-cdmx/02-lateral.jpg", "fotos/mgrx8-2023-kavak-cdmx/03-trasera.jpg", "fotos/mgrx8-2023-kavak-cdmx/04-interior.jpg", "fotos/mgrx8-2023-kavak-cdmx/05-segunda-fila.jpg", "fotos/mgrx8-2023-kavak-cdmx/06-cajuela.jpg", "fotos/mgrx8-2023-kavak-cdmx/07-tres-cuartos.jpg"]}]}, {"id": "commander", "nombre": "Jeep Commander Overland 2025", "calificaciones": {"seguridad": 3, "espacio": 4, "montana": 2, "estetica": 3, "costo": 2, "confiabilidad": 2, "consumo": 3.5, "equipamiento": 5, "agencia": 4}, "por_que": "La más amplia; motor justo en subidas y la más cara.", "unidades": [{"id": "commander-kavak-queretaro", "anio": 2025, "km": 31131, "precio": 473999, "precio_nota": "", "ciudad": "Querétaro", "vendedor": "Kavak", "anuncio": "https://www.kavak.com/mx/usado/jeep-commander-13_overland_auto-suv-2025", "fotos": ["fotos/commander-kavak-queretaro/01-frente.jpg", "fotos/commander-kavak-queretaro/02-lateral.jpg", "fotos/commander-kavak-queretaro/03-trasera.jpg", "fotos/commander-kavak-queretaro/04-interior.jpg", "fotos/commander-kavak-queretaro/05-interior-2.jpg", "fotos/commander-kavak-queretaro/06-segunda-fila.jpg", "fotos/commander-kavak-queretaro/07-cajuela.jpg", "fotos/commander-kavak-queretaro/08-tres-cuartos.jpg"]}]}], "por_revisar": ["Cajuela con las dos sillas infantiles puestas.", "Prueba de manejo en subida con la familia arriba.", "Recall de frenos de Australia en las versiones 2.0: revisar por número de serie (VIN) en Chirey Metepec.", "Depreciación alta de las marcas chinas."]};
+const DATOS = {"titulo": "Camionetas para reemplazar la CX-5", "subtitulo": "Las opciones que estoy considerando, cómo las califiqué y tu opinión.", "requisitos": ["Tres filas de asientos.", "Que quepan dos sillas infantiles.", "Vivimos en Valle de Bravo: subidas largas, empedrado y lluvia. Viajamos seguido a CDMX y Querétaro.", "Seminueva, modelo 2023 o más reciente, con menos de 30,000 km.", "Pagar como máximo $250,000 de diferencia después de vender la CX-5 (Kavak ofrece unos $238,000).", "Nada 100% eléctrico."], "filtros": {"anio_minimo": 2023, "anio_referencia": 2026, "km_maximo": 30000, "venta_actual": 238000, "diferencia_maxima": 250000}, "criterios": [{"id": "seguridad", "nombre": "Seguridad", "peso": 15, "explicacion": "Pruebas de choque, bolsas de aire, frenado automático y llamados a revisión."}, {"id": "espacio", "nombre": "Espacio y tercera fila", "peso": 15, "explicacion": "Que quepan dos sillas infantiles, acceso atrás y cajuela."}, {"id": "montana", "nombre": "Montaña y lluvia", "peso": 15, "explicacion": "Potencia en subidas con la familia arriba y tracción en agua y empedrado."}, {"id": "estetica", "nombre": "Estética", "peso": 10, "explicacion": "Qué tanto nos gusta cómo se ve; es gusto personal. Puede cambiar por unidad (por ejemplo, el diseño anterior de Chirey)."}, {"id": "costo", "nombre": "Costo de tenerla", "peso": 7, "explicacion": "Depreciación, servicios y seguro. El precio de compra se califica aparte, por unidad."}, {"id": "confiabilidad", "nombre": "Confiabilidad", "peso": 12, "explicacion": "Estudios de fallas, quejas de dueños y respaldo de la marca."}, {"id": "consumo", "nombre": "Consumo", "peso": 10, "explicacion": "Rendimiento por litro y si pide gasolina Premium."}, {"id": "equipamiento", "nombre": "Equipamiento", "peso": 3, "explicacion": "Pantallas, cámaras y comodidades."}, {"id": "agencia", "nombre": "Agencia cerca", "peso": 1, "explicacion": "Casi no pesa porque en Toluca y Metepec están casi todas las marcas."}, {"id": "precio_unidad", "nombre": "Precio de la unidad", "peso": 8, "auto": "precio", "explicacion": "Se calcula solo: $238,000 (no pagas nada extra) = 5; $488,000 (el tope) = 1."}, {"id": "km", "nombre": "Kilometraje", "peso": 2, "auto": "km", "explicacion": "Se calcula solo: 0 km = 5; 30,000 km = 1."}, {"id": "anio", "nombre": "Año", "peso": 2, "auto": "anio", "explicacion": "Se calcula solo: 2026 = 5 y cada año menos resta 1 (2023 = 2)."}], "criterio_opinion": "estetica", "opciones": [{"id": "tiggo8pro", "nombre": "Chirey Tiggo 8 Pro 1.6T", "calificaciones": {"seguridad": 3.5, "espacio": 2.5, "montana": 3, "estetica": 5, "costo": 3.5, "confiabilidad": 2, "consumo": 4, "equipamiento": 5, "agencia": 3}, "por_que": "Misma camioneta por fuera que la Pro Max; más barata y gasta menos gasolina, pero sube con menos fuerza. El diseño nuevo es el 2025.", "unidades": [{"id": "tiggo8pro-izcalli", "anio": 2025, "km": 15133, "precio": 379990, "precio_nota": "", "ciudad": "Cuautitlán Izcalli", "vendedor": "Chevrolet Excelencia", "anuncio": "https://www.seminuevos.com/vehicle/autos-chirey-tiggo_8_pro-cuautitlan_izcalli-2025/4836822", "tres_filas": {"confirmado": false, "nota": "El anuncio no dice cuántos pasajeros; el modelo es de 7. Pedir foto de la tercera fila."}, "fotos": ["fotos/tiggo8pro-izcalli/01-frente.jpg", "fotos/tiggo8pro-izcalli/02-lateral.jpg", "fotos/tiggo8pro-izcalli/03-trasera.jpg", "fotos/tiggo8pro-izcalli/04-tres-cuartos.jpg", "fotos/tiggo8pro-izcalli/05-interior.jpg", "fotos/tiggo8pro-izcalli/06-tablero.jpg", "fotos/tiggo8pro-izcalli/07-segunda-fila.jpg", "fotos/tiggo8pro-izcalli/08-volante.jpg"]}, {"id": "tiggo8pro-kavak-cdmx", "anio": 2025, "km": 7785, "precio": 401999, "precio_nota": "más tarifa de servicio", "ciudad": "CDMX", "vendedor": "Kavak", "anuncio": "https://www.kavak.com/mx/usado/chirey-tiggo_8_pro-16_premium_dct-suv-2025?id=519919", "tres_filas": {"confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros. La foto de la cajuela muestra la tercera fila plegada."}, "fotos": ["fotos/tiggo8pro-kavak-cdmx/01-frente.jpg", "fotos/tiggo8pro-kavak-cdmx/02-lateral.jpg", "fotos/tiggo8pro-kavak-cdmx/03-trasera.jpg", "fotos/tiggo8pro-kavak-cdmx/04-interior.jpg", "fotos/tiggo8pro-kavak-cdmx/05-interior-2.jpg", "fotos/tiggo8pro-kavak-cdmx/06-segunda-fila.jpg", "fotos/tiggo8pro-kavak-cdmx/07-cajuela.jpg", "fotos/tiggo8pro-kavak-cdmx/08-tres-cuartos.jpg"]}, {"id": "tiggo8pro-2023-kavak-cdmx", "anio": 2023, "km": 1900, "precio": 371999, "precio_nota": "", "ciudad": "CDMX", "vendedor": "Kavak", "anuncio": "https://www.kavak.com/mx/usado/chirey-tiggo_8_pro-16_premium_dct-suv-2023?id=483574", "calificaciones": {"estetica": 3}, "tres_filas": {"confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros."}, "fotos": ["fotos/tiggo8pro-2023-kavak-cdmx/01-frente.jpg", "fotos/tiggo8pro-2023-kavak-cdmx/02-lateral.jpg", "fotos/tiggo8pro-2023-kavak-cdmx/03-trasera.jpg", "fotos/tiggo8pro-2023-kavak-cdmx/04-interior.jpg", "fotos/tiggo8pro-2023-kavak-cdmx/05-interior-2.jpg", "fotos/tiggo8pro-2023-kavak-cdmx/06-cajuela.jpg", "fotos/tiggo8pro-2023-kavak-cdmx/07-tres-cuartos.jpg"]}]}, {"id": "tiggo8promax", "nombre": "Chirey Tiggo 8 Pro Max 2.0T AWD", "calificaciones": {"seguridad": 3.5, "espacio": 2.5, "montana": 4.5, "estetica": 5, "costo": 3, "confiabilidad": 2, "consumo": 2.5, "equipamiento": 5, "agencia": 3}, "por_que": "La más potente (250 hp) y con tracción integral; gasta más gasolina (~8.5 km/l) y la cajuela es chica con tres filas (117 L).", "unidades": [{"id": "tiggo8promax-puebla", "anio": 2024, "km": 21135, "precio": 439900, "precio_nota": "negociable", "ciudad": "Puebla", "vendedor": "Kia Seminuevos Serdán", "anuncio": "https://seminuevos.com/vehicle/4829748", "calificaciones": {"estetica": 3}, "tres_filas": {"confirmado": true, "nota": "El anuncio dice 7 pasajeros y tercera fila de asientos."}, "fotos": ["fotos/tiggo8promax-puebla/01-frente.jpg", "fotos/tiggo8promax-puebla/02-lateral.jpg", "fotos/tiggo8promax-puebla/03-trasera.jpg", "fotos/tiggo8promax-puebla/04-tres-cuartos.jpg", "fotos/tiggo8promax-puebla/05-interior.jpg", "fotos/tiggo8promax-puebla/06-asientos-delanteros.jpg", "fotos/tiggo8promax-puebla/07-segunda-fila.jpg", "fotos/tiggo8promax-puebla/08-techo-panoramico.jpg"]}, {"id": "tiggo8promax-2023-ml-cdmx", "anio": 2023, "km": 13200, "precio": 398445, "precio_nota": "", "ciudad": "Álvaro Obregón, CDMX", "vendedor": "Mercado Libre", "anuncio": "https://auto.mercadolibre.com.mx/MLM-3485455377-chirey-tiggo-8-pro-max-20t-premium-4wd-_JM", "calificaciones": {"estetica": 3}, "tres_filas": {"confirmado": false, "nota": "El anuncio dice 5 personas, pero el modelo es de 7 en México: confirmar con foto. La ficha también dice tracción delantera aunque el título dice 4WD."}, "fotos": ["fotos/tiggo8promax-2023-ml-cdmx/01-foto.jpg", "fotos/tiggo8promax-2023-ml-cdmx/02-foto.jpg", "fotos/tiggo8promax-2023-ml-cdmx/03-foto.jpg", "fotos/tiggo8promax-2023-ml-cdmx/04-foto.jpg", "fotos/tiggo8promax-2023-ml-cdmx/05-foto.jpg", "fotos/tiggo8promax-2023-ml-cdmx/06-foto.jpg", "fotos/tiggo8promax-2023-ml-cdmx/07-foto.jpg", "fotos/tiggo8promax-2023-ml-cdmx/08-foto.jpg"]}, {"id": "tiggo8promax-2025-ml-tlalnepantla", "anio": 2025, "km": 60, "precio": 459900, "precio_nota": "", "ciudad": "Tlalnepantla, Edomex", "vendedor": "Mercado Libre", "anuncio": "https://auto.mercadolibre.com.mx/MLM-6364338596-chirey-tiggo-8-pro-max-20t-premium-4wd-_JM", "tres_filas": {"confirmado": false, "nota": "El anuncio dice 5 personas, pero el modelo es de 7 en México: confirmar con foto."}, "fotos": ["fotos/tiggo8promax-2025-ml-tlalnepantla/01-foto.jpg", "fotos/tiggo8promax-2025-ml-tlalnepantla/02-foto.jpg", "fotos/tiggo8promax-2025-ml-tlalnepantla/03-foto.jpg", "fotos/tiggo8promax-2025-ml-tlalnepantla/04-foto.jpg", "fotos/tiggo8promax-2025-ml-tlalnepantla/05-foto.jpg", "fotos/tiggo8promax-2025-ml-tlalnepantla/06-foto.jpg", "fotos/tiggo8promax-2025-ml-tlalnepantla/07-foto.jpg", "fotos/tiggo8promax-2025-ml-tlalnepantla/08-foto.jpg"]}]}, {"id": "tiggo8promax2wd", "nombre": "Chirey Tiggo 8 Pro Max 2.0T sin AWD", "calificaciones": {"seguridad": 3.5, "espacio": 2.5, "montana": 4, "estetica": 5, "costo": 3, "confiabilidad": 2, "consumo": 2.5, "equipamiento": 5, "agencia": 3}, "por_que": "El mismo motor de 250 hp que la Pro Max AWD, pero solo con tracción delantera (versión Luxury). Mucho más barata.", "unidades": [{"id": "tiggo8promax2wd-2023-kavak-cdmx", "anio": 2023, "km": 22835, "precio": 320999, "precio_nota": "", "ciudad": "CDMX", "vendedor": "Kavak", "anuncio": "https://www.kavak.com/mx/usado/chirey-tiggo_8_pro_max-20_luxury_dct-suv-2023?id=543434", "calificaciones": {"estetica": 3}, "tres_filas": {"confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros."}, "fotos": ["fotos/tiggo8promax2wd-2023-kavak-cdmx/01-frente.jpg", "fotos/tiggo8promax2wd-2023-kavak-cdmx/02-lateral.jpg", "fotos/tiggo8promax2wd-2023-kavak-cdmx/03-trasera.jpg", "fotos/tiggo8promax2wd-2023-kavak-cdmx/04-interior.jpg", "fotos/tiggo8promax2wd-2023-kavak-cdmx/05-interior-2.jpg", "fotos/tiggo8promax2wd-2023-kavak-cdmx/06-cajuela.jpg", "fotos/tiggo8promax2wd-2023-kavak-cdmx/07-tres-cuartos.jpg"]}]}, {"id": "mgrx8", "nombre": "MG RX8 4x4", "calificaciones": {"seguridad": 2, "espacio": 3.5, "montana": 5, "estetica": 4, "costo": 3.5, "confiabilidad": 1.5, "consumo": 3, "equipamiento": 3, "agencia": 3}, "por_que": "La más todoterreno; sin pruebas de choque, descontinuada, y la marca sale mal en confiabilidad (J.D. Power México 2025, lugar 19 de 21).", "unidades": [{"id": "mgrx8-2024-kavak-cdmx", "anio": 2024, "km": 15849, "precio": 341999, "precio_nota": "", "ciudad": "CDMX", "vendedor": "Kavak", "anuncio": "https://www.kavak.com/mx/usado/mg-rx8-20_elegance_auto_4wd-suv-2024?id=517216", "tres_filas": {"confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros. La foto de la cajuela muestra la tercera fila plegada."}, "fotos": ["fotos/mgrx8-2024-kavak-cdmx/01-frente.jpg", "fotos/mgrx8-2024-kavak-cdmx/02-lateral.jpg", "fotos/mgrx8-2024-kavak-cdmx/03-trasera.jpg", "fotos/mgrx8-2024-kavak-cdmx/04-interior.jpg", "fotos/mgrx8-2024-kavak-cdmx/05-interior-2.jpg", "fotos/mgrx8-2024-kavak-cdmx/06-segunda-fila.jpg", "fotos/mgrx8-2024-kavak-cdmx/07-cajuela.jpg", "fotos/mgrx8-2024-kavak-cdmx/08-tres-cuartos.jpg"]}, {"id": "mgrx8-2023-kavak-cdmx", "anio": 2023, "km": 11482, "precio": 350999, "precio_nota": "", "ciudad": "CDMX", "vendedor": "Kavak", "anuncio": "https://www.kavak.com/mx/usado/mg-rx8-20_elegance_auto_4wd-suv-2023?id=539261", "tres_filas": {"confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros."}, "fotos": ["fotos/mgrx8-2023-kavak-cdmx/01-frente.jpg", "fotos/mgrx8-2023-kavak-cdmx/02-lateral.jpg", "fotos/mgrx8-2023-kavak-cdmx/03-trasera.jpg", "fotos/mgrx8-2023-kavak-cdmx/04-interior.jpg", "fotos/mgrx8-2023-kavak-cdmx/05-segunda-fila.jpg", "fotos/mgrx8-2023-kavak-cdmx/06-cajuela.jpg", "fotos/mgrx8-2023-kavak-cdmx/07-tres-cuartos.jpg"]}]}, {"id": "commander", "nombre": "Jeep Commander Overland", "calificaciones": {"seguridad": 3, "espacio": 4, "montana": 2, "estetica": 3, "costo": 2, "confiabilidad": 2, "consumo": 3.5, "equipamiento": 5, "agencia": 4}, "por_que": "De las más amplias; motor justo en subidas y de las más caras.", "unidades": [{"id": "commander-kavak-queretaro", "anio": 2025, "km": 31131, "precio": 473999, "precio_nota": "", "ciudad": "Querétaro", "vendedor": "Kavak", "anuncio": "https://www.kavak.com/mx/usado/jeep-commander-13_overland_auto-suv-2025?id=545924", "tres_filas": {"confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros."}, "fotos": ["fotos/commander-kavak-queretaro/01-frente.jpg", "fotos/commander-kavak-queretaro/02-lateral.jpg", "fotos/commander-kavak-queretaro/03-trasera.jpg", "fotos/commander-kavak-queretaro/04-interior.jpg", "fotos/commander-kavak-queretaro/05-interior-2.jpg", "fotos/commander-kavak-queretaro/06-segunda-fila.jpg", "fotos/commander-kavak-queretaro/07-cajuela.jpg", "fotos/commander-kavak-queretaro/08-tres-cuartos.jpg"]}]}, {"id": "x70plus", "nombre": "Jetour X70 Plus 1.6T", "calificaciones": {"seguridad": 2, "espacio": 3, "montana": 3, "estetica": 3, "costo": 4, "confiabilidad": 2, "consumo": 4, "equipamiento": 3.5, "agencia": 2}, "por_que": "La más barata; mismo motor 1.6T que la Tiggo 8 Pro (es del grupo Chery), pero la 2023 solo trae 4 bolsas de aire. Marca nueva con pocas agencias.", "unidades": [{"id": "x70plus-2023-kavak-cdmx", "anio": 2023, "km": 29635, "precio": 299999, "precio_nota": "", "ciudad": "CDMX", "vendedor": "Kavak", "anuncio": "https://www.kavak.com/mx/usado/jetour-x70_plus-16_dct-suv-2023?id=534747", "tres_filas": {"confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros."}, "fotos": ["fotos/x70plus-2023-kavak-cdmx/01-frente.jpg", "fotos/x70plus-2023-kavak-cdmx/02-lateral.jpg", "fotos/x70plus-2023-kavak-cdmx/03-trasera.jpg", "fotos/x70plus-2023-kavak-cdmx/04-interior.jpg", "fotos/x70plus-2023-kavak-cdmx/05-interior-2.jpg", "fotos/x70plus-2023-kavak-cdmx/06-cajuela.jpg", "fotos/x70plus-2023-kavak-cdmx/07-tres-cuartos.jpg"]}, {"id": "x70plus-2023-kavak-guadalajara", "anio": 2023, "km": 18306, "precio": 305999, "precio_nota": "", "ciudad": "Guadalajara", "vendedor": "Kavak", "anuncio": "https://www.kavak.com/mx/usado/jetour-x70_plus-16_dct-suv-2023?id=554376", "tres_filas": {"confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros."}, "fotos": ["fotos/x70plus-2023-kavak-guadalajara/01-frente.jpg", "fotos/x70plus-2023-kavak-guadalajara/02-lateral.jpg", "fotos/x70plus-2023-kavak-guadalajara/03-trasera.jpg", "fotos/x70plus-2023-kavak-guadalajara/04-interior.jpg", "fotos/x70plus-2023-kavak-guadalajara/05-interior-2.jpg", "fotos/x70plus-2023-kavak-guadalajara/06-segunda-fila.jpg", "fotos/x70plus-2023-kavak-guadalajara/07-cajuela.jpg", "fotos/x70plus-2023-kavak-guadalajara/08-tres-cuartos.jpg"]}]}, {"id": "gs8", "nombre": "GAC GS8 2.0T", "calificaciones": {"seguridad": 3.5, "espacio": 4.5, "montana": 4, "estetica": 3, "costo": 2, "confiabilidad": 2, "consumo": 2.5, "equipamiento": 5, "agencia": 2}, "por_que": "La más grande y equipada, con motor 2.0T. Esta versión (GL) no trae 4x4 y su precio pasa el tope por $25,999.", "unidades": [{"id": "gs8-2025-kavak-guadalajara", "anio": 2025, "km": 1024, "precio": 513999, "precio_nota": "", "ciudad": "Guadalajara", "vendedor": "Kavak", "anuncio": "https://www.kavak.com/mx/usado/gac-gs8-20_t_gl_auto-suv-2025?id=509060", "tres_filas": {"confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros."}, "fotos": ["fotos/gs8-2025-kavak-guadalajara/01-frente.jpg", "fotos/gs8-2025-kavak-guadalajara/02-lateral.jpg", "fotos/gs8-2025-kavak-guadalajara/03-trasera.jpg", "fotos/gs8-2025-kavak-guadalajara/04-interior.jpg", "fotos/gs8-2025-kavak-guadalajara/05-interior-2.jpg", "fotos/gs8-2025-kavak-guadalajara/06-segunda-fila.jpg", "fotos/gs8-2025-kavak-guadalajara/07-cajuela.jpg", "fotos/gs8-2025-kavak-guadalajara/08-tres-cuartos.jpg"]}]}], "por_revisar": ["Cajuela con las dos sillas infantiles puestas.", "Prueba de manejo en subida con la familia arriba.", "Recall de frenos de Australia en las versiones 2.0: revisar por número de serie (VIN) en Chirey Metepec.", "Depreciación alta de las marcas chinas.", "Tiggo de Izcalli: pedir al vendedor foto de la tercera fila.", "Pro Max de Mercado Libre: los anuncios dicen 5 personas; confirmar la tercera fila con foto, y en la 2023 confirmar que sí sea 4WD.", "Kavak cobra una tarifa de servicio aparte: pedir el precio final antes de comparar."], "descartadas_intro": "Antes de quedarnos con estas opciones revisamos otras camionetas de 3 filas que se venden en México (búsqueda del 29 de octubre de 2026 en Kavak, Wahu, Albacar, Seminuevos y Mercado Libre).", "descartadas": [{"nombre": "Kia Sorento 2.5", "motivo": "La más cercana: 2023 con 22,000 km en $499,000 negociable. Pasa el tope y el motor 2.5 sin turbo es flojo en subidas.", "link": "https://www.seminuevos.com/vehicle/autos-kia-sorento-puebla-2023/4807859"}, {"nombre": "Volkswagen Tiguan 3 filas", "motivo": "Entra en precio, pero la tercera fila es de emergencia: no caben dos sillas con acceso. Motor 1.4T de 150 hp."}, {"nombre": "Nissan X-Trail 3 filas", "motivo": "Tercera fila de emergencia, motor 2.5 sin turbo, y con menos de 30,000 km ya cuesta unos $505,000."}, {"nombre": "Chevrolet Captiva 7 pasajeros", "motivo": "Motor 1.5 turbo con CVT: el más débil para las subidas. Tercera fila chica."}, {"nombre": "Peugeot 5008", "motivo": "Con menos de 30,000 km pasa del tope (unos $559,000) y la tercera fila es chica."}, {"nombre": "Hyundai Santa Fe", "motivo": "La 2023 en México es de 2 filas; la nueva de 3 filas cuesta unos $710,000 o más."}, {"nombre": "Mitsubishi Outlander", "motivo": "En 2023–2025 solo la híbrida enchufable tiene 3 filas, y cuesta unos $649,000."}, {"nombre": "Toyota Highlander híbrida", "motivo": "Unos $600,000 por una 2023: $112,000 arriba del tope."}, {"nombre": "Mazda CX-90", "motivo": "Unos $673,000: muy arriba del tope."}, {"nombre": "Chevrolet Traverse", "motivo": "Una 2023 con poco kilometraje cuesta unos $557,000–565,000."}, {"nombre": "Dodge Durango", "motivo": "Unos $576,000 y motor V6 de alto consumo."}, {"nombre": "Ford Explorer y Honda Pilot", "motivo": "Arriba de $780,000."}, {"nombre": "Geely Okavango", "motivo": "Unos $640,000 con poco kilometraje."}, {"nombre": "Minivans (Honda Odyssey, Toyota Sienna, Chrysler Pacifica)", "motivo": "Arriba de $510,000, y de Pacifica no hay modelos 2023 o más recientes."}, {"nombre": "Kia Carnival, Chirey Tiggo 9 y Changan CS95", "motivo": "No se consiguen seminuevas 2023 o más recientes en México."}, {"nombre": "Chirey Tiggo 7 Pro", "motivo": "Es de 2 filas (5 pasajeros)."}, {"nombre": "Hyundai Creta Grand, Mitsubishi Xpander y Suzuki XL7", "motivo": "Motores 1.5 sin turbo para las subidas y tercera fila de emergencia."}]};
 </script>
 <script>
 (function () {
@@ -209,34 +223,46 @@ const DATOS = {"titulo": "Camionetas para reemplazar la CX-5", "subtitulo": "Las
   const leer = (k, d) => { try { const v = JSON.parse(localStorage.getItem(k)); return v ?? d; } catch (e) { return d; } };
 
   let pesos = { ...PESOS_ORIG };
-  let opinion = leer("opinion", {});
+  let opinion = leer("opinion2", {});   // calificación de estética por unidad
   let comentario = leer("comentario", "");
 
+  // Criterios que se calculan solos (misma fórmula que generar.py).
+  const r2 = x => Math.round(x * 100) / 100;
+  const tope = (x, a, b) => Math.min(b, Math.max(a, x));
+  const lineal = (x, vale5, vale1) => r2(tope(5 - 4 * (x - vale5) / (vale1 - vale5), 1, 5));
+  const AUTO = {
+    precio: u => lineal(u.precio, F.venta_actual, F.venta_actual + F.diferencia_maxima),
+    km: u => lineal(u.km, 0, F.km_maximo),
+    anio: u => r2(tope(5 - (F.anio_referencia - u.anio), 1, 5)),
+  };
+  function valor(c, o, u, propia) {
+    if (c.auto) return AUTO[c.auto](u);
+    if (propia && c.id === critOp && propia[u.id] != null) return propia[u.id];
+    return (u.calificaciones || {})[c.id] ?? o.calificaciones[c.id];
+  }
   // Puntaje redondeado sobre el entero (evita que 3.335 se vuelva 3.33 por decimales binarios).
-  function puntaje(op, w, propia) {
+  function puntaje(o, u, w, propia) {
     let suma = 0, total = 0;
-    for (const c of C) {
-      let v = op.calificaciones[c.id];
-      if (propia && c.id === critOp && propia[op.id]) v = propia[op.id];
-      suma += v * w[c.id]; total += w[c.id];
-    }
+    for (const c of C) { suma += valor(c, o, u, propia) * w[c.id]; total += w[c.id]; }
     return total ? Math.round(suma * 100 / total) / 100 : 0;
   }
-  const ordenar = (w, propia) => D.opciones.map(o => ({ o, p: puntaje(o, w, propia) })).sort((a, b) => b.p - a.p);
+  const todas = D.opciones.flatMap(o => o.unidades.map(u => ({ o, u })));
+  const ordenar = (w, propia) => todas.map(x => ({ ...x, p: puntaje(x.o, x.u, w, propia) })).sort((a, b) => b.p - a.p);
   const pesosCambiados = () => C.some(c => pesos[c.id] !== PESOS_ORIG[c.id]);
-  const fotoPrincipal = op => (op.unidades.find(u => u.fotos.length) || {}).fotos?.[0];
+  const detalle = u => `${u.anio} · ${num(u.km)} km · ${dinero(u.precio)} · ${u.ciudad}`;
 
   function cumple(u) {
     const b = [];
+    const tf = u.tres_filas;
+    if (tf) b.push(tf.confirmado ? ["", "3 filas confirmadas"] : ["warn", "3 filas por confirmar"]);
     if (F.anio_minimo && u.anio < F.anio_minimo) b.push(["warn", `Modelo ${u.anio}: antes de ${F.anio_minimo}`]);
     if (F.km_maximo && u.km > F.km_maximo) b.push(["warn", `${num(u.km)} km: pasa del máximo (${num(F.km_maximo)})`]);
-    if (F.venta_actual != null && F.diferencia_maxima) {
-      const dif = u.precio - F.venta_actual;
-      if (dif > F.diferencia_maxima) b.push(["warn", `Diferencia de ${dinero(dif)}: pasa del máximo`]);
-    }
-    if (!b.length && Object.keys(F).length) b.push(["", "Cumple año, km y presupuesto"]);
+    if (F.venta_actual != null && F.diferencia_maxima && u.precio - F.venta_actual > F.diferencia_maxima)
+      b.push(["warn", `Diferencia de ${dinero(u.precio - F.venta_actual)}: pasa del máximo`]);
+    if (b.every(([k]) => !k) && Object.keys(F).length) b.push(["", "Cumple año, km y presupuesto"]);
     return b;
   }
+  const badges = u => cumple(u).map(([k, t]) => `<span class="badge ${k}">${esc(t)}</span>`).join(" ");
 
   // --- Secciones fijas ---
   $("titulo").textContent = D.titulo;
@@ -244,7 +270,16 @@ const DATOS = {"titulo": "Camionetas para reemplazar la CX-5", "subtitulo": "Las
   document.title = D.titulo;
   $("requisitos").innerHTML = D.requisitos.map(r => `<li>${esc(r)}</li>`).join("");
   $("porRevisar").innerHTML = D.por_revisar.map(r => `<li>${esc(r)}</li>`).join("");
-  $("criterios").innerHTML = C.map(c => `<div class="crit"><b>${esc(c.nombre)}</b><span class="peso">${c.peso}</span><span class="muted">${esc(c.explicacion)}</span></div>`).join("");
+  $("criterios").innerHTML = C.map(c => `<div class="crit"><b>${esc(c.nombre)}${c.auto ? ` <span class="badge">automático</span>` : ""}</b><span class="peso">${c.peso}</span><span class="muted">${esc(c.explicacion)}</span></div>`).join("");
+  const desc = D.descartadas || [];
+  if (desc.length) {
+    $("descartadasIntro").textContent = D.descartadas_intro || "";
+    $("listaDescartadas").innerHTML = desc.map(d => `<div class="desc"><b>${esc(d.nombre)}</b>` +
+      `<span class="muted">${esc(d.motivo)}${d.link ? ` · <a href="${esc(d.link)}" target="_blank" rel="noopener">ver un anuncio</a>` : ""}</span></div>`).join("");
+  } else {
+    $("descartadas").remove();
+    document.querySelector('nav a[href="#descartadas"]').remove();
+  }
   $("nomCritOpinion").textContent = (C.find(c => c.id === critOp) || {}).nombre || "";
 
   function galeria(u) {
@@ -252,15 +287,17 @@ const DATOS = {"titulo": "Camionetas para reemplazar la CX-5", "subtitulo": "Las
     const figs = u.fotos.map((f, i) => `<figure><img src="${esc(f)}" alt="Foto ${i + 1} de la unidad" loading="${i ? "lazy" : "eager"}" decoding="async"><figcaption>Foto del anuncio de ${esc(u.vendedor)} · <a href="${esc(u.anuncio)}" target="_blank" rel="noopener">ver anuncio</a></figcaption></figure>`).join("");
     return `<div class="gal" data-gal>${figs}</div><div class="galnav"><button type="button" data-prev aria-label="Foto anterior">‹</button><span data-cont>1 / ${u.fotos.length}</span><button type="button" data-next aria-label="Foto siguiente">›</button></div>`;
   }
+  const barra = (nombre, v) => `<div class="barra"><span>${esc(nombre)}</span><div class="t"><div class="f" style="width:${v / 5 * 100}%;background:${color(v)}"></div></div><span class="v">${v}</span></div>`;
 
   function tarjeta(op) {
-    const barras = C.map(c => {
-      const v = op.calificaciones[c.id];
-      return `<div class="barra"><span>${esc(c.nombre)}</span><div class="t"><div class="f" style="width:${v / 5 * 100}%;background:${color(v)}"></div></div><span class="v">${v}</span></div>`;
-    }).join("");
+    const barras = C.filter(c => !c.auto).map(c => barra(c.nombre, op.calificaciones[c.id])).join("");
     const unidades = op.unidades.map(u => {
       const dif = F.venta_actual != null ? u.precio - F.venta_actual : null;
-      return `<div class="unidad">${galeria(u)}
+      const propias = C.filter(c => c.auto || (u.calificaciones || {})[c.id] != null)
+        .map(c => barra(c.nombre + (c.auto ? "" : " (esta unidad)"), valor(c, op, u))).join("");
+      return `<div class="unidad" id="u-${esc(u.id)}">
+        <div class="cab"><b>${esc(detalle(u))}</b><div class="score"><b data-uscore="${esc(u.id)}"></b><span>esta unidad</span></div></div>
+        ${galeria(u)}
         <dl class="datos">
           <dt>Año</dt><dd>${u.anio}</dd>
           <dt>Kilometraje</dt><dd>${num(u.km)} km</dd>
@@ -268,20 +305,25 @@ const DATOS = {"titulo": "Camionetas para reemplazar la CX-5", "subtitulo": "Las
           ${dif != null ? `<dt>Diferencia</dt><dd>${dinero(dif)} <span class="muted">después de vender la actual</span></dd>` : ""}
           <dt>Ciudad</dt><dd>${esc(u.ciudad)}</dd>
           <dt>Vendedor</dt><dd>${esc(u.vendedor)}</dd>
+          ${u.tres_filas ? `<dt>3 filas</dt><dd>${esc(u.tres_filas.nota)}</dd>` : ""}
         </dl>
-        <div class="badges">${cumple(u).map(([k, t]) => `<span class="badge ${k}">${esc(t)}</span>`).join("")}</div>
+        <div class="badges">${badges(u)}</div>
+        <div class="barras">${propias}</div>
         <a class="btn" href="${esc(u.anuncio)}" target="_blank" rel="noopener">Ver anuncio en ${esc(u.vendedor)}</a>
       </div>`;
     }).join("");
     return `<article class="card" id="op-${esc(op.id)}">
-      <div class="cab"><h3>${esc(op.nombre)}</h3><div class="score"><b data-score="${esc(op.id)}"></b><span>de 5</span></div></div>
+      <div class="cab"><h3>${esc(op.nombre)}</h3><div class="score"><b data-score="${esc(op.id)}"></b><span>su mejor unidad</span></div></div>
       <div class="barras">${barras}</div>
       <div class="porque"><b>Por qué quedó aquí:</b> ${esc(op.por_que)}</div>
       ${unidades}
     </article>`;
   }
 
-  $("tarjetas").innerHTML = ordenar(PESOS_ORIG).map(x => tarjeta(x.o)).join("");
+  // Las tarjetas van en el orden de su mejor unidad.
+  const mejor = r => { const m = {}; r.forEach(x => { if (m[x.o.id] == null) m[x.o.id] = x.p; }); return m; };
+  const m0 = mejor(ordenar(PESOS_ORIG));
+  $("tarjetas").innerHTML = [...D.opciones].sort((a, b) => m0[b.id] - m0[a.id]).map(tarjeta).join("");
 
   document.querySelectorAll("[data-gal]").forEach(gal => {
     const nav = gal.nextElementSibling, cont = nav.querySelector("[data-cont]"), n = gal.children.length;
@@ -292,10 +334,9 @@ const DATOS = {"titulo": "Camionetas para reemplazar la CX-5", "subtitulo": "Las
     nav.querySelector("[data-next]").onclick = () => ir(actual() + 1);
   });
 
-  // --- Comparación ---
-  const todas = D.opciones.flatMap(o => o.unidades.map(u => ({ o, u })));
-  const elegidas = new Set(D.opciones.map(o => o.unidades[0].id));
-  $("chipsComparar").innerHTML = todas.map(({ o, u }) => `<label><input type="checkbox" value="${esc(u.id)}" ${elegidas.has(u.id) ? "checked" : ""}>${esc(o.nombre)} · ${esc(u.vendedor)} · ${num(u.km)} km</label>`).join("");
+  // --- Comparación (por omisión, las 4 mejores) ---
+  const elegidas = new Set(ordenar(PESOS_ORIG).slice(0, 4).map(x => x.u.id));
+  $("chipsComparar").innerHTML = todas.map(({ o, u }) => `<label><input type="checkbox" value="${esc(u.id)}" ${elegidas.has(u.id) ? "checked" : ""}>${esc(o.nombre)} · ${u.anio} · ${num(u.km)} km</label>`).join("");
   $("chipsComparar").addEventListener("change", e => { e.target.checked ? elegidas.add(e.target.value) : elegidas.delete(e.target.value); pintarTabla(); });
 
   function pintarTabla() {
@@ -305,30 +346,29 @@ const DATOS = {"titulo": "Camionetas para reemplazar la CX-5", "subtitulo": "Las
     $("tablaComparar").innerHTML = [
       fila("Foto", ({ u }) => u.fotos[0] ? `<img src="${esc(u.fotos[0])}" alt="" loading="lazy">` : `<span class="muted">Sin foto</span>`),
       fila("Opción", ({ o }) => `<b>${esc(o.nombre)}</b>`),
-      fila("Puntaje", ({ o }) => `<b>${fmt(puntaje(o, pesos))}</b>`),
+      fila("Puntaje", ({ o, u }) => `<b>${fmt(puntaje(o, u, pesos, opinion))}</b>`),
       fila("Año", ({ u }) => u.anio),
       fila("Kilometraje", ({ u }) => `${num(u.km)} km`),
       fila("Precio", ({ u }) => dinero(u.precio) + (u.precio_nota ? `<br><span class="muted">${esc(u.precio_nota)}</span>` : "")),
       F.venta_actual != null ? fila("Diferencia", ({ u }) => dinero(u.precio - F.venta_actual)) : "",
       fila("Ciudad", ({ u }) => esc(u.ciudad)),
       fila("Vendedor", ({ u }) => esc(u.vendedor)),
-      fila("Requisitos", ({ u }) => cumple(u).map(([k, t]) => `<span class="badge ${k}">${esc(t)}</span>`).join(" ")),
-      ...C.map(c => fila(esc(c.nombre), ({ o }) => `<span style="color:${color(o.calificaciones[c.id])};font-weight:600">${o.calificaciones[c.id]}</span>`)),
+      fila("Requisitos", ({ u }) => badges(u)),
+      ...C.map(c => fila(esc(c.nombre), ({ o, u }) => { const v = valor(c, o, u, opinion); return `<span style="color:${color(v)};font-weight:600">${v}</span>`; })),
       fila("Anuncio", ({ u }) => `<a href="${esc(u.anuncio)}" target="_blank" rel="noopener">Ver anuncio</a>`),
     ].join("");
   }
 
-  // --- Opinión ---
-  $("listaOpinion").innerHTML = D.opciones.map(o => {
-    const f = fotoPrincipal(o);
-    const botones = [1, 2, 3, 4, 5].map(n => `<button type="button" data-op="${esc(o.id)}" data-v="${n}" aria-pressed="false" aria-label="${n} de 5">${n}</button>`).join("");
-    return `<div class="op">${f ? `<img src="${esc(f)}" alt="" loading="lazy">` : `<span class="ph"></span>`}<span class="nom">${esc(o.nombre)}</span><div class="estrellas">${botones}</div></div>`;
+  // --- Opinión (estética de cada unidad) ---
+  $("listaOpinion").innerHTML = todas.map(({ o, u }) => {
+    const botones = [1, 2, 3, 4, 5].map(n => `<button type="button" data-u="${esc(u.id)}" data-v="${n}" aria-pressed="false" aria-label="${n} de 5">${n}</button>`).join("");
+    return `<div class="op">${u.fotos[0] ? `<img src="${esc(u.fotos[0])}" alt="" loading="lazy">` : `<span class="ph"></span>`}<span class="nom">${esc(o.nombre)}<br><span class="muted">${u.anio} · ${num(u.km)} km · ${esc(u.ciudad)}</span></span><div class="estrellas">${botones}</div></div>`;
   }).join("");
   $("listaOpinion").addEventListener("click", e => {
-    const b = e.target.closest("button[data-op]"); if (!b) return;
-    const id = b.dataset.op, v = +b.dataset.v;
+    const b = e.target.closest("button[data-u]"); if (!b) return;
+    const id = b.dataset.u, v = +b.dataset.v;
     if (opinion[id] === v) delete opinion[id]; else opinion[id] = v;
-    guardar("opinion", opinion); pintar();
+    guardar("opinion2", opinion); pintar();
   });
   $("comentario").value = comentario;
   $("comentario").addEventListener("input", e => { comentario = e.target.value; guardar("comentario", comentario); pintarWhats(); });
@@ -336,9 +376,10 @@ const DATOS = {"titulo": "Camionetas para reemplazar la CX-5", "subtitulo": "Las
   function textoWhats() {
     const nomCrit = (C.find(c => c.id === critOp) || {}).nombre || "Estética";
     const lineas = [`Mi opinión sobre: ${D.titulo}`, "", `${nomCrit} (1 a 5):`];
-    D.opciones.forEach(o => lineas.push(`• ${o.nombre}: ${opinion[o.id] ?? "sin calificar"}`));
-    lineas.push("", "Ranking con mi calificación:");
-    ordenar(pesos, opinion).forEach((x, i) => lineas.push(`${i + 1}. ${x.o.nombre}: ${fmt(x.p)}`));
+    todas.filter(({ u }) => opinion[u.id] != null).forEach(({ o, u }) => lineas.push(`• ${o.nombre} ${u.anio} (${u.ciudad}): ${opinion[u.id]}`));
+    if (lineas.length === 3) lineas.push("• (no califiqué ninguna)");
+    lineas.push("", "Mis 5 primeras:");
+    ordenar(pesos, opinion).slice(0, 5).forEach((x, i) => lineas.push(`${i + 1}. ${x.o.nombre} ${x.u.anio}, ${num(x.u.km)} km, ${dinero(x.u.precio)}: ${fmt(x.p)}`));
     if (pesosCambiados()) lineas.push("", "Pesos que usé: " + C.map(c => `${c.nombre} ${pesos[c.id]}`).join(", "));
     if (comentario.trim()) lineas.push("", "Comentarios:", comentario.trim());
     return lineas.join("\n");
@@ -350,17 +391,18 @@ const DATOS = {"titulo": "Camionetas para reemplazar la CX-5", "subtitulo": "Las
   $("sliders").addEventListener("input", e => { if (e.target.dataset.c) { pesos[e.target.dataset.c] = +e.target.value; pintar(); } });
   $("btnReset").onclick = () => { pesos = { ...PESOS_ORIG }; pintar(); };
 
-  const li = (x, conLink) => `<li><span class="nom">${conLink ? `<a href="#op-${esc(x.o.id)}">${esc(x.o.nombre)}</a>` : esc(x.o.nombre)}</span><span class="pts">${fmt(x.p)}</span></li>`;
+  const li = (x, conLink) => `<li><span class="nom">${conLink ? `<a href="#u-${esc(x.u.id)}">${esc(x.o.nombre)}</a>` : esc(x.o.nombre)}<br><span class="muted">${esc(detalle(x.u))}</span></span><span class="pts">${fmt(x.p)}</span></li>`;
 
   function pintar() {
     const r = ordenar(pesos);
     $("listaRanking").innerHTML = r.map(x => li(x, true)).join("");
     $("avisoPesos").innerHTML = pesosCambiados() ? `<div class="aviso">Este ranking usa los pesos que moviste abajo.<button class="btn" type="button" id="reset2">Volver a los originales</button></div>` : "";
     if ($("reset2")) $("reset2").onclick = () => { pesos = { ...PESOS_ORIG }; pintar(); };
-    r.forEach(x => { const el = document.querySelector(`[data-score="${x.o.id}"]`); if (el) el.textContent = fmt(x.p); });
+    r.forEach(x => { const el = document.querySelector(`[data-uscore="${x.u.id}"]`); if (el) el.textContent = fmt(x.p); });
+    Object.entries(mejor(r)).forEach(([id, p]) => { const el = document.querySelector(`[data-score="${id}"]`); if (el) el.textContent = fmt(p); });
     $("rankingPesos").innerHTML = r.map(x => li(x)).join("");
     $("rankingOpinion").innerHTML = ordenar(pesos, opinion).map(x => li(x)).join("");
-    document.querySelectorAll("#listaOpinion button").forEach(b => b.setAttribute("aria-pressed", opinion[b.dataset.op] === +b.dataset.v));
+    document.querySelectorAll("#listaOpinion button").forEach(b => b.setAttribute("aria-pressed", opinion[b.dataset.u] === +b.dataset.v));
     C.forEach(c => { $("w-" + c.id).value = pesos[c.id]; $("wv-" + c.id).textContent = pesos[c.id]; });
     const suma = C.reduce((s, c) => s + pesos[c.id], 0);
     $("sumaPesos").textContent = `Suma de pesos: ${suma}` + (suma !== 100 ? " (se reparte en proporción)" : "");

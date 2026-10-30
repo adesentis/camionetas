@@ -44,15 +44,37 @@ Hoy compara camionetas, pero sirve para cualquier cosa: solo cambias los datos.
    - `"id"`: un nombre corto **sin espacios, sin acentos y sin mayúsculas**, distinto a los demás. Ejemplo: `"mgrx8-2024-toluca"`. Es el nombre de su carpeta de fotos.
    - `"anio"`, `"km"`, `"precio"`, `"ciudad"`, `"vendedor"`, `"anuncio"` (el link).
    - `"precio_nota"`: algo como `"más tarifa de servicio"`, o déjalo vacío: `""`.
+   - `"tres_filas"`: `{ "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }`. Si el anuncio no lo dice
+     o dice otra cosa, pon `false` y explica en la nota; la página muestra "3 filas por confirmar" en naranja.
+   - Opcional, `"calificaciones": { "estetica": 3 }`: cambia una calificación **solo para esa unidad**
+     (por ejemplo, una Chirey con el diseño anterior). Lo que no pongas lo toma de su modelo.
+   - En Kavak, usa el link con `?id=NNN` al final (el número de la unidad): así siempre abre esa misma camioneta.
 4. Doble clic en `generar.bat`. **Baja solo las fotos del anuncio nuevo**; las que ya existen no se vuelven a descargar.
 5. Si la ventana dice "Unidades SIN fotos", el sitio no dejó bajarlas. Ve al punto 4.
+6. **Revisa las fotos nuevas antes de publicar:** en Mercado Libre a veces se ve la placa. Si se ve, pídele a Claude
+   que la difumine (Kavak y Seminuevos normalmente ya la tapan).
+
+El programa baja fotos solo de Kavak, Seminuevos.com y Mercado Libre; de otros sitios toma, si acaso, la foto principal.
+
+## 2b. Cómo se calcula el puntaje
+
+Cada **unidad** (cada anuncio) tiene su propio puntaje:
+- La mayoría de los criterios vienen de su **modelo** (`"calificaciones"` de la opción).
+- **Precio de la unidad, Kilometraje y Año** se calculan solos con los datos del anuncio (los criterios con `"auto"`):
+  - Precio: $238,000 = 5 y $488,000 = 1 (salen de `venta_actual` y `diferencia_maxima` en `"filtros"`).
+  - Km: 0 = 5 y 30,000 = 1 (`km_maximo`).
+  - Año: `anio_referencia` (2026) = 5 y cada año menos resta 1. **Cada enero, sube `anio_referencia` en 1.**
+- Puntaje = suma de (calificación × peso) ÷ suma de pesos.
 
 **Ojo con Kavak:** un mismo link de Kavak muestra varias unidades. El programa solo baja las fotos si la unidad principal del link tiene **exactamente** el kilometraje que pusiste. Si no coincide, te avisa y no baja nada (para no poner fotos de otro carro).
 
 ## 3. Agregar una opción nueva (otro modelo)
 
 Copia un bloque completo de opción (desde `{ "id": "commander", ...` hasta su `}` final), pégalo después de una coma y cambia:
-`"id"`, `"nombre"`, las 9 `"calificaciones"`, `"por_que"` y sus `"unidades"`.
+`"id"`, `"nombre"`, las 9 `"calificaciones"` (todas menos las automáticas), `"por_que"` y sus `"unidades"`.
+
+**Descartadas:** al final de `datos.json`, en `"descartadas"`, cada modelo revisado lleva `"nombre"`, `"motivo"`
+y, si quieres, `"link"` a un anuncio de ejemplo. Aparecen en la sección "También revisamos".
 
 ## 4. Poner fotos a mano (capturas de pantalla)
 

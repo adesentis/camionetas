@@ -55,14 +55,27 @@ def guardar_foto(contenido, destino):
     img.save(destino, "JPEG", quality=CALIDAD, optimize=True, progressive=True)
 
 
+def repartir(elegidas):
+    """Los vendedores ponen primero el exterior y al final el interior:
+    se toman las 4 primeras y 4 repartidas en el resto para que haya de los dos."""
+    if len(elegidas) <= MAX_FOTOS:
+        return elegidas
+    resto = elegidas[4:]
+    paso = len(resto) / (MAX_FOTOS - 4)
+    return elegidas[:4] + [resto[int(i * paso + paso / 2)] for i in range(MAX_FOTOS - 4)]
+
+
 def fotos_kavak(html, unidad):
-    """Kavak muestra varias unidades por link: la principal debe coincidir en km."""
+    """Kavak muestra varias unidades por link: la principal debe coincidir en km.
+    Con ?id=NNN en el link, Kavak abre esa unidad y solo se toman sus fotos."""
     m = re.search(r'"mileageFromOdometer"\s*:\s*\{[^}]*"value"\s*:\s*(\d+)', html)
     km = int(m.group(1)) if m else None
     if km != unidad["km"]:
         raise ValueError(f"la unidad que muestra Kavak tiene {km} km, no {unidad['km']}")
+    m = re.search(r"[?&]id=(\d+)", unidad["anuncio"])
+    id_kavak = m.group(1) if m else r"\d+"
     completas = {}
-    for u in re.finditer(r'https://images\.prd\.kavak\.io/images/\d+/(?:EXTERIOR|INTERIOR)-(\w+)-\d+\.jpe?g', html):
+    for u in re.finditer(rf'https://images\.prd\.kavak\.io/images/{id_kavak}/(?:EXTERIOR|INTERIOR)-(\w+)-\d+\.jpe?g', html):
         completas.setdefault(u.group(1), u.group(0))
     elegidas, nombres = [], set()
     for angulo, nombre in KAVAK_ANGULOS:
@@ -87,13 +100,15 @@ def fotos_seminuevos(html, unidad):
         vistas.add(archivo)
         url = re.sub(r"/thumbs/w/\w+/", "/thumbs/w/lg/", m.group(0))
         elegidas.append(("foto", url))
-    # Los vendedores ponen primero el exterior y al final el interior:
-    # se toman las 4 primeras y 4 repartidas en el resto para que haya de los dos.
-    if len(elegidas) > MAX_FOTOS:
-        resto = elegidas[4:]
-        paso = len(resto) / (MAX_FOTOS - 4)
-        elegidas = elegidas[:4] + [resto[int(i * paso + paso / 2)] for i in range(MAX_FOTOS - 4)]
-    return elegidas
+    return repartir(elegidas)
+
+
+def fotos_mercadolibre(html, unidad):
+    """Mercado Libre: las fotos del anuncio vienen como ids en el orden de la galería."""
+    if f"{unidad['km']:,} km" not in html:
+        print(f"    Aviso: no encontré {unidad['km']:,} km en el anuncio; revisa que sea la unidad correcta")
+    ids = dict.fromkeys(re.findall(r'"id":"(\d{5,7}-MLM\d+_\d{6})"', html))
+    return repartir([("foto", f"https://http2.mlstatic.com/D_NQ_NP_2X_{i}-F.webp") for i in ids])
 
 
 def fotos_genericas(html, unidad):
@@ -115,6 +130,8 @@ def descargar_fotos(unidad):
             elegidas = fotos_kavak(html, unidad)
         elif "seminuevos.com" in unidad["anuncio"]:
             elegidas = fotos_seminuevos(html, unidad)
+        elif "mercadolibre.com" in unidad["anuncio"]:
+            elegidas = fotos_mercadolibre(html, unidad)
         else:
             elegidas = fotos_genericas(html, unidad)
         if not elegidas:
@@ -138,8 +155,34 @@ def lista_fotos(id_unidad):
                   if p.suffix.lower() in EXTENSIONES)
 
 
-def puntaje(calificaciones, criterios):
-    suma = sum(calificaciones[c["id"]] * c["peso"] for c in criterios)
+def r2(x):
+    return int(x * 100 + 0.5) / 100
+
+
+def lineal(x, vale5, vale1):
+    """5 en 'vale5', 1 en 'vale1', en línea recta entre los dos; nunca menos de 1 ni más de 5."""
+    return r2(min(5, max(1, 5 - 4 * (x - vale5) / (vale1 - vale5))))
+
+
+def automatica(c, u, f):
+    """Criterios que se califican solos con los datos del anuncio (misma fórmula que la página)."""
+    if c["auto"] == "precio":
+        return lineal(u["precio"], f["venta_actual"], f["venta_actual"] + f["diferencia_maxima"])
+    if c["auto"] == "km":
+        return lineal(u["km"], 0, f["km_maximo"])
+    if c["auto"] == "anio":
+        return r2(min(5, max(1, 5 - (f["anio_referencia"] - u["anio"]))))
+    raise ValueError(f"criterio automático desconocido: {c['auto']}")
+
+
+def valor(c, opcion, unidad, filtros):
+    if c.get("auto"):
+        return automatica(c, unidad, filtros)
+    return unidad.get("calificaciones", {}).get(c["id"], opcion["calificaciones"][c["id"]])
+
+
+def puntaje(opcion, unidad, criterios, filtros):
+    suma = sum(valor(c, opcion, unidad, filtros) * c["peso"] for c in criterios)
     total = sum(c["peso"] for c in criterios)
     return int(suma * 100 / total + 0.5) / 100
 
@@ -154,7 +197,7 @@ def main():
     print("Revisando fotos...")
     sin_fotos = []
     for opcion in datos["opciones"]:
-        faltan = [c["id"] for c in criterios if c["id"] not in opcion["calificaciones"]]
+        faltan = [c["id"] for c in criterios if not c.get("auto") and c["id"] not in opcion["calificaciones"]]
         if faltan:
             sys.exit(f"Error: a '{opcion['nombre']}' le falta calificación en: {', '.join(faltan)}")
         for unidad in opcion["unidades"]:
@@ -168,10 +211,12 @@ def main():
     html = plantilla.replace("/*DATOS*/", f"const DATOS = {json_datos};")
     (RAIZ / "index.html").write_text(html, encoding="utf-8")
 
-    print("\nRanking:")
-    orden = sorted(datos["opciones"], key=lambda o: -puntaje(o["calificaciones"], criterios))
-    for i, o in enumerate(orden, 1):
-        print(f"  {i}. {o['nombre']}: {puntaje(o['calificaciones'], criterios):.2f}")
+    print("\nRanking por unidad:")
+    filtros = datos.get("filtros", {})
+    orden = sorted(((puntaje(o, u, criterios, filtros), o, u) for o in datos["opciones"] for u in o["unidades"]),
+                   key=lambda x: -x[0])
+    for i, (p, o, u) in enumerate(orden, 1):
+        print(f"  {i:2}. {p:.2f}  {o['nombre']} · {u['anio']} · {u['km']:,} km · ${u['precio']:,} · {u['ciudad']}")
     if sin_fotos:
         print("\nUnidades SIN fotos (pásame capturas de pantalla):")
         for s in sin_fotos:

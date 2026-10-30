@@ -120,6 +120,12 @@ textarea { width: 100%; min-height: 96px; font: inherit; padding: 10px; border-r
 .slider { padding: 8px 0; border-bottom: 1px solid var(--line); }
 .slider label { display: flex; justify-content: space-between; font-size: .92rem; }
 .slider input { width: 100%; accent-color: var(--accent); }
+/* Descartadas */
+.desc { padding: 10px 0; border-bottom: 1px solid var(--line); font-size: .92rem; }
+.unidad > .cab { margin-bottom: 8px; }
+.desc:last-child { border-bottom: 0; }
+.desc b { font-weight: 600; }
+.desc .muted { display: block; margin-top: 2px; }
 .suma { font-size: .85rem; color: var(--muted); margin: 10px 0; }
 footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
 @media (min-width: 600px) { .gal figure { flex-basis: 85%; } }
@@ -135,6 +141,7 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
   <a href="#revisar">Por revisar</a>
   <a href="#opinion">Tu opinión</a>
   <a href="#pesos">Mover pesos</a>
+  <a href="#descartadas">Descartadas</a>
 </nav>
 <main>
   <h1 id="titulo"></h1>
@@ -144,13 +151,13 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
 
   <section id="calificamos"><h2>Cómo calificamos</h2>
     <div class="card">
-      <p class="muted">Cada criterio se califica de 1 a 5. El peso dice cuánto cuenta (suman 100). Puntaje final = suma de (calificación × peso) ÷ 100.</p>
+      <p class="muted">Cada criterio se califica de 1 a 5. El peso dice cuánto cuenta (suman 100). Puntaje final = suma de (calificación × peso) ÷ 100. Los criterios marcados "automático" se calculan con los datos de cada anuncio.</p>
       <div id="criterios"></div>
       <div class="leyenda"><span><i style="background:var(--verde)"></i>4 a 5: bien</span><span><i style="background:var(--azul)"></i>2.5 a 3.5: regular</span><span><i style="background:var(--rojo)"></i>2 o menos: flojo</span></div>
     </div>
   </section>
 
-  <section id="ranking"><h2>Ranking</h2><div class="card"><div id="avisoPesos"></div><ol class="ranking" id="listaRanking"></ol></div></section>
+  <section id="ranking"><h2>Ranking por unidad</h2><p class="muted">Cada anuncio tiene su propio puntaje: comparte las calificaciones de su modelo, pero el precio, los km y el año son los suyos.</p><div class="card"><div id="avisoPesos"></div><ol class="ranking" id="listaRanking"></ol></div></section>
 
   <section id="opciones"><h2>Opciones</h2><div id="tarjetas"></div></section>
 
@@ -164,7 +171,7 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
 
   <section id="opinion"><h2>Tu opinión</h2>
     <div class="card">
-      <p>¿Qué tanto te gusta cómo se ve cada una? De 1 (nada) a 5 (me encanta). Tu calificación reemplaza la mía en <b id="nomCritOpinion"></b>.</p>
+      <p>¿Qué tanto te gusta cómo se ve cada una? De 1 (nada) a 5 (me encanta). Tu calificación reemplaza la mía en <b id="nomCritOpinion"></b>. Califica solo las que quieras.</p>
       <div id="listaOpinion"></div>
       <h3 style="margin-top:16px">Comentarios</h3>
       <textarea id="comentario" placeholder="Lo que quieras decirme de las opciones…"></textarea>
@@ -182,6 +189,13 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
       <p class="suma" id="sumaPesos"></p>
       <ol class="ranking" id="rankingPesos"></ol>
       <p style="margin-top:12px"><button class="btn" id="btnReset" type="button">Volver a mis pesos originales</button></p>
+    </div>
+  </section>
+
+  <section id="descartadas"><h2>También revisamos</h2>
+    <div class="card">
+      <p class="muted" id="descartadasIntro"></p>
+      <div id="listaDescartadas"></div>
     </div>
   </section>
 
@@ -209,34 +223,46 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
   const leer = (k, d) => { try { const v = JSON.parse(localStorage.getItem(k)); return v ?? d; } catch (e) { return d; } };
 
   let pesos = { ...PESOS_ORIG };
-  let opinion = leer("opinion", {});
+  let opinion = leer("opinion2", {});   // calificación de estética por unidad
   let comentario = leer("comentario", "");
 
+  // Criterios que se calculan solos (misma fórmula que generar.py).
+  const r2 = x => Math.round(x * 100) / 100;
+  const tope = (x, a, b) => Math.min(b, Math.max(a, x));
+  const lineal = (x, vale5, vale1) => r2(tope(5 - 4 * (x - vale5) / (vale1 - vale5), 1, 5));
+  const AUTO = {
+    precio: u => lineal(u.precio, F.venta_actual, F.venta_actual + F.diferencia_maxima),
+    km: u => lineal(u.km, 0, F.km_maximo),
+    anio: u => r2(tope(5 - (F.anio_referencia - u.anio), 1, 5)),
+  };
+  function valor(c, o, u, propia) {
+    if (c.auto) return AUTO[c.auto](u);
+    if (propia && c.id === critOp && propia[u.id] != null) return propia[u.id];
+    return (u.calificaciones || {})[c.id] ?? o.calificaciones[c.id];
+  }
   // Puntaje redondeado sobre el entero (evita que 3.335 se vuelva 3.33 por decimales binarios).
-  function puntaje(op, w, propia) {
+  function puntaje(o, u, w, propia) {
     let suma = 0, total = 0;
-    for (const c of C) {
-      let v = op.calificaciones[c.id];
-      if (propia && c.id === critOp && propia[op.id]) v = propia[op.id];
-      suma += v * w[c.id]; total += w[c.id];
-    }
+    for (const c of C) { suma += valor(c, o, u, propia) * w[c.id]; total += w[c.id]; }
     return total ? Math.round(suma * 100 / total) / 100 : 0;
   }
-  const ordenar = (w, propia) => D.opciones.map(o => ({ o, p: puntaje(o, w, propia) })).sort((a, b) => b.p - a.p);
+  const todas = D.opciones.flatMap(o => o.unidades.map(u => ({ o, u })));
+  const ordenar = (w, propia) => todas.map(x => ({ ...x, p: puntaje(x.o, x.u, w, propia) })).sort((a, b) => b.p - a.p);
   const pesosCambiados = () => C.some(c => pesos[c.id] !== PESOS_ORIG[c.id]);
-  const fotoPrincipal = op => (op.unidades.find(u => u.fotos.length) || {}).fotos?.[0];
+  const detalle = u => `${u.anio} · ${num(u.km)} km · ${dinero(u.precio)} · ${u.ciudad}`;
 
   function cumple(u) {
     const b = [];
+    const tf = u.tres_filas;
+    if (tf) b.push(tf.confirmado ? ["", "3 filas confirmadas"] : ["warn", "3 filas por confirmar"]);
     if (F.anio_minimo && u.anio < F.anio_minimo) b.push(["warn", `Modelo ${u.anio}: antes de ${F.anio_minimo}`]);
     if (F.km_maximo && u.km > F.km_maximo) b.push(["warn", `${num(u.km)} km: pasa del máximo (${num(F.km_maximo)})`]);
-    if (F.venta_actual != null && F.diferencia_maxima) {
-      const dif = u.precio - F.venta_actual;
-      if (dif > F.diferencia_maxima) b.push(["warn", `Diferencia de ${dinero(dif)}: pasa del máximo`]);
-    }
-    if (!b.length && Object.keys(F).length) b.push(["", "Cumple año, km y presupuesto"]);
+    if (F.venta_actual != null && F.diferencia_maxima && u.precio - F.venta_actual > F.diferencia_maxima)
+      b.push(["warn", `Diferencia de ${dinero(u.precio - F.venta_actual)}: pasa del máximo`]);
+    if (b.every(([k]) => !k) && Object.keys(F).length) b.push(["", "Cumple año, km y presupuesto"]);
     return b;
   }
+  const badges = u => cumple(u).map(([k, t]) => `<span class="badge ${k}">${esc(t)}</span>`).join(" ");
 
   // --- Secciones fijas ---
   $("titulo").textContent = D.titulo;
@@ -244,7 +270,16 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
   document.title = D.titulo;
   $("requisitos").innerHTML = D.requisitos.map(r => `<li>${esc(r)}</li>`).join("");
   $("porRevisar").innerHTML = D.por_revisar.map(r => `<li>${esc(r)}</li>`).join("");
-  $("criterios").innerHTML = C.map(c => `<div class="crit"><b>${esc(c.nombre)}</b><span class="peso">${c.peso}</span><span class="muted">${esc(c.explicacion)}</span></div>`).join("");
+  $("criterios").innerHTML = C.map(c => `<div class="crit"><b>${esc(c.nombre)}${c.auto ? ` <span class="badge">automático</span>` : ""}</b><span class="peso">${c.peso}</span><span class="muted">${esc(c.explicacion)}</span></div>`).join("");
+  const desc = D.descartadas || [];
+  if (desc.length) {
+    $("descartadasIntro").textContent = D.descartadas_intro || "";
+    $("listaDescartadas").innerHTML = desc.map(d => `<div class="desc"><b>${esc(d.nombre)}</b>` +
+      `<span class="muted">${esc(d.motivo)}${d.link ? ` · <a href="${esc(d.link)}" target="_blank" rel="noopener">ver un anuncio</a>` : ""}</span></div>`).join("");
+  } else {
+    $("descartadas").remove();
+    document.querySelector('nav a[href="#descartadas"]').remove();
+  }
   $("nomCritOpinion").textContent = (C.find(c => c.id === critOp) || {}).nombre || "";
 
   function galeria(u) {
@@ -252,15 +287,17 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
     const figs = u.fotos.map((f, i) => `<figure><img src="${esc(f)}" alt="Foto ${i + 1} de la unidad" loading="${i ? "lazy" : "eager"}" decoding="async"><figcaption>Foto del anuncio de ${esc(u.vendedor)} · <a href="${esc(u.anuncio)}" target="_blank" rel="noopener">ver anuncio</a></figcaption></figure>`).join("");
     return `<div class="gal" data-gal>${figs}</div><div class="galnav"><button type="button" data-prev aria-label="Foto anterior">‹</button><span data-cont>1 / ${u.fotos.length}</span><button type="button" data-next aria-label="Foto siguiente">›</button></div>`;
   }
+  const barra = (nombre, v) => `<div class="barra"><span>${esc(nombre)}</span><div class="t"><div class="f" style="width:${v / 5 * 100}%;background:${color(v)}"></div></div><span class="v">${v}</span></div>`;
 
   function tarjeta(op) {
-    const barras = C.map(c => {
-      const v = op.calificaciones[c.id];
-      return `<div class="barra"><span>${esc(c.nombre)}</span><div class="t"><div class="f" style="width:${v / 5 * 100}%;background:${color(v)}"></div></div><span class="v">${v}</span></div>`;
-    }).join("");
+    const barras = C.filter(c => !c.auto).map(c => barra(c.nombre, op.calificaciones[c.id])).join("");
     const unidades = op.unidades.map(u => {
       const dif = F.venta_actual != null ? u.precio - F.venta_actual : null;
-      return `<div class="unidad">${galeria(u)}
+      const propias = C.filter(c => c.auto || (u.calificaciones || {})[c.id] != null)
+        .map(c => barra(c.nombre + (c.auto ? "" : " (esta unidad)"), valor(c, op, u))).join("");
+      return `<div class="unidad" id="u-${esc(u.id)}">
+        <div class="cab"><b>${esc(detalle(u))}</b><div class="score"><b data-uscore="${esc(u.id)}"></b><span>esta unidad</span></div></div>
+        ${galeria(u)}
         <dl class="datos">
           <dt>Año</dt><dd>${u.anio}</dd>
           <dt>Kilometraje</dt><dd>${num(u.km)} km</dd>
@@ -268,20 +305,25 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
           ${dif != null ? `<dt>Diferencia</dt><dd>${dinero(dif)} <span class="muted">después de vender la actual</span></dd>` : ""}
           <dt>Ciudad</dt><dd>${esc(u.ciudad)}</dd>
           <dt>Vendedor</dt><dd>${esc(u.vendedor)}</dd>
+          ${u.tres_filas ? `<dt>3 filas</dt><dd>${esc(u.tres_filas.nota)}</dd>` : ""}
         </dl>
-        <div class="badges">${cumple(u).map(([k, t]) => `<span class="badge ${k}">${esc(t)}</span>`).join("")}</div>
+        <div class="badges">${badges(u)}</div>
+        <div class="barras">${propias}</div>
         <a class="btn" href="${esc(u.anuncio)}" target="_blank" rel="noopener">Ver anuncio en ${esc(u.vendedor)}</a>
       </div>`;
     }).join("");
     return `<article class="card" id="op-${esc(op.id)}">
-      <div class="cab"><h3>${esc(op.nombre)}</h3><div class="score"><b data-score="${esc(op.id)}"></b><span>de 5</span></div></div>
+      <div class="cab"><h3>${esc(op.nombre)}</h3><div class="score"><b data-score="${esc(op.id)}"></b><span>su mejor unidad</span></div></div>
       <div class="barras">${barras}</div>
       <div class="porque"><b>Por qué quedó aquí:</b> ${esc(op.por_que)}</div>
       ${unidades}
     </article>`;
   }
 
-  $("tarjetas").innerHTML = ordenar(PESOS_ORIG).map(x => tarjeta(x.o)).join("");
+  // Las tarjetas van en el orden de su mejor unidad.
+  const mejor = r => { const m = {}; r.forEach(x => { if (m[x.o.id] == null) m[x.o.id] = x.p; }); return m; };
+  const m0 = mejor(ordenar(PESOS_ORIG));
+  $("tarjetas").innerHTML = [...D.opciones].sort((a, b) => m0[b.id] - m0[a.id]).map(tarjeta).join("");
 
   document.querySelectorAll("[data-gal]").forEach(gal => {
     const nav = gal.nextElementSibling, cont = nav.querySelector("[data-cont]"), n = gal.children.length;
@@ -292,10 +334,9 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
     nav.querySelector("[data-next]").onclick = () => ir(actual() + 1);
   });
 
-  // --- Comparación ---
-  const todas = D.opciones.flatMap(o => o.unidades.map(u => ({ o, u })));
-  const elegidas = new Set(D.opciones.map(o => o.unidades[0].id));
-  $("chipsComparar").innerHTML = todas.map(({ o, u }) => `<label><input type="checkbox" value="${esc(u.id)}" ${elegidas.has(u.id) ? "checked" : ""}>${esc(o.nombre)} · ${esc(u.vendedor)} · ${num(u.km)} km</label>`).join("");
+  // --- Comparación (por omisión, las 4 mejores) ---
+  const elegidas = new Set(ordenar(PESOS_ORIG).slice(0, 4).map(x => x.u.id));
+  $("chipsComparar").innerHTML = todas.map(({ o, u }) => `<label><input type="checkbox" value="${esc(u.id)}" ${elegidas.has(u.id) ? "checked" : ""}>${esc(o.nombre)} · ${u.anio} · ${num(u.km)} km</label>`).join("");
   $("chipsComparar").addEventListener("change", e => { e.target.checked ? elegidas.add(e.target.value) : elegidas.delete(e.target.value); pintarTabla(); });
 
   function pintarTabla() {
@@ -305,30 +346,29 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
     $("tablaComparar").innerHTML = [
       fila("Foto", ({ u }) => u.fotos[0] ? `<img src="${esc(u.fotos[0])}" alt="" loading="lazy">` : `<span class="muted">Sin foto</span>`),
       fila("Opción", ({ o }) => `<b>${esc(o.nombre)}</b>`),
-      fila("Puntaje", ({ o }) => `<b>${fmt(puntaje(o, pesos))}</b>`),
+      fila("Puntaje", ({ o, u }) => `<b>${fmt(puntaje(o, u, pesos, opinion))}</b>`),
       fila("Año", ({ u }) => u.anio),
       fila("Kilometraje", ({ u }) => `${num(u.km)} km`),
       fila("Precio", ({ u }) => dinero(u.precio) + (u.precio_nota ? `<br><span class="muted">${esc(u.precio_nota)}</span>` : "")),
       F.venta_actual != null ? fila("Diferencia", ({ u }) => dinero(u.precio - F.venta_actual)) : "",
       fila("Ciudad", ({ u }) => esc(u.ciudad)),
       fila("Vendedor", ({ u }) => esc(u.vendedor)),
-      fila("Requisitos", ({ u }) => cumple(u).map(([k, t]) => `<span class="badge ${k}">${esc(t)}</span>`).join(" ")),
-      ...C.map(c => fila(esc(c.nombre), ({ o }) => `<span style="color:${color(o.calificaciones[c.id])};font-weight:600">${o.calificaciones[c.id]}</span>`)),
+      fila("Requisitos", ({ u }) => badges(u)),
+      ...C.map(c => fila(esc(c.nombre), ({ o, u }) => { const v = valor(c, o, u, opinion); return `<span style="color:${color(v)};font-weight:600">${v}</span>`; })),
       fila("Anuncio", ({ u }) => `<a href="${esc(u.anuncio)}" target="_blank" rel="noopener">Ver anuncio</a>`),
     ].join("");
   }
 
-  // --- Opinión ---
-  $("listaOpinion").innerHTML = D.opciones.map(o => {
-    const f = fotoPrincipal(o);
-    const botones = [1, 2, 3, 4, 5].map(n => `<button type="button" data-op="${esc(o.id)}" data-v="${n}" aria-pressed="false" aria-label="${n} de 5">${n}</button>`).join("");
-    return `<div class="op">${f ? `<img src="${esc(f)}" alt="" loading="lazy">` : `<span class="ph"></span>`}<span class="nom">${esc(o.nombre)}</span><div class="estrellas">${botones}</div></div>`;
+  // --- Opinión (estética de cada unidad) ---
+  $("listaOpinion").innerHTML = todas.map(({ o, u }) => {
+    const botones = [1, 2, 3, 4, 5].map(n => `<button type="button" data-u="${esc(u.id)}" data-v="${n}" aria-pressed="false" aria-label="${n} de 5">${n}</button>`).join("");
+    return `<div class="op">${u.fotos[0] ? `<img src="${esc(u.fotos[0])}" alt="" loading="lazy">` : `<span class="ph"></span>`}<span class="nom">${esc(o.nombre)}<br><span class="muted">${u.anio} · ${num(u.km)} km · ${esc(u.ciudad)}</span></span><div class="estrellas">${botones}</div></div>`;
   }).join("");
   $("listaOpinion").addEventListener("click", e => {
-    const b = e.target.closest("button[data-op]"); if (!b) return;
-    const id = b.dataset.op, v = +b.dataset.v;
+    const b = e.target.closest("button[data-u]"); if (!b) return;
+    const id = b.dataset.u, v = +b.dataset.v;
     if (opinion[id] === v) delete opinion[id]; else opinion[id] = v;
-    guardar("opinion", opinion); pintar();
+    guardar("opinion2", opinion); pintar();
   });
   $("comentario").value = comentario;
   $("comentario").addEventListener("input", e => { comentario = e.target.value; guardar("comentario", comentario); pintarWhats(); });
@@ -336,9 +376,10 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
   function textoWhats() {
     const nomCrit = (C.find(c => c.id === critOp) || {}).nombre || "Estética";
     const lineas = [`Mi opinión sobre: ${D.titulo}`, "", `${nomCrit} (1 a 5):`];
-    D.opciones.forEach(o => lineas.push(`• ${o.nombre}: ${opinion[o.id] ?? "sin calificar"}`));
-    lineas.push("", "Ranking con mi calificación:");
-    ordenar(pesos, opinion).forEach((x, i) => lineas.push(`${i + 1}. ${x.o.nombre}: ${fmt(x.p)}`));
+    todas.filter(({ u }) => opinion[u.id] != null).forEach(({ o, u }) => lineas.push(`• ${o.nombre} ${u.anio} (${u.ciudad}): ${opinion[u.id]}`));
+    if (lineas.length === 3) lineas.push("• (no califiqué ninguna)");
+    lineas.push("", "Mis 5 primeras:");
+    ordenar(pesos, opinion).slice(0, 5).forEach((x, i) => lineas.push(`${i + 1}. ${x.o.nombre} ${x.u.anio}, ${num(x.u.km)} km, ${dinero(x.u.precio)}: ${fmt(x.p)}`));
     if (pesosCambiados()) lineas.push("", "Pesos que usé: " + C.map(c => `${c.nombre} ${pesos[c.id]}`).join(", "));
     if (comentario.trim()) lineas.push("", "Comentarios:", comentario.trim());
     return lineas.join("\n");
@@ -350,17 +391,18 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
   $("sliders").addEventListener("input", e => { if (e.target.dataset.c) { pesos[e.target.dataset.c] = +e.target.value; pintar(); } });
   $("btnReset").onclick = () => { pesos = { ...PESOS_ORIG }; pintar(); };
 
-  const li = (x, conLink) => `<li><span class="nom">${conLink ? `<a href="#op-${esc(x.o.id)}">${esc(x.o.nombre)}</a>` : esc(x.o.nombre)}</span><span class="pts">${fmt(x.p)}</span></li>`;
+  const li = (x, conLink) => `<li><span class="nom">${conLink ? `<a href="#u-${esc(x.u.id)}">${esc(x.o.nombre)}</a>` : esc(x.o.nombre)}<br><span class="muted">${esc(detalle(x.u))}</span></span><span class="pts">${fmt(x.p)}</span></li>`;
 
   function pintar() {
     const r = ordenar(pesos);
     $("listaRanking").innerHTML = r.map(x => li(x, true)).join("");
     $("avisoPesos").innerHTML = pesosCambiados() ? `<div class="aviso">Este ranking usa los pesos que moviste abajo.<button class="btn" type="button" id="reset2">Volver a los originales</button></div>` : "";
     if ($("reset2")) $("reset2").onclick = () => { pesos = { ...PESOS_ORIG }; pintar(); };
-    r.forEach(x => { const el = document.querySelector(`[data-score="${x.o.id}"]`); if (el) el.textContent = fmt(x.p); });
+    r.forEach(x => { const el = document.querySelector(`[data-uscore="${x.u.id}"]`); if (el) el.textContent = fmt(x.p); });
+    Object.entries(mejor(r)).forEach(([id, p]) => { const el = document.querySelector(`[data-score="${id}"]`); if (el) el.textContent = fmt(p); });
     $("rankingPesos").innerHTML = r.map(x => li(x)).join("");
     $("rankingOpinion").innerHTML = ordenar(pesos, opinion).map(x => li(x)).join("");
-    document.querySelectorAll("#listaOpinion button").forEach(b => b.setAttribute("aria-pressed", opinion[b.dataset.op] === +b.dataset.v));
+    document.querySelectorAll("#listaOpinion button").forEach(b => b.setAttribute("aria-pressed", opinion[b.dataset.u] === +b.dataset.v));
     C.forEach(c => { $("w-" + c.id).value = pesos[c.id]; $("wv-" + c.id).textContent = pesos[c.id]; });
     const suma = C.reduce((s, c) => s + pesos[c.id], 0);
     $("sumaPesos").textContent = `Suma de pesos: ${suma}` + (suma !== 100 ? " (se reparte en proporción)" : "");
