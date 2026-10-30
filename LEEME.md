@@ -3,7 +3,8 @@
 Una página que compara opciones de compra con una matriz de decisión ponderada.
 Hoy compara camionetas, pero sirve para cualquier cosa: solo cambias los datos.
 
-**Link publicado:** POR DEFINIR (se llena al publicar por primera vez)
+**Link publicado:** https://adesentis.github.io/camionetas/
+(repositorio: https://github.com/adesentis/camionetas)
 
 ---
 
@@ -84,7 +85,31 @@ Para publicarla aparte necesitas otro repositorio en GitHub (ver la sección sig
 
 ## 7. Publicar por primera vez (ya está hecho para las camionetas)
 
-POR DEFINIR: se documenta al terminar la configuración de GitHub.
+Así se hizo con las camionetas (29-oct-2026). Para otra carpeta, repite con otro nombre de repositorio.
+
+**En github.com (tú):**
+1. Clic en **+** (arriba a la derecha) → **New repository**.
+2. Nombre corto sin espacios (ej. `celulares`), **Public**, y **sin** README, .gitignore ni licencia.
+3. **Create repository**.
+
+**En la computadora:** abre PowerShell en la carpeta nueva (en el Explorador, escribe `powershell` en la barra
+de dirección y Enter) y corre uno por uno, cambiando `NOMBRE` por el del repositorio:
+
+```
+git init -b main
+git add -A
+git commit -m "Página inicial"
+git remote add origin https://github.com/adesentis/NOMBRE.git
+git push -u origin main
+```
+
+Qué hace cada uno: crea el control de versiones, junta los archivos, guarda la primera versión,
+conecta la carpeta con GitHub y la sube. Si pide iniciar sesión, elige **Sign in with your browser**.
+
+**Activar la página (tú):** en el repositorio → **Settings** → **Pages** → Source: **Deploy from a branch**,
+Branch: **main** y **/ (root)** → **Save**. En 1 o 2 minutos queda en `https://adesentis.github.io/NOMBRE/`.
+
+De ahí en adelante, solo `publicar.bat`.
 
 ---
 
