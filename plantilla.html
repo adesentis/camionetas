@@ -178,12 +178,41 @@ ol.ranking li.bronce::before { background: #d39a6a; color: #3a1d06; }
 .desc b { font-weight: 600; }
 .desc .muted { display: block; margin-top: 2px; }
 .suma { font-size: .85rem; color: var(--muted); margin: 10px 0; }
+/* Tablero: vista general de modelos arriba de todo */
+.filtros { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 12px; }
+.filtros button { font-size: .82rem; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--text); }
+.filtros button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--card); }
+.tablero { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.mosaico { display: flex; flex-direction: column; text-align: left; padding: 0; border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; }
+.mosaico img, .mosaico .ph { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: var(--track); display: block; }
+.mosaico .info { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 3px; flex: 1; }
+.mosaico .marca { font-size: .7rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.mosaico .nom { font-weight: 600; font-size: .92rem; line-height: 1.2; }
+.mosaico .pts { font-size: 1.35rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.mosaico .pts small { font-size: .7rem; font-weight: 400; color: var(--muted); }
+.mosaico .dato { font-size: .75rem; color: var(--muted); }
+.mosaico .marcas { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.mosaico .marcas span { font-size: .68rem; padding: 2px 7px; border-radius: 999px; background: var(--ok-bg); color: var(--ok-tx); }
+.mosaico .marcas span.warn { background: var(--warn-bg); color: var(--warn-tx); }
+.mosaico .marcas span.rojo { background: #c8372d; color: #fff; }
+.mosaico.fuera { opacity: .6; }
+/* Tarjetas de modelo plegables */
+details.modelo > summary { list-style: none; cursor: pointer; }
+details.modelo > summary::-webkit-details-marker { display: none; }
+details.modelo .abrir { display: block; margin-top: 10px; font-size: .82rem; color: var(--accent); font-weight: 600; }
+details.modelo .abrir::after { content: "Ver detalles y unidades ▾"; }
+details.modelo[open] .abrir::after { content: "Cerrar ▴"; }
+.subir { position: fixed; right: 14px; bottom: 16px; z-index: 6; padding: 10px 14px; border-radius: 999px; border: 0;
+  background: var(--accent); color: var(--card); font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,.25); display: none; }
+.subir.ver { display: block; }
 footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
 @media (min-width: 600px) { .gal figure { flex-basis: 85%; } }
 </style>
 </head>
 <body>
 <nav>
+  <a href="#tablero">Resumen</a>
   <a href="#necesitamos">Qué necesitamos</a>
   <a href="#calificamos">Cómo calificamos</a>
   <a href="#ranking">Ranking</a>
@@ -200,6 +229,12 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
     <p class="muted" id="subtitulo"></p>
     <div class="resumen" id="resumen"></div>
   </header>
+
+  <section id="tablero"><h2>Resumen de modelos</h2>
+    <p class="muted">Toca un modelo para ver sus detalles, fotos y unidades. El puntaje es el de su mejor unidad.</p>
+    <div class="filtros" id="filtrosTablero"></div>
+    <div class="tablero" id="listaTablero"></div>
+  </section>
 
   <section id="necesitamos"><h2>Qué necesitamos</h2><div class="card"><ul class="lista" id="requisitos"></ul></div></section>
 
@@ -254,6 +289,7 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
     </div>
   </section>
 
+  <button class="subir" id="btnSubir" type="button">↑ Resumen</button>
   <footer>Las fotos son de los anuncios de cada vendedor y se muestran solo aquí, con el link a su anuncio original. Esta página no aparece en buscadores.</footer>
 </main>
 
@@ -421,9 +457,8 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
         <a class="btn" href="${esc(u.anuncio)}" target="_blank" rel="noopener">Ver anuncio en ${esc(u.vendedor)}</a>
       </div>`;
     }).join("");
-    return `<article class="card modelo" id="op-${esc(op.id)}">
-      <div class="encab"><div class="cab" style="margin:0"><div><span class="etq">Modelo · ${op.unidades.length} ${op.unidades.length === 1 ? "unidad" : "unidades"}</span><h3>${esc(op.nombre)}</h3></div><div class="score"><b data-score="${esc(op.id)}"></b><span>su mejor unidad</span></div></div>
-        <div class="chipsmod">${chipsModelo(op)}</div></div>
+    return `<details class="card modelo" id="op-${esc(op.id)}"><summary class="encab"><div class="cab" style="margin:0"><div><span class="etq">Modelo · ${op.unidades.length} ${op.unidades.length === 1 ? "unidad" : "unidades"}</span><h3>${esc(op.nombre)}</h3></div><div class="score"><b data-score="${esc(op.id)}"></b><span>su mejor unidad</span></div></div>
+        <div class="chipsmod">${chipsModelo(op)}</div><span class="abrir"></span></summary>
       <div class="cuerpo">
       <div class="porque"><b>Por qué quedó aquí:</b> ${esc(op.por_que)}</div>
       ${ficha(op)}
@@ -431,7 +466,7 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
       <div class="barras">${barras}</div>
       ${unidades}
       </div>
-    </article>`;
+    </details>`;
   }
 
   // Las tarjetas van en el orden de su mejor unidad.
@@ -447,6 +482,61 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
     nav.querySelector("[data-prev]").onclick = () => ir(actual() - 1);
     nav.querySelector("[data-next]").onclick = () => ir(actual() + 1);
   });
+
+  // --- Tablero ---
+  const marca = o => o.marca || o.nombre.split(" ")[0];
+  const MARCAS = [...new Set(D.opciones.map(marca))];
+  let filtroTablero = "todas";
+  $("filtrosTablero").innerHTML = [["todas", "Todas"], ["cumplen", "Solo las que cumplen"], ...MARCAS.map(m => ["m:" + m, m])]
+    .map(([v, t]) => `<button type="button" data-filtro="${esc(v)}">${esc(t)}</button>`).join("");
+  $("filtrosTablero").onclick = e => {
+    const b = e.target.closest("button[data-filtro]"); if (!b) return;
+    filtroTablero = b.dataset.filtro; pintar();
+  };
+  function pintarTablero(r) {
+    const vistos = new Set(), filas = [];
+    r.forEach(x => { if (!vistos.has(x.o.id)) { vistos.add(x.o.id); filas.push(x); } });
+    const cumple = x => x.ok && x.o.unidades.some(u => (!F.km_maximo || u.km <= F.km_maximo)
+      && (F.venta_actual == null || u.precio - F.venta_actual <= F.diferencia_maxima));
+    const pasa = x => filtroTablero === "todas" || (filtroTablero === "cumplen" ? cumple(x) : "m:" + marca(x.o) === filtroTablero);
+    $("listaTablero").innerHTML = filas.filter(pasa).map(x => {
+      const o = x.o, precios = o.unidades.map(u => u.precio);
+      const mont = valor(C.find(c => c.id === "montana"), o, x.u);
+      const fuera = F.venta_actual != null && o.unidades.every(u => u.precio - F.venta_actual > F.diferencia_maxima);
+      const marcas = [];
+      if (o.alerta) marcas.push(["rojo", o.alerta.split(":")[0]]);
+      if (!x.ok) marcas.push(["warn", "No sube bien"]);
+      if (fuera) marcas.push(["warn", "Arriba del presupuesto"]);
+      if (!marcas.length && cumple(x)) marcas.push(["", "Cumple"]);
+      const foto = x.u.fotos[0] || (o.unidades.find(u => u.fotos.length) || { fotos: [] }).fotos[0];
+      const rango = Math.min(...precios) === Math.max(...precios) ? dinero(precios[0]) : `${dinero(Math.min(...precios))}–${dinero(Math.max(...precios))}`;
+      return `<button type="button" class="mosaico ${x.ok ? "" : "fuera"}" data-ir="op-${esc(o.id)}">
+        ${foto ? `<img src="${esc(foto)}" alt="" loading="lazy">` : `<span class="ph"></span>`}
+        <span class="info"><span class="marca">${esc(marca(o))}</span><span class="nom">${esc(o.nombre.replace(marca(o) + " ", ""))}</span>
+        <span class="pts">${fmt(x.p)} <small>de 5</small></span>
+        <span class="dato">${esc(rango)} · ${o.unidades.length} ${o.unidades.length === 1 ? "unidad" : "unidades"}</span>
+        <span class="dato">Montaña ${mont} · ${esc((o.ficha || {}).traccion_corta || "")}</span>
+        <span class="marcas">${marcas.map(([k, t]) => `<span class="${k}">${esc(t)}</span>`).join("")}</span></span></button>`;
+    }).join("") || `<p class="muted">Ningún modelo con este filtro.</p>`;
+    document.querySelectorAll("#filtrosTablero button").forEach(b => b.setAttribute("aria-pressed", b.dataset.filtro === filtroTablero));
+  }
+  // Abre la tarjeta plegada que contiene el destino y baja hasta ella.
+  function irA(id) {
+    const el = document.getElementById(id); if (!el) return;
+    const det = el.closest("details"); if (det) det.open = true;
+    el.scrollIntoView({ block: "start" });
+  }
+  $("listaTablero").onclick = e => { const b = e.target.closest("[data-ir]"); if (b) irA(b.dataset.ir); };
+  document.addEventListener("click", e => {
+    const a = e.target.closest('a[href^="#u-"], a[href^="#op-"]'); if (!a) return;
+    e.preventDefault(); irA(a.getAttribute("href").slice(1));
+  });
+  if (/^#(u|op)-/.test(location.hash)) irA(location.hash.slice(1));
+  // Botón flotante para volver al resumen cuando ya se bajó bastante.
+  const subir = $("btnSubir");
+  subir.onclick = () => $("tablero").scrollIntoView({ block: "start" });
+  new IntersectionObserver(([e]) => subir.classList.toggle("ver", !e.isIntersecting && e.boundingClientRect.top < 0))
+    .observe($("tablero"));
 
   // --- Comparación (por omisión, las 4 mejores) ---
   const elegidas = new Set(ordenar(PESOS_ORIG).slice(0, 4).map(x => x.u.id));
@@ -524,6 +614,7 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
 
   function pintar() {
     const r = ordenar(pesos, opinion);
+    pintarTablero(r);
     $("listaRanking").innerHTML = r.map((x, i) => li(x, true, i)).join("");
     r.forEach((x, i) => { const el = document.querySelector(`[data-upos="${x.u.id}"]`); if (el) el.textContent = `#${i + 1} de ${r.length} en el ranking`; });
     const hay = Object.keys(opinion).length;
