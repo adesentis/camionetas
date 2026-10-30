@@ -17,13 +17,13 @@
     "km_maximo": 30000,
     "venta_actual": 238000,
     "diferencia_maxima": 250000,
-    "montana_minima": 3
+    "montana_minima": 4
   },
 
   "criterios": [
     { "id": "seguridad",     "nombre": "Seguridad",              "peso": 18, "explicacion": "Pruebas de choque, bolsas de aire, frenado automático y llamados a revisión." },
     { "id": "espacio",       "nombre": "Espacio y tercera fila", "peso": 18, "explicacion": "Que quepan dos sillas infantiles, acceso atrás y cajuela." },
-    { "id": "montana",       "nombre": "Montaña y lluvia",       "peso": 35, "explicacion": "Potencia en subidas con la familia arriba y tracción en agua y empedrado. 5 = 4x4 con reductora; 4.5 = tracción integral y 250 hp; 3 = tracción delantera con mucho motor; 2 = tracción delantera con motor chico; 1.5 = la más floja. Es requisito: con menos de 3, la unidad se marca \"no sube bien\" y queda al final del ranking." },
+    { "id": "montana",       "nombre": "Montaña y lluvia",       "peso": 35, "explicacion": "Potencia en subidas con la familia arriba y tracción en agua y empedrado. 5 = 4x4 con reductora; 4.5 = tracción integral y 250 hp; 3 = tracción delantera con mucho motor; 2 = tracción delantera con motor chico; 1.5 = la más floja. Es requisito: hace falta 4 o más (tracción integral o 4x4). Las de tracción delantera no sirven para Valle de Bravo y pasan a \"También revisamos\"." },
     { "id": "estetica",      "nombre": "Estética",               "peso": 10, "explicacion": "Qué tanto nos gusta cómo se ve; es gusto personal. Puede cambiar por unidad (por ejemplo, el diseño anterior de Chirey)." },
     { "id": "costo",         "nombre": "Costo de tenerla",       "peso": 17,  "explicacion": "Depreciación, servicios y seguro. El precio de compra se califica aparte, por unidad." },
     { "id": "confiabilidad", "nombre": "Confiabilidad",          "peso": 12, "explicacion": "Estudios de fallas, quejas de dueños y respaldo de la marca." },
@@ -38,45 +38,6 @@
   "criterio_opinion": "estetica",
 
   "opciones": [
-    {
-      "id": "tiggo8pro",
-      "nombre": "Chirey Tiggo 8 Pro 1.6T",
-      "ficha": {"potencia": "183 hp (2025)", "torque": "274 Nm (202 lb-pie)", "transmision": "Doble embrague (DCT) de 7 velocidades", "traccion": "Delantera", "traccion_corta": "Tracción delantera", "transmision_corta": "DCT 7 vel.", "despeje": "No encontrado", "modos": "Eco, Normal y Sport", "pendiente": "Control de descenso", "bolsas": "6", "rendimiento": "Hasta 17.7 km/l en carretera (dato de Chirey)", "valle": "El motor más chico de las Chirey y solo tracción delantera: bien en carretera a CDMX y Querétaro, pero justa en subidas empinadas con la familia completa o con empedrado mojado.", "fuentes": [{"nombre": "Chirey México (2025)", "url": "https://cdn.uc.assets.prezly.com/2a2e7f11-1199-498c-a463-490cd3022d93/-/inline/no/Chirey_CHIR0020_MAR2025_La%20TIGGO%208%20Pro%202025,%20un%20nuevo%20referente%20de%20la%20ingenier%C3%ADa%20en%20rendimiento%20tecnol%C3%B3gico.docx"}]},
-      "calificaciones": { "seguridad": 3.5, "espacio": 2.5, "montana": 2, "estetica": 5, "costo": 3.5, "confiabilidad": 2, "consumo": 4, "equipamiento": 5, "agencia": 3 },
-      "por_que": "Misma camioneta por fuera que la Pro Max; más barata y gasta menos gasolina, pero sube con menos fuerza. El diseño nuevo es el 2025.",
-      "unidades": [
-        {
-          "id": "tiggo8pro-izcalli",
-          "anio": 2025, "km": 15133, "precio": 379990, "precio_nota": "",
-          "ciudad": "Cuautitlán Izcalli", "vendedor": "Chevrolet Excelencia",
-          "anuncio": "https://www.seminuevos.com/vehicle/autos-chirey-tiggo_8_pro-cuautitlan_izcalli-2025/4836822",
-          "tres_filas": { "confirmado": false, "nota": "El anuncio no dice cuántos pasajeros; el modelo es de 7. Pedir foto de la tercera fila." }
-        },
-        {
-          "id": "tiggo8pro-kavak-cdmx",
-          "anio": 2025, "km": 7785, "precio": 401999, "precio_nota": "más tarifa de servicio",
-          "ciudad": "CDMX", "vendedor": "Kavak",
-          "anuncio": "https://www.kavak.com/mx/usado/chirey-tiggo_8_pro-16_premium_dct-suv-2025?id=519919",
-          "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros. La foto de la cajuela muestra la tercera fila plegada." }
-        },
-        {
-          "id": "tiggo8pro-2023-kavak-cdmx",
-          "anio": 2023, "km": 1900, "precio": 371999, "precio_nota": "",
-          "ciudad": "CDMX", "vendedor": "Kavak",
-          "anuncio": "https://www.kavak.com/mx/usado/chirey-tiggo_8_pro-16_premium_dct-suv-2023?id=483574",
-          "calificaciones": { "estetica": 3 },
-          "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }
-        },
-        {
-          "id": "tiggo8pro-2025-ml-tlalnepantla",
-          "anio": 2025, "km": 60, "precio": 459900, "precio_nota": "",
-          "ciudad": "Tlalnepantla, Edomex", "vendedor": "Mercado Libre",
-          "anuncio": "https://auto.mercadolibre.com.mx/MLM-6364338596-chirey-tiggo-8-pro-max-20t-premium-4wd-_JM",
-          "aviso": "El anuncio dice Pro Max 2.0T 4WD, pero en las fotos traseras el emblema dice \"Tiggo 8 Pro\" y \"290T\" (motor 1.6T, tracción delantera). La Pro Max lleva \"390T\". Por eso la calificamos como Tiggo 8 Pro 1.6T.",
-          "tres_filas": { "confirmado": false, "nota": "El anuncio dice 5 personas, pero el modelo es de 7 en México: confirmar con foto." }
-        }
-      ]
-    },
     {
       "id": "tiggo8promax",
       "nombre": "Chirey Tiggo 8 Pro Max 2.0T AWD",
@@ -97,25 +58,9 @@
           "anio": 2023, "km": 13200, "precio": 398445, "precio_nota": "",
           "ciudad": "Álvaro Obregón, CDMX", "vendedor": "Mercado Libre",
           "anuncio": "https://auto.mercadolibre.com.mx/MLM-3485455377-chirey-tiggo-8-pro-max-20t-premium-4wd-_JM",
-          "calificaciones": { "estetica": 3 },
-          "tres_filas": { "confirmado": false, "nota": "El anuncio dice 5 personas, pero el modelo es de 7 en México: confirmar con foto. La ficha también dice tracción delantera aunque el título dice 4WD." }
-        }
-      ]
-    },
-    {
-      "id": "tiggo8promax2wd",
-      "nombre": "Chirey Tiggo 8 Pro Max 2.0T sin AWD",
-      "ficha": {"potencia": "250 hp", "torque": "389 Nm (287 lb-pie)", "transmision": "Doble embrague (DCT) de 7 velocidades", "traccion": "Delantera", "traccion_corta": "Tracción delantera", "transmision_corta": "DCT 7 vel.", "despeje": "203 mm (dato de otro mercado)", "modos": "Selector de modos (Eco, Normal y Sport en otro mercado)", "pendiente": "Control de descenso y arranque en pendiente", "bolsas": "6", "rendimiento": "≈13.9 km/l (Kavak)", "valle": "Sube con mucha fuerza, pero con todo ese torque solo en las ruedas de adelante puede patinar al arrancar en una subida mojada (una prueba en Sudáfrica lo reporta).", "fuentes": [{"nombre": "Motorpasión", "url": "https://www.motorpasion.com.mx/industria/chirey-tiggo-8-pro-max-precios-versiones-equipamiento-mexico"}, {"nombre": "Kavak", "url": "https://www.kavak.com/mx/usado/chirey-tiggo_8_pro_max-20_luxury_dct-suv-2023?id=543434"}]},
-      "calificaciones": { "seguridad": 3.5, "espacio": 2.5, "montana": 3, "estetica": 5, "costo": 3, "confiabilidad": 2, "consumo": 2.5, "equipamiento": 5, "agencia": 3 },
-      "por_que": "El mismo motor de 250 hp que la Pro Max AWD, pero solo con tracción delantera (versión Luxury). Mucho más barata.",
-      "unidades": [
-        {
-          "id": "tiggo8promax2wd-2023-kavak-cdmx",
-          "anio": 2023, "km": 22835, "precio": 320999, "precio_nota": "",
-          "ciudad": "CDMX", "vendedor": "Kavak",
-          "anuncio": "https://www.kavak.com/mx/usado/chirey-tiggo_8_pro_max-20_luxury_dct-suv-2023?id=543434",
-          "calificaciones": { "estetica": 3 },
-          "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }
+          "calificaciones": { "estetica": 3, "montana": 3 },
+          "aviso": "Montaña 3 mientras no se confirme la tracción: el título dice 4WD, pero la ficha dice tracción delantera y en sus fotos no se ve el emblema trasero. Si el vendedor confirma 4WD (emblema 390T y 4WD), sube a 4.5 y vuelve a los primeros lugares.",
+          "tres_filas": { "confirmado": false, "nota": "El anuncio dice 5 personas, pero el modelo es de 7 en México: confirmar con foto." }
         }
       ]
     },
@@ -175,89 +120,6 @@
           "tres_filas": { "confirmado": false, "nota": "La versión dice 7 pasajeros, pero la ficha dice 5 asientos: confirmar con foto." }
         }
       ]
-    },
-    {
-      "id": "gs8awd",
-      "nombre": "GAC GS8 2.0T AWD (GX)",
-      "ficha": {"potencia": "248 hp", "torque": "400 Nm", "transmision": "Automática de 8 velocidades", "traccion": "Integral (AWD/4WD) en la versión GX", "traccion_corta": "AWD", "transmision_corta": "Automática 8 vel.", "despeje": "No encontrado", "modos": "No encontrado", "pendiente": "Control de descenso y arranque en pendiente", "bolsas": "6 o 7 (las fuentes no coinciden)", "rendimiento": "No encontrado", "valle": "El torque más alto del grupo, caja de 8 y tracción integral: con la GX sí se aprovecha toda la fuerza en empedrado mojado. Es la versión que le faltaba a la GS8.", "fuentes": [{"nombre": "Autocosmos", "url": "https://noticias.autocosmos.com.mx/2024/02/09/gac-gs8-una-camioneta-mediana-con-todo-lo-que-gusta-en-mexico"}, {"nombre": "Mercado Libre (anuncios GX AWD 2024)", "url": "https://autos.mercadolibre.com.mx/gs8/4x4/2024/"}]},
-      "calificaciones": { "seguridad": 3.5, "espacio": 4.5, "montana": 4.5, "estetica": 1, "costo": 2, "confiabilidad": 2, "consumo": 2, "equipamiento": 5, "agencia": 2 },
-      "por_que": "La GS8 que ya teníamos, pero en versión GX con tracción integral. La más grande y equipada; gasta más gasolina y GAC tiene pocas agencias. Hay unidades 2024 justo en el tope del presupuesto.",
-      "unidades": [
-        {
-          "id": "gs8awd-2024-kavak-cdmx",
-          "anio": 2024, "km": 50422, "precio": 466999, "precio_nota": "de contado (30-oct)",
-          "ciudad": "CDMX", "vendedor": "Kavak",
-          "anuncio": "https://www.kavak.com/mx/usado/gac-gs8-20t_gx_4wd_auto-suv-2024?id=553728",
-          "aviso": "Es la única GS8 GX 4WD que tiene Kavak hoy; pasa del máximo de kilometraje. La de 17,000 km que apareció en una búsqueda ya no está en Kavak (probablemente se vendió). Sus fotos se bajan solas la próxima vez que corras publicar.bat en tu computadora.",
-
-          "tres_filas": { "confirmado": true, "nota": "La GS8 es de 7 pasajeros." }
-        },
-        {
-          "id": "gs8awd-2024-dalton-guadalajara",
-          "anio": 2024, "km": 23089, "precio": 478356, "precio_nota": "de liquidación (30-oct); garantía Dalton aparte por $13,500",
-          "ciudad": "Zapopan, Jalisco", "vendedor": "Dalton Seminuevos López Mateos",
-          "anuncio": "https://www.daltonseminuevos.com.mx/autos/gac-gs8-seminuevo-2024-90237",
-          "descargar_fotos": false,
-          "aviso": "Confirmada: anuncio activo y en las fotos el emblema trasero dice GS8 4WD. El precio ha cambiado varias veces ($467,156 a $483,956; en Mercado Libre, $561,090): confirmar el precio final y si la garantía de $13,500 va aparte.",
-
-          "tres_filas": { "confirmado": true, "nota": "La GS8 es de 7 pasajeros." }
-        }
-      ]
-    },
-    {
-      "id": "commander",
-      "nombre": "Jeep Commander Overland",
-      "ficha": {"potencia": "173 hp", "torque": "270 Nm (199 lb-pie), desde 1,850 rpm", "transmision": "Automática (6 o 9 velocidades: las fuentes no coinciden)", "traccion": "Delantera (en México no hay 4x4 para 2025)", "traccion_corta": "Tracción delantera", "transmision_corta": "Automática", "despeje": "208 mm (dato de otro mercado)", "modos": "No encontrado", "pendiente": "Arranque en pendiente (dato de otro mercado)", "bolsas": "7", "rendimiento": "≈12.3 km/l (dato de otro mercado)", "valle": "La de menos fuerza para su peso (≈9.9 kg por hp, con peso de Colombia) y solo tracción delantera: la más floja para las subidas de Valle con la familia completa. A favor, buen despeje y 7 bolsas.", "fuentes": [{"nombre": "Xataka", "url": "https://www.xataka.com.mx/automovil/jeep-lanza-commander-2025-mexico-suv-fabricado-brasil-para-tener-precio-competitivo-mercado"}, {"nombre": "Ficha de Colombia", "url": "https://loscoches.com/wp-content/uploads/2024/06/Ficha-tecnica-Jeep-Commander-Los-Coches_compressed.pdf"}]},
-      "calificaciones": { "seguridad": 3, "espacio": 4, "montana": 1.5, "estetica": 4, "costo": 2, "confiabilidad": 2, "consumo": 3.5, "equipamiento": 5, "agencia": 4 },
-      "por_que": "De las más amplias; motor justo en subidas y de las más caras.",
-      "unidades": [
-        {
-          "id": "commander-kavak-queretaro",
-          "anio": 2025, "km": 31131, "precio": 473999, "precio_nota": "",
-          "ciudad": "Querétaro", "vendedor": "Kavak",
-          "anuncio": "https://www.kavak.com/mx/usado/jeep-commander-13_overland_auto-suv-2025?id=545924",
-          "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }
-        }
-      ]
-    },
-    {
-      "id": "x70plus",
-      "nombre": "Jetour X70 Plus 1.6T",
-      "ficha": {"potencia": "194 hp", "torque": "290 Nm (214 lb-pie)", "transmision": "Doble embrague (DCT) de 7 velocidades", "traccion": "Delantera (dato de otro mercado)", "traccion_corta": "Tracción delantera", "transmision_corta": "DCT 7 vel.", "despeje": "210 mm", "modos": "No encontrado", "pendiente": "Arranque en pendiente", "bolsas": "4", "rendimiento": "No encontrado", "valle": "Buen despeje para el empedrado y potencia razonable, pero solo 4 bolsas de aire y sin modos de terreno. Opción básica.", "fuentes": [{"nombre": "Autocosmos", "url": "https://noticias.autocosmos.com.mx/2023/04/05/jetour-x70-plus-2023-llega-a-mexico-un-suv-chino-que-busca-hacerte-olvidar-al-tiggo-8"}]},
-      "calificaciones": { "seguridad": 2, "espacio": 3, "montana": 2, "estetica": 4, "costo": 4, "confiabilidad": 2, "consumo": 4, "equipamiento": 3.5, "agencia": 2 },
-      "por_que": "La más barata; mismo motor 1.6T que la Tiggo 8 Pro (es del grupo Chery), pero la 2023 solo trae 4 bolsas de aire. Marca nueva con pocas agencias.",
-      "unidades": [
-        {
-          "id": "x70plus-2023-kavak-cdmx",
-          "anio": 2023, "km": 29635, "precio": 299999, "precio_nota": "",
-          "ciudad": "CDMX", "vendedor": "Kavak",
-          "anuncio": "https://www.kavak.com/mx/usado/jetour-x70_plus-16_dct-suv-2023?id=534747",
-          "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }
-        },
-        {
-          "id": "x70plus-2023-kavak-guadalajara",
-          "anio": 2023, "km": 18306, "precio": 305999, "precio_nota": "",
-          "ciudad": "Guadalajara", "vendedor": "Kavak",
-          "anuncio": "https://www.kavak.com/mx/usado/jetour-x70_plus-16_dct-suv-2023?id=554376",
-          "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }
-        }
-      ]
-    },
-    {
-      "id": "gs8",
-      "nombre": "GAC GS8 2.0T",
-      "ficha": {"potencia": "248 hp", "torque": "400 Nm", "transmision": "Automática de 8 velocidades", "traccion": "Delantera (la 4x4 es otra versión)", "traccion_corta": "Tracción delantera", "transmision_corta": "Automática 8 vel.", "despeje": "No encontrado", "modos": "No encontrado", "pendiente": "Control de descenso y arranque en pendiente", "bolsas": "6 o 7 (las fuentes no coinciden)", "rendimiento": "No encontrado", "valle": "El torque más alto del grupo y caja de 8: sube con soltura. Pero al ser de tracción delantera, en empedrado mojado no aprovecha bien toda esa fuerza.", "fuentes": [{"nombre": "Autocosmos", "url": "https://noticias.autocosmos.com.mx/2024/02/09/gac-gs8-una-camioneta-mediana-con-todo-lo-que-gusta-en-mexico"}, {"nombre": "my-car.mx", "url": "https://my-car.mx/auto/gac-gs8/version/gl-fwd"}]},
-      "calificaciones": { "seguridad": 3.5, "espacio": 4.5, "montana": 3, "estetica": 1, "costo": 2, "confiabilidad": 2, "consumo": 2.5, "equipamiento": 5, "agencia": 2 },
-      "por_que": "La más grande y equipada, con motor 2.0T. Esta versión (GL) no trae 4x4 y su precio pasa el tope por $25,999.",
-      "unidades": [
-        {
-          "id": "gs8-2025-kavak-guadalajara",
-          "anio": 2025, "km": 1024, "precio": 513999, "precio_nota": "",
-          "ciudad": "Guadalajara", "vendedor": "Kavak",
-          "anuncio": "https://www.kavak.com/mx/usado/gac-gs8-20_t_gl_auto-suv-2025?id=509060",
-          "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }
-        }
-      ]
     }
   ],
 
@@ -266,10 +128,8 @@
     "Prueba de manejo en subida con la familia arriba.",
     "Recall de frenos de Australia en las versiones 2.0: revisar por número de serie (VIN) en Chirey Metepec.",
     "Depreciación alta de las marcas chinas.",
-    "Tiggo de Izcalli: pedir al vendedor foto de la tercera fila.",
-    "Mercado Libre: los dos anuncios dicen 5 personas; confirmar la tercera fila con foto.",
+    "Pro Max 2023 de Mercado Libre: el anuncio dice 5 personas; confirmar la tercera fila con foto.",
     "Pro Max 2023 de Mercado Libre: la ficha dice tracción delantera aunque el título dice 4WD; confirmar en el emblema trasero (390T y 4WD) o con el vendedor.",
-    "Tiggo de Tlalnepantla: se anuncia como Pro Max 2.0T 4WD pero el emblema dice 290T (1.6T); si el vendedor insiste en que es Pro Max, pedir foto de la tarjeta de circulación o del VIN.",
     "MG RX8 (descontinuada): en la agencia MG de Toluca o Metepec, pedir por escrito si la garantía de 7 años pasa al nuevo dueño y cotizar piezas de choque (faro, defensa, calavera) y de servicio, con tiempo de entrega.",
     "MG RX8: revisar por número de serie (VIN) que no tenga llamados a revisión pendientes y que traiga todos sus servicios en agencia (si no, se puede perder la garantía).",
     "Kavak cobra una tarifa de servicio aparte: pedir el precio final antes de comparar."
@@ -277,6 +137,11 @@
 
   "descartadas_intro": "Antes de quedarnos con estas opciones revisamos otras camionetas de 3 filas que se venden en México (búsqueda del 29 de octubre de 2026 en Kavak, Wahu, Albacar, Seminuevos y Mercado Libre).",
   "descartadas": [
+    { "nombre": "GAC GS8 2.0T AWD (GX) y GS8 2.0T", "motivo": "Descartadas por estética: no nos gustan nada (estética 1). La 4x4 sí subía bien: la de Dalton Guadalajara, 2024 con 23,089 km, estaba en $478,356." },
+    { "nombre": "Chirey Tiggo 8 Pro 1.6T", "motivo": "No sube bien: motor 1.6T y tracción delantera (montaña 2). Teníamos 4 unidades entre $371,999 y $459,900; la de Tlalnepantla se anunciaba como Pro Max 4WD pero el emblema dice 290T (1.6T)." },
+    { "nombre": "Chirey Tiggo 8 Pro Max 2.0T sin AWD", "motivo": "Mucho motor (250 hp), pero solo tracción delantera: puede patinar al arrancar en subida mojada (montaña 3). La de Kavak, 2023 con 22,835 km, estaba en $320,999." },
+    { "nombre": "Jetour X70 Plus 1.6T", "motivo": "No sube bien: motor 1.6T y tracción delantera (montaña 2); además solo trae 4 bolsas de aire." },
+    { "nombre": "Jeep Commander Overland", "motivo": "La más floja para subir (montaña 1.5), tracción delantera, y la unidad de Kavak pasaba de 30,000 km." },
     { "nombre": "Kia Sorento 2.5", "motivo": "La más cercana: 2023 con 22,000 km en $499,000 negociable. Pasa el tope y el motor 2.5 sin turbo es flojo en subidas.", "link": "https://www.seminuevos.com/vehicle/autos-kia-sorento-puebla-2023/4807859" },
     { "nombre": "Volkswagen Tiguan 3 filas", "motivo": "Entra en precio, pero la tercera fila es de emergencia: no caben dos sillas con acceso. Motor 1.4T de 150 hp." },
     { "nombre": "Nissan X-Trail 3 filas", "motivo": "Tercera fila de emergencia, motor 2.5 sin turbo, y con menos de 30,000 km ya cuesta unos $505,000." },

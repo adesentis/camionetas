@@ -105,7 +105,7 @@ Copia toda la carpeta con otro nombre, borra lo de dentro de `fotos\` y cambia `
 título, requisitos, criterios con sus pesos, opciones y unidades.
 - `"filtros"` revisa año, km y presupuesto; si no aplica, déjalo así: `"filtros": {}`.
 - `"montana_minima"` (dentro de `"filtros"`) es el mínimo en Montaña y lluvia. Las unidades que no llegan
-  se marcan "No sube bien" y van al final del ranking, aunque su puntaje sea alto. Hoy está en 3.
+  se marcan "No sube bien" y van al final del ranking, aunque su puntaje sea alto. Hoy está en 4 (tracción integral o 4x4): los modelos que no llegan se pasan a "descartadas".
 - `"criterio_opinion"` es el criterio que la otra persona califica con los botones del 1 al 5 (hoy `"estetica"`).
 
 Para publicarla aparte necesitas otro repositorio en GitHub (ver la sección siguiente).

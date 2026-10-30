@@ -484,7 +484,9 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
   // Las tarjetas van en el orden de su mejor unidad.
   const mejor = r => { const m = {}; r.forEach(x => { if (m[x.o.id] == null) m[x.o.id] = x.p; }); return m; };
   const m0 = mejor(ordenar(PESOS_ORIG));
-  $("tarjetas").innerHTML = [...D.opciones].sort((a, b) => m0[b.id] - m0[a.id]).map(tarjeta).join("");
+  // Mismo orden que el ranking: primero las que suben bien, luego por puntaje.
+  const ordenModelos = [...new Set(ordenar(PESOS_ORIG).map(x => x.o.id))];
+  $("tarjetas").innerHTML = [...D.opciones].sort((a, b) => ordenModelos.indexOf(a.id) - ordenModelos.indexOf(b.id)).map(tarjeta).join("");
 
   document.querySelectorAll("[data-gal]").forEach(gal => {
     const nav = gal.nextElementSibling, cont = nav.querySelector("[data-cont]"), n = gal.children.length;
