@@ -349,13 +349,17 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
     .map(([b, s]) => `<div><b>${b}</b><span>${s}</span></div>`).join("");
 
   // Resalta en el menú la sección que se está viendo.
-  const links = [...document.querySelectorAll("nav a")];
+  // Solo se desplaza el menú de lado: scrollIntoView también movía la página y en el
+  // celular frenaba el deslizamiento con el dedo.
+  const menu = document.querySelector("nav");
+  const links = [...menu.querySelectorAll("a")];
   const obs = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;
     links.forEach(a => {
       const on = a.getAttribute("href") === "#" + e.target.id;
+      if (on === a.classList.contains("activo")) return;
       a.classList.toggle("activo", on);
-      if (on) a.scrollIntoView({ block: "nearest", inline: "center" });
+      if (on) menu.scrollTo({ left: a.offsetLeft - (menu.clientWidth - a.offsetWidth) / 2, behavior: "smooth" });
     });
   }), { rootMargin: "-45% 0px -50% 0px" });
   document.querySelectorAll("main > section").forEach(s => obs.observe(s));
@@ -438,7 +442,7 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
   document.querySelectorAll("[data-gal]").forEach(gal => {
     const nav = gal.nextElementSibling, cont = nav.querySelector("[data-cont]"), n = gal.children.length;
     const actual = () => Math.round(gal.scrollLeft / gal.children[0].offsetWidth);
-    const ir = i => gal.children[Math.max(0, Math.min(n - 1, i))].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    const ir = i => gal.scrollTo({ left: gal.children[Math.max(0, Math.min(n - 1, i))].offsetLeft - gal.children[0].offsetLeft, behavior: "smooth" });
     gal.addEventListener("scroll", () => { cont.textContent = `${Math.min(n, actual() + 1)} / ${n}`; }, { passive: true });
     nav.querySelector("[data-prev]").onclick = () => ir(actual() - 1);
     nav.querySelector("[data-next]").onclick = () => ir(actual() + 1);
