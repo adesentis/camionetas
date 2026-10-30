@@ -354,8 +354,10 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
   const todas = D.opciones.flatMap(o => o.unidades.map(u => ({ o, u })));
   // Las que no llegan a la montaña mínima van al final, aunque su puntaje sea alto.
   const subeBien = x => !F.montana_minima || valor(C.find(c => c.id === "montana"), x.o, x.u) >= F.montana_minima;
-  const ordenar = (w, propia) => todas.map(x => ({ ...x, p: puntaje(x.o, x.u, w, propia), ok: subeBien(x) }))
-    .sort((a, b) => (b.ok - a.ok) || (b.p - a.p));
+  // Las confirmadas como disponibles van antes que las apartadas o sin confirmar.
+  const disponible = x => !!(x.u.revisado && x.u.revisado.tipo === "ok");
+  const ordenar = (w, propia) => todas.map(x => ({ ...x, p: puntaje(x.o, x.u, w, propia), ok: subeBien(x), disp: disponible(x) }))
+    .sort((a, b) => (b.ok - a.ok) || (b.disp - a.disp) || (b.p - a.p));
   const pesosCambiados = () => C.some(c => pesos[c.id] !== PESOS_ORIG[c.id]);
   const detalle = u => `${u.anio} · ${num(u.km)} km · ${dinero(u.precio)} · ${u.ciudad}`;
 
@@ -364,6 +366,8 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
     const tf = u.tres_filas;
     if (tf) b.push(tf.confirmado ? ["", "3 filas confirmadas"] : ["warn", "3 filas por confirmar"]);
     const o = todas.find(x => x.u === u).o;
+    if (u.revisado) b.push([u.revisado.tipo === "ok" ? "" : "warn", `Revisado ${u.revisado.fecha}: ${u.revisado.texto}`]);
+    else b.push(["warn", "Disponibilidad sin revisar"]);
     if (o.alerta) b.push(["warn rojo", o.alerta]);
     const m = valor(C.find(c => c.id === "montana"), o, u);
     if (F.montana_minima && m < F.montana_minima) b.push(["warn", `No sube bien: montaña ${m} (mínimo ${F.montana_minima})`]);
@@ -624,7 +628,7 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
   $("btnReset").onclick = () => { pesos = { ...PESOS_ORIG }; pintar(); };
 
   const podio = ["oro", "plata", "bronce"];
-  const li = (x, conLink, i) => `<li class="${x.ok ? podio[i] || "" : "fuera"}">${x.u.fotos[0] ? `<img class="mini" src="${esc(x.u.fotos[0])}" alt="" loading="lazy">` : ""}<span class="nom">${conLink ? `<a href="#u-${esc(x.u.id)}">${esc(x.o.nombre)}</a>` : esc(x.o.nombre)}<br><span class="muted">${esc(detalle(x.u))}</span>${x.ok ? "" : `<br><span class="nosube">No sube bien: va al final</span>`}</span><span class="pts">${fmt(x.p)}</span></li>`;
+  const li = (x, conLink, i) => `<li class="${x.ok ? podio[i] || "" : "fuera"}">${x.u.fotos[0] ? `<img class="mini" src="${esc(x.u.fotos[0])}" alt="" loading="lazy">` : ""}<span class="nom">${conLink ? `<a href="#u-${esc(x.u.id)}">${esc(x.o.nombre)}</a>` : esc(x.o.nombre)}<br><span class="muted">${esc(detalle(x.u))}</span>${x.u.revisado && x.u.revisado.tipo !== "ok" ? `<br><span class="nosube">⚠ ${esc(x.u.revisado.texto.split(";")[0].split(":")[0])}</span>` : ""}${x.ok ? "" : `<br><span class="nosube">No sube bien: va al final</span>`}</span><span class="pts">${fmt(x.p)}</span></li>`;
 
   function pintar() {
     const r = ordenar(pesos, opinion);

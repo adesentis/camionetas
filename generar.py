@@ -227,9 +227,11 @@ def main():
 
     # Las que no llegan a la montaña mínima van al final (igual que en la página).
     orden = sorted(((puntaje(o, u, criterios, filtros), o, u) for o in datos["opciones"] for u in o["unidades"]),
-                   key=lambda x: (not sube_bien(x[1], x[2]), -x[0]))
+                   key=lambda x: (not sube_bien(x[1], x[2]), (x[2].get("revisado") or {}).get("tipo") != "ok", -x[0]))
     for i, (p, o, u) in enumerate(orden, 1):
         nota = "" if sube_bien(o, u) else "  ← no sube bien"
+        if sube_bien(o, u) and (u.get("revisado") or {}).get("tipo") != "ok":
+            nota = "  ← disponibilidad sin confirmar"
         print(f"  {i:2}. {p:.2f}  {o['nombre']} · {u['anio']} · {u['km']:,} km · ${u['precio']:,} · {u['ciudad']}{nota}")
     if sin_fotos:
         print("\nUnidades SIN fotos (pásame capturas de pantalla):")

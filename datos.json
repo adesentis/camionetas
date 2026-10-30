@@ -49,6 +49,7 @@
           "id": "tiggo8promax-2024-kavak-apartada",
           "anio": 2024, "km": 28554, "precio": 389999, "precio_nota": "visto en Kavak el 30-oct; confirmar",
           "ciudad": "CDMX", "vendedor": "Kavak",
+          "revisado": {"fecha": "30-oct", "texto": "apartada en Kavak; ofrece avisar si se libera", "tipo": "warn"},
           "anuncio": "https://www.kavak.com/mx/usado/chirey-tiggo_8_pro_max-20_premium_dct_awd-suv-2024",
           "calificaciones": { "estetica": 3 },
           "aviso": "APARTADA: alguien más la reservó, pero si no la compra vuelve a estar disponible. 2.0T Premium AWD con 28,554 km (casi en el límite de 30,000). No sabemos si trae el diseño nuevo: la calificamos con el anterior (estética 3) hasta ver fotos. El link es la página de esa versión en Kavak, sin el número de la unidad.",
@@ -57,7 +58,8 @@
         {
           "id": "tiggo8promax-puebla",
           "anio": 2024, "km": 21135, "precio": 439900, "precio_nota": "negociable",
-          "ciudad": "Puebla", "vendedor": "Kia Seminuevos Serdán",
+          "ciudad": "Puebla", "vendedor": "Kia Seminuevos Certificados Serdán",
+          "revisado": {"fecha": "30-oct", "texto": "activo; la ficha confirma 2.0T AWD 4x4", "tipo": "ok"},
           "anuncio": "https://seminuevos.com/vehicle/4829748",
           "calificaciones": { "estetica": 3 },
           "tres_filas": { "confirmado": true, "nota": "El anuncio dice 7 pasajeros y tercera fila de asientos." }
@@ -66,6 +68,7 @@
           "id": "tiggo8promax-2023-ml-cdmx",
           "anio": 2023, "km": 13200, "precio": 398445, "precio_nota": "",
           "ciudad": "Álvaro Obregón, CDMX", "vendedor": "Mercado Libre",
+          "revisado": {"fecha": "30-oct", "texto": "no se pudo confirmar: Mercado Libre no se deja abrir; revísalo tú", "tipo": "warn"},
           "anuncio": "https://auto.mercadolibre.com.mx/MLM-3485455377-chirey-tiggo-8-pro-max-20t-premium-4wd-_JM",
           "calificaciones": { "estetica": 3, "montana": 3 },
           "aviso": "Montaña 3 mientras no se confirme la tracción: el título dice 4WD, pero la ficha dice tracción delantera y en sus fotos no se ve el emblema trasero. Si el vendedor confirma 4WD (emblema 390T y 4WD), sube a 4.5 y vuelve a los primeros lugares.",
@@ -83,15 +86,17 @@
       "unidades": [
         {
           "id": "mgrx8-2024-kavak-cdmx",
-          "anio": 2024, "km": 15849, "precio": 341999, "precio_nota": "",
+          "anio": 2024, "km": 15849, "precio": 386999, "precio_nota": "de contado; $341,999 con Kavak Crédito; más tarifa de servicio y tenencia 2026",
           "ciudad": "CDMX", "vendedor": "Kavak",
+          "revisado": {"fecha": "30-oct", "texto": "activo en Kavak", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/mg-rx8-20_elegance_auto_4wd-suv-2024?id=517216",
           "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros. La foto de la cajuela muestra la tercera fila plegada." }
         },
         {
           "id": "mgrx8-2023-kavak-cdmx",
-          "anio": 2023, "km": 11482, "precio": 350999, "precio_nota": "",
+          "anio": 2023, "km": 11482, "precio": 358999, "precio_nota": "de contado; $350,999 con Kavak Crédito; más tarifa de servicio y tenencia 2026",
           "ciudad": "CDMX", "vendedor": "Kavak",
+          "revisado": {"fecha": "30-oct", "texto": "activo en Kavak", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/mg-rx8-20_elegance_auto_4wd-suv-2023?id=539261",
           "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }
         }
@@ -108,6 +113,7 @@
           "id": "mgrx9-2025-kavak-cdmx",
           "anio": 2025, "km": 18623, "precio": 572999, "precio_nota": "de contado; $541,999 con Kavak Crédito; más tarifa de servicio y tenencia 2026",
           "ciudad": "CDMX (sucursal Lerma)", "vendedor": "Kavak",
+          "revisado": {"fecha": "30-oct", "texto": "activo, entrega inmediata", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/mg-rx9-20_premier_auto_4wd-suv-2025?id=538276",
           "aviso": "Confirmado en Kavak: Premier 4WD, 7 pasajeros, entrega inmediata. Los $525,999 que se veían eran con crédito: de contado son $572,999, y pasa el tope por $85,000. Sus fotos se bajan solas la próxima vez que corras publicar.bat en tu computadora; el anuncio no trae fotos de la tercera fila ni de la cajuela.",
           "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros, 3 filas." }
@@ -116,6 +122,7 @@
           "id": "mgrx9-2025-dalton-88494",
           "anio": 2025, "km": 2402, "precio": 517563, "precio_nota": "de liquidación (30-oct); garantía Dalton aparte por $13,500",
           "ciudad": "Guadalajara", "vendedor": "Dalton Seminuevos Centro Magno",
+          "revisado": {"fecha": "30-oct", "texto": "la ficha no dice si sigue disponible: confirmar por teléfono", "tipo": "warn"},
           "anuncio": "https://www.daltonseminuevos.com.mx/autos/mg-rx9-seminuevo-2025-88494",
           "aviso": "El anuncio se contradice: la descripción dice tracción delantera y la ficha dice 5 asientos, aunque la versión dice 7 pasajeros. En las fotos el emblema trasero solo dice RX9. Pedir a Dalton por escrito tracción y plazas. Ha tenido 2 dueños.",
           "tres_filas": { "confirmado": false, "nota": "La versión dice 7 pasajeros, pero la ficha dice 5 asientos: confirmar con foto." }
@@ -124,6 +131,7 @@
           "id": "mgrx9-2025-dalton-88850",
           "anio": 2025, "km": 8501, "precio": 517563, "precio_nota": "de liquidación (30-oct); se ha visto hasta en $598,979; garantía Dalton aparte por $13,500",
           "ciudad": "Zapopan, Jalisco", "vendedor": "Dalton Seminuevos López Mateos",
+          "revisado": {"fecha": "30-oct", "texto": "la ficha no dice si sigue disponible: confirmar por teléfono", "tipo": "warn"},
           "anuncio": "https://www.daltonseminuevos.com.mx/autos/mg-rx9-seminuevo-2025-88850",
           "aviso": "El anuncio no dice la tracción y se contradice en las plazas (7 pasajeros en la versión, 5 asientos en la ficha). En las fotos el emblema trasero solo dice RX9. Ha tenido 3 dueños siendo 2025: preguntar por qué.",
           "tres_filas": { "confirmado": false, "nota": "La versión dice 7 pasajeros, pero la ficha dice 5 asientos: confirmar con foto." }
