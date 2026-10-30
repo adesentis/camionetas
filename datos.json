@@ -105,14 +105,6 @@
       "por_que": "Estética 5: la que más nos gusta. El resto es calificación provisional. Es la versión nueva de la RX8: más grande y cómoda, con tracción integral, pero sin reductora. Nueva cuesta unos $777,000–870,000; seminueva 2025 desde unos $525,000, arriba del tope.",
       "unidades": [
         {
-          "id": "mgrx9-2024-ml-cuajimalpa",
-          "anio": 2024, "km": 22916, "precio": 440000, "precio_nota": "visto en Mercado Libre el 30-oct",
-          "ciudad": "Cuajimalpa, CDMX", "vendedor": "Mercado Libre",
-          "anuncio": "https://auto.mercadolibre.com.mx/MLM-6073494760-mg-rx9-20t-premier-at-_JM",
-          "aviso": "La única RX9 que encontramos dentro del presupuesto y con menos de 30,000 km. Versión Premier 2.0T, 7 asientos, \"auto verificado\". Confirmar con el vendedor que sea 4x4 (en México la Premier es la de tracción integral) y que siga disponible. Sus fotos se bajan solas la próxima vez que corras publicar.bat en tu computadora.",
-          "tres_filas": { "confirmado": true, "nota": "El anuncio dice 7 asientos." }
-        },
-        {
           "id": "mgrx9-2025-kavak-cdmx",
           "anio": 2025, "km": 18623, "precio": 572999, "precio_nota": "de contado; $541,999 con Kavak Crédito; más tarifa de servicio y tenencia 2026",
           "ciudad": "CDMX (sucursal Lerma)", "vendedor": "Kavak",
@@ -154,6 +146,7 @@
 
   "descartadas_intro": "Antes de quedarnos con estas opciones revisamos otras camionetas de 3 filas que se venden en México (búsqueda del 29 de octubre de 2026 en Kavak, Wahu, Albacar, Seminuevos y Mercado Libre).",
   "descartadas": [
+    { "nombre": "MG RX9 Premier 2024, Cuajimalpa (Mercado Libre)", "motivo": "22,916 km en $440,000: era la única RX9 dentro del presupuesto, pero la publicación ya está finalizada (30-oct). Si el vendedor la vuelve a publicar, regresa al ranking." },
     { "nombre": "Tiggo 8 Pro Max 2025 que no se pudieron confirmar", "motivo": "La de Monterrey (Albacar, 1,000 km) aparece en Autocosmos como Pro Max 4x4, pero su anuncio de Seminuevos.com dice Tiggo 8 Pro 1.5 híbrida enchufable, en $449,999. La de Dalton Zapopan (5,694 km, $599,000) ya no está en el sitio de Dalton y pasaba el tope. No encontramos ninguna Pro Max AWD 2025 activa dentro del presupuesto." },
     { "nombre": "GAC GS8 2.0T AWD (GX) y GS8 2.0T", "motivo": "Descartadas por estética: no nos gustan nada (estética 1). La 4x4 sí subía bien: la de Dalton Guadalajara, 2024 con 23,089 km, estaba en $478,356." },
     { "nombre": "Chirey Tiggo 8 Pro 1.6T", "motivo": "No sube bien: motor 1.6T y tracción delantera (montaña 2). Teníamos 4 unidades entre $371,999 y $459,900; la de Tlalnepantla se anunciaba como Pro Max 4WD pero el emblema dice 290T (1.6T)." },
