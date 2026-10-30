@@ -105,6 +105,14 @@
       "por_que": "Estética 5: la que más nos gusta. El resto es calificación provisional. Es la versión nueva de la RX8: más grande y cómoda, con tracción integral, pero sin reductora. Nueva cuesta unos $777,000–870,000; seminueva 2025 desde unos $525,000, arriba del tope.",
       "unidades": [
         {
+          "id": "mgrx9-2024-ml-cuajimalpa",
+          "anio": 2024, "km": 22916, "precio": 440000, "precio_nota": "visto en Mercado Libre el 30-oct",
+          "ciudad": "Cuajimalpa, CDMX", "vendedor": "Mercado Libre",
+          "anuncio": "https://auto.mercadolibre.com.mx/MLM-6073494760-mg-rx9-20t-premier-at-_JM",
+          "aviso": "La única RX9 que encontramos dentro del presupuesto y con menos de 30,000 km. Versión Premier 2.0T, 7 asientos, \"auto verificado\". Confirmar con el vendedor que sea 4x4 (en México la Premier es la de tracción integral) y que siga disponible. Sus fotos se bajan solas la próxima vez que corras publicar.bat en tu computadora.",
+          "tres_filas": { "confirmado": true, "nota": "El anuncio dice 7 asientos." }
+        },
+        {
           "id": "mgrx9-2025-kavak-cdmx",
           "anio": 2025, "km": 18623, "precio": 572999, "precio_nota": "de contado; $541,999 con Kavak Crédito; más tarifa de servicio y tenencia 2026",
           "ciudad": "CDMX (sucursal Lerma)", "vendedor": "Kavak",
