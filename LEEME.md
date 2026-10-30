@@ -142,7 +142,10 @@ De ahí en adelante, solo `publicar.bat`.
 - GitHub Pages gratis exige que el repositorio sea **público**: los datos y las fotos también se pueden ver en github.com
   si alguien encuentra tu usuario. Por eso aplica lo mismo: nada personal en los datos.
 - Las fotos son de los vendedores: se usan solo aquí y siempre con el link a su anuncio.
-- Lo que tu esposa califica en "Tu opinión" se queda en su celular; solo te llega lo que mande por WhatsApp.
+- Lo que tu esposa califica y anota (estética y notas de cada unidad, en su tarjeta o en "Tu opinión") se queda en
+  **su** celular; solo te llega lo que mande con el botón de WhatsApp. Lo mismo pasa con lo que califiques tú en tu
+  compu o celular. Para que sus calificaciones queden fijas en la página para todos, pásale a Claude su mensaje
+  y que las cargue en `datos.json` (`"calificaciones": { "estetica": N }` de cada unidad).
 
 ## Si algo falla
 

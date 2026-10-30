@@ -20,18 +20,18 @@
   },
 
   "criterios": [
-    { "id": "seguridad",     "nombre": "Seguridad",              "peso": 15, "explicacion": "Pruebas de choque, bolsas de aire, frenado automático y llamados a revisión." },
-    { "id": "espacio",       "nombre": "Espacio y tercera fila", "peso": 15, "explicacion": "Que quepan dos sillas infantiles, acceso atrás y cajuela." },
-    { "id": "montana",       "nombre": "Montaña y lluvia",       "peso": 15, "explicacion": "Potencia en subidas con la familia arriba y tracción en agua y empedrado." },
+    { "id": "seguridad",     "nombre": "Seguridad",              "peso": 18, "explicacion": "Pruebas de choque, bolsas de aire, frenado automático y llamados a revisión." },
+    { "id": "espacio",       "nombre": "Espacio y tercera fila", "peso": 18, "explicacion": "Que quepan dos sillas infantiles, acceso atrás y cajuela." },
+    { "id": "montana",       "nombre": "Montaña y lluvia",       "peso": 18, "explicacion": "Potencia en subidas con la familia arriba y tracción en agua y empedrado." },
     { "id": "estetica",      "nombre": "Estética",               "peso": 10, "explicacion": "Qué tanto nos gusta cómo se ve; es gusto personal. Puede cambiar por unidad (por ejemplo, el diseño anterior de Chirey)." },
-    { "id": "costo",         "nombre": "Costo de tenerla",       "peso": 7,  "explicacion": "Depreciación, servicios y seguro. El precio de compra se califica aparte, por unidad." },
+    { "id": "costo",         "nombre": "Costo de tenerla",       "peso": 17,  "explicacion": "Depreciación, servicios y seguro. El precio de compra se califica aparte, por unidad." },
     { "id": "confiabilidad", "nombre": "Confiabilidad",          "peso": 12, "explicacion": "Estudios de fallas, quejas de dueños y respaldo de la marca." },
     { "id": "consumo",       "nombre": "Consumo",                "peso": 10, "explicacion": "Rendimiento por litro y si pide gasolina Premium." },
     { "id": "equipamiento",  "nombre": "Equipamiento",           "peso": 3,  "explicacion": "Pantallas, cámaras y comodidades." },
     { "id": "agencia",       "nombre": "Agencia cerca",          "peso": 1,  "explicacion": "Casi no pesa porque en Toluca y Metepec están casi todas las marcas." },
-    { "id": "precio_unidad", "nombre": "Precio de la unidad",    "peso": 8,  "auto": "precio", "explicacion": "Se calcula solo: $238,000 (no pagas nada extra) = 5; $488,000 (el tope) = 1." },
-    { "id": "km",            "nombre": "Kilometraje",            "peso": 2,  "auto": "km",     "explicacion": "Se calcula solo: 0 km = 5; 30,000 km = 1." },
-    { "id": "anio",          "nombre": "Año",                    "peso": 2,  "auto": "anio",   "explicacion": "Se calcula solo: 2026 = 5 y cada año menos resta 1 (2023 = 2)." }
+    { "id": "precio_unidad", "nombre": "Precio de la unidad",    "peso": 20,  "auto": "precio", "explicacion": "Se calcula solo: $238,000 (no pagas nada extra) = 5; $488,000 (el tope) = 1." },
+    { "id": "km",            "nombre": "Kilometraje",            "peso": 3,  "auto": "km",     "explicacion": "Se calcula solo: 0 km = 5; 30,000 km = 1." },
+    { "id": "anio",          "nombre": "Año",                    "peso": 23,  "auto": "anio",   "explicacion": "Se calcula solo: 2026 = 5 y cada año menos resta 1 (2023 = 2)." }
   ],
 
   "criterio_opinion": "estetica",
@@ -40,6 +40,7 @@
     {
       "id": "tiggo8pro",
       "nombre": "Chirey Tiggo 8 Pro 1.6T",
+      "ficha": {"potencia": "183 hp (2025)", "torque": "274 Nm (202 lb-pie)", "transmision": "Doble embrague (DCT) de 7 velocidades", "traccion": "Delantera", "traccion_corta": "Tracción delantera", "transmision_corta": "DCT 7 vel.", "despeje": "No encontrado", "modos": "Eco, Normal y Sport", "pendiente": "Control de descenso", "bolsas": "6", "rendimiento": "Hasta 17.7 km/l en carretera (dato de Chirey)", "valle": "El motor más chico de las Chirey y solo tracción delantera: bien en carretera a CDMX y Querétaro, pero justa en subidas empinadas con la familia completa o con empedrado mojado.", "fuentes": [{"nombre": "Chirey México (2025)", "url": "https://cdn.uc.assets.prezly.com/2a2e7f11-1199-498c-a463-490cd3022d93/-/inline/no/Chirey_CHIR0020_MAR2025_La%20TIGGO%208%20Pro%202025,%20un%20nuevo%20referente%20de%20la%20ingenier%C3%ADa%20en%20rendimiento%20tecnol%C3%B3gico.docx"}]},
       "calificaciones": { "seguridad": 3.5, "espacio": 2.5, "montana": 3, "estetica": 5, "costo": 3.5, "confiabilidad": 2, "consumo": 4, "equipamiento": 5, "agencia": 3 },
       "por_que": "Misma camioneta por fuera que la Pro Max; más barata y gasta menos gasolina, pero sube con menos fuerza. El diseño nuevo es el 2025.",
       "unidades": [
@@ -70,6 +71,7 @@
     {
       "id": "tiggo8promax",
       "nombre": "Chirey Tiggo 8 Pro Max 2.0T AWD",
+      "ficha": {"potencia": "250 hp", "torque": "389 Nm (287 lb-pie)", "transmision": "Doble embrague (DCT) de 7 velocidades", "traccion": "Integral automática (AWD), sin reductora ni bloqueo", "traccion_corta": "AWD", "transmision_corta": "DCT 7 vel.", "despeje": "No encontrado", "modos": "Selector de modos (en Australia: Nieve, Lodo y Offroad)", "pendiente": "Control de descenso y arranque en pendiente", "bolsas": "6", "rendimiento": "≈13.5 km/l (Kavak)", "valle": "La mejor tracción en lluvia y empedrado entre las de chasis tipo auto, con mucho motor para subir (≈6.9 kg por hp, con peso de Australia). Sirve para terracería ligera, no para 4x4 de verdad.", "fuentes": [{"nombre": "Autocosmos", "url": "https://noticias.autocosmos.com.mx/2022/06/20/chirey-tiggo-8-pro-max-2023-a-prueba-descubriendo-una-nueva-opcion-en-mexico"}, {"nombre": "Motorpasión", "url": "https://www.motorpasion.com.mx/industria/chirey-tiggo-8-pro-max-precios-versiones-equipamiento-mexico"}]},
       "calificaciones": { "seguridad": 3.5, "espacio": 2.5, "montana": 4.5, "estetica": 5, "costo": 3, "confiabilidad": 2, "consumo": 2.5, "equipamiento": 5, "agencia": 3 },
       "por_que": "La más potente (250 hp) y con tracción integral; gasta más gasolina (~8.5 km/l) y la cajuela es chica con tres filas (117 L).",
       "unidades": [
@@ -101,6 +103,7 @@
     {
       "id": "tiggo8promax2wd",
       "nombre": "Chirey Tiggo 8 Pro Max 2.0T sin AWD",
+      "ficha": {"potencia": "250 hp", "torque": "389 Nm (287 lb-pie)", "transmision": "Doble embrague (DCT) de 7 velocidades", "traccion": "Delantera", "traccion_corta": "Tracción delantera", "transmision_corta": "DCT 7 vel.", "despeje": "203 mm (dato de otro mercado)", "modos": "Selector de modos (Eco, Normal y Sport en otro mercado)", "pendiente": "Control de descenso y arranque en pendiente", "bolsas": "6", "rendimiento": "≈13.9 km/l (Kavak)", "valle": "Sube con mucha fuerza, pero con todo ese torque solo en las ruedas de adelante puede patinar al arrancar en una subida mojada (una prueba en Sudáfrica lo reporta).", "fuentes": [{"nombre": "Motorpasión", "url": "https://www.motorpasion.com.mx/industria/chirey-tiggo-8-pro-max-precios-versiones-equipamiento-mexico"}, {"nombre": "Kavak", "url": "https://www.kavak.com/mx/usado/chirey-tiggo_8_pro_max-20_luxury_dct-suv-2023?id=543434"}]},
       "calificaciones": { "seguridad": 3.5, "espacio": 2.5, "montana": 4, "estetica": 5, "costo": 3, "confiabilidad": 2, "consumo": 2.5, "equipamiento": 5, "agencia": 3 },
       "por_que": "El mismo motor de 250 hp que la Pro Max AWD, pero solo con tracción delantera (versión Luxury). Mucho más barata.",
       "unidades": [
@@ -117,6 +120,7 @@
     {
       "id": "mgrx8",
       "nombre": "MG RX8 4x4",
+      "ficha": {"potencia": "221 hp", "torque": "350 Nm (258 lb-pie)", "transmision": "Automática de 6 velocidades con paletas", "traccion": "4x4 de verdad: reductora (4L), bloqueo del diferencial trasero y chasis de escalera", "traccion_corta": "4x4 con reductora", "transmision_corta": "Automática 6 vel.", "despeje": "No encontrado (ángulos de ataque y salida de 23°)", "modos": "Auto, Nieve, Off Road, Sport, 2H y 4L", "pendiente": "Control de descenso y arranque en pendiente", "bolsas": "6", "rendimiento": "≈10 km/l combinado (8.4 ciudad, 13.2 carretera, Kavak)", "valle": "La más capaz para terracería, lodo y lluvia fuerte: la única con reductora y bloqueo. En contra: es pesada y la que más gasolina gasta.", "fuentes": [{"nombre": "Xataka", "url": "https://www.xataka.com.mx/automovil/mg-rx8-precio-lanzamiento-oficial-mexico-suv-todoterreno-mg-motor-para-siete-pasajeros"}, {"nombre": "Autocosmos", "url": "https://noticias.autocosmos.com.mx/2021/09/27/mg-rx8-2021-llega-a-mexico-3-filas-de-asientos-y-serias-capacidades-4x4"}, {"nombre": "Kavak", "url": "https://www.kavak.com/mx/usado/mg-rx8-20_elegance_auto_4wd-suv-2023?id=539261"}]},
       "calificaciones": { "seguridad": 2, "espacio": 3.5, "montana": 5, "estetica": 4, "costo": 3.5, "confiabilidad": 1.5, "consumo": 3, "equipamiento": 3, "agencia": 3 },
       "por_que": "La más todoterreno; sin pruebas de choque, descontinuada, y la marca sale mal en confiabilidad (J.D. Power México 2025, lugar 19 de 21).",
       "unidades": [
@@ -139,7 +143,8 @@
     {
       "id": "commander",
       "nombre": "Jeep Commander Overland",
-      "calificaciones": { "seguridad": 3, "espacio": 4, "montana": 2, "estetica": 3, "costo": 2, "confiabilidad": 2, "consumo": 3.5, "equipamiento": 5, "agencia": 4 },
+      "ficha": {"potencia": "173 hp", "torque": "270 Nm (199 lb-pie), desde 1,850 rpm", "transmision": "Automática (6 o 9 velocidades: las fuentes no coinciden)", "traccion": "Delantera (en México no hay 4x4 para 2025)", "traccion_corta": "Tracción delantera", "transmision_corta": "Automática", "despeje": "208 mm (dato de otro mercado)", "modos": "No encontrado", "pendiente": "Arranque en pendiente (dato de otro mercado)", "bolsas": "7", "rendimiento": "≈12.3 km/l (dato de otro mercado)", "valle": "La de menos fuerza para su peso (≈9.9 kg por hp, con peso de Colombia) y solo tracción delantera: la más floja para las subidas de Valle con la familia completa. A favor, buen despeje y 7 bolsas.", "fuentes": [{"nombre": "Xataka", "url": "https://www.xataka.com.mx/automovil/jeep-lanza-commander-2025-mexico-suv-fabricado-brasil-para-tener-precio-competitivo-mercado"}, {"nombre": "Ficha de Colombia", "url": "https://loscoches.com/wp-content/uploads/2024/06/Ficha-tecnica-Jeep-Commander-Los-Coches_compressed.pdf"}]},
+      "calificaciones": { "seguridad": 3, "espacio": 4, "montana": 2, "estetica": 4, "costo": 2, "confiabilidad": 2, "consumo": 3.5, "equipamiento": 5, "agencia": 4 },
       "por_que": "De las más amplias; motor justo en subidas y de las más caras.",
       "unidades": [
         {
@@ -154,7 +159,8 @@
     {
       "id": "x70plus",
       "nombre": "Jetour X70 Plus 1.6T",
-      "calificaciones": { "seguridad": 2, "espacio": 3, "montana": 3, "estetica": 3, "costo": 4, "confiabilidad": 2, "consumo": 4, "equipamiento": 3.5, "agencia": 2 },
+      "ficha": {"potencia": "194 hp", "torque": "290 Nm (214 lb-pie)", "transmision": "Doble embrague (DCT) de 7 velocidades", "traccion": "Delantera (dato de otro mercado)", "traccion_corta": "Tracción delantera", "transmision_corta": "DCT 7 vel.", "despeje": "210 mm", "modos": "No encontrado", "pendiente": "Arranque en pendiente", "bolsas": "4", "rendimiento": "No encontrado", "valle": "Buen despeje para el empedrado y potencia razonable, pero solo 4 bolsas de aire y sin modos de terreno. Opción básica.", "fuentes": [{"nombre": "Autocosmos", "url": "https://noticias.autocosmos.com.mx/2023/04/05/jetour-x70-plus-2023-llega-a-mexico-un-suv-chino-que-busca-hacerte-olvidar-al-tiggo-8"}]},
+      "calificaciones": { "seguridad": 2, "espacio": 3, "montana": 3, "estetica": 4, "costo": 4, "confiabilidad": 2, "consumo": 4, "equipamiento": 3.5, "agencia": 2 },
       "por_que": "La más barata; mismo motor 1.6T que la Tiggo 8 Pro (es del grupo Chery), pero la 2023 solo trae 4 bolsas de aire. Marca nueva con pocas agencias.",
       "unidades": [
         {
@@ -176,7 +182,8 @@
     {
       "id": "gs8",
       "nombre": "GAC GS8 2.0T",
-      "calificaciones": { "seguridad": 3.5, "espacio": 4.5, "montana": 4, "estetica": 3, "costo": 2, "confiabilidad": 2, "consumo": 2.5, "equipamiento": 5, "agencia": 2 },
+      "ficha": {"potencia": "248 hp", "torque": "400 Nm", "transmision": "Automática de 8 velocidades", "traccion": "Delantera (la 4x4 es otra versión)", "traccion_corta": "Tracción delantera", "transmision_corta": "Automática 8 vel.", "despeje": "No encontrado", "modos": "No encontrado", "pendiente": "Control de descenso y arranque en pendiente", "bolsas": "6 o 7 (las fuentes no coinciden)", "rendimiento": "No encontrado", "valle": "El torque más alto del grupo y caja de 8: sube con soltura. Pero al ser de tracción delantera, en empedrado mojado no aprovecha bien toda esa fuerza.", "fuentes": [{"nombre": "Autocosmos", "url": "https://noticias.autocosmos.com.mx/2024/02/09/gac-gs8-una-camioneta-mediana-con-todo-lo-que-gusta-en-mexico"}, {"nombre": "my-car.mx", "url": "https://my-car.mx/auto/gac-gs8/version/gl-fwd"}]},
+      "calificaciones": { "seguridad": 3.5, "espacio": 4.5, "montana": 4, "estetica": 2, "costo": 2, "confiabilidad": 2, "consumo": 2.5, "equipamiento": 5, "agencia": 2 },
       "por_que": "La más grande y equipada, con motor 2.0T. Esta versión (GL) no trae 4x4 y su precio pasa el tope por $25,999.",
       "unidades": [
         {

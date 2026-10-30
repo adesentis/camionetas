@@ -192,7 +192,7 @@ def main():
     criterios = datos["criterios"]
     total = sum(c["peso"] for c in criterios)
     if total != 100:
-        print(f"Aviso: los pesos suman {total}, no 100. El puntaje se calcula igual (dividido entre {total}).")
+        print(f"Los pesos suman {total}: cada criterio cuenta en proporción a esa suma.")
 
     print("Revisando fotos...")
     sin_fotos = []
