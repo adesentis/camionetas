@@ -46,6 +46,24 @@
       "por_que": "La más potente (250 hp) y con tracción integral; gasta más gasolina (~8.5 km/l) y la cajuela es chica con tres filas (117 L).",
       "unidades": [
         {
+          "id": "tiggo8promax-2025-albacar-monterrey",
+          "anio": 2025, "km": 1000, "precio": 487999, "precio_nota": "visto en Autocosmos el 30-oct; otra página la muestra en $519,999 con 1 km",
+          "ciudad": "Monterrey", "vendedor": "Seminuevos Albacar",
+          "anuncio": "https://www.autocosmos.com.mx/auto/listado/chirey?seccion=precio-final&pr=238&cd=420",
+          "descargar_fotos": false,
+          "aviso": "Diseño nuevo (2025), Premium 4x4. Todavía no tenemos el link exacto: el link abre la lista de Chirey en Monterrey de Autocosmos. Confirmar precio ($487,999 o $519,999), kilometraje y que siga disponible.",
+          "tres_filas": { "confirmado": true, "nota": "La Pro Max es de 7 pasajeros." }
+        },
+        {
+          "id": "tiggo8promax-2025-dalton-zapopan",
+          "anio": 2025, "km": 5694, "precio": 599000, "precio_nota": "visto en Mercado Libre el 30-oct",
+          "ciudad": "Zapopan, Jalisco", "vendedor": "Dalton Seminuevos",
+          "anuncio": "https://autos.mercadolibre.com.mx/chirey/tiggo-8-pro-max/",
+          "descargar_fotos": false,
+          "aviso": "Diseño nuevo (2025), 2.0T Premium 4WD, auto verificado. Pasa el tope de presupuesto por unos $111,000. Todavía no tenemos el link exacto: el link abre la lista de Tiggo 8 Pro Max en Mercado Libre.",
+          "tres_filas": { "confirmado": true, "nota": "La Pro Max es de 7 pasajeros." }
+        },
+        {
           "id": "tiggo8promax-puebla",
           "anio": 2024, "km": 21135, "precio": 439900, "precio_nota": "negociable",
           "ciudad": "Puebla", "vendedor": "Kia Seminuevos Serdán",
