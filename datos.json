@@ -46,21 +46,12 @@
       "por_que": "La más potente (250 hp) y con tracción integral; gasta más gasolina (~8.5 km/l) y la cajuela es chica con tres filas (117 L).",
       "unidades": [
         {
-          "id": "tiggo8promax-2025-albacar-monterrey",
-          "anio": 2025, "km": 1000, "precio": 487999, "precio_nota": "visto en Autocosmos el 30-oct; otra página la muestra en $519,999 con 1 km",
-          "ciudad": "Monterrey", "vendedor": "Seminuevos Albacar",
-          "anuncio": "https://www.autocosmos.com.mx/auto/listado/chirey?seccion=precio-final&pr=238&cd=420",
-          "descargar_fotos": false,
-          "aviso": "Diseño nuevo (2025), Premium 4x4. Todavía no tenemos el link exacto: el link abre la lista de Chirey en Monterrey de Autocosmos. Confirmar precio ($487,999 o $519,999), kilometraje y que siga disponible.",
-          "tres_filas": { "confirmado": true, "nota": "La Pro Max es de 7 pasajeros." }
-        },
-        {
-          "id": "tiggo8promax-2025-dalton-zapopan",
-          "anio": 2025, "km": 5694, "precio": 599000, "precio_nota": "visto en Mercado Libre el 30-oct",
-          "ciudad": "Zapopan, Jalisco", "vendedor": "Dalton Seminuevos",
-          "anuncio": "https://autos.mercadolibre.com.mx/chirey/tiggo-8-pro-max/",
-          "descargar_fotos": false,
-          "aviso": "Diseño nuevo (2025), 2.0T Premium 4WD, auto verificado. Pasa el tope de presupuesto por unos $111,000. Todavía no tenemos el link exacto: el link abre la lista de Tiggo 8 Pro Max en Mercado Libre.",
+          "id": "tiggo8promax-2024-kavak-apartada",
+          "anio": 2024, "km": 28554, "precio": 389999, "precio_nota": "visto en Kavak el 30-oct; confirmar",
+          "ciudad": "CDMX", "vendedor": "Kavak",
+          "anuncio": "https://www.kavak.com/mx/usado/chirey-tiggo_8_pro_max-20_premium_dct_awd-suv-2024",
+          "calificaciones": { "estetica": 3 },
+          "aviso": "APARTADA: alguien más la reservó, pero si no la compra vuelve a estar disponible. 2.0T Premium AWD con 28,554 km (casi en el límite de 30,000). No sabemos si trae el diseño nuevo: la calificamos con el anterior (estética 3) hasta ver fotos. El link es la página de esa versión en Kavak, sin el número de la unidad.",
           "tres_filas": { "confirmado": true, "nota": "La Pro Max es de 7 pasajeros." }
         },
         {
@@ -155,6 +146,7 @@
 
   "descartadas_intro": "Antes de quedarnos con estas opciones revisamos otras camionetas de 3 filas que se venden en México (búsqueda del 29 de octubre de 2026 en Kavak, Wahu, Albacar, Seminuevos y Mercado Libre).",
   "descartadas": [
+    { "nombre": "Tiggo 8 Pro Max 2025 que no se pudieron confirmar", "motivo": "La de Monterrey (Albacar, 1,000 km) aparece en Autocosmos como Pro Max 4x4, pero su anuncio de Seminuevos.com dice Tiggo 8 Pro 1.5 híbrida enchufable, en $449,999. La de Dalton Zapopan (5,694 km, $599,000) ya no está en el sitio de Dalton y pasaba el tope. No encontramos ninguna Pro Max AWD 2025 activa dentro del presupuesto." },
     { "nombre": "GAC GS8 2.0T AWD (GX) y GS8 2.0T", "motivo": "Descartadas por estética: no nos gustan nada (estética 1). La 4x4 sí subía bien: la de Dalton Guadalajara, 2024 con 23,089 km, estaba en $478,356." },
     { "nombre": "Chirey Tiggo 8 Pro 1.6T", "motivo": "No sube bien: motor 1.6T y tracción delantera (montaña 2). Teníamos 4 unidades entre $371,999 y $459,900; la de Tlalnepantla se anunciaba como Pro Max 4WD pero el emblema dice 290T (1.6T)." },
     { "nombre": "Chirey Tiggo 8 Pro Max 2.0T sin AWD", "motivo": "Mucho motor (250 hp), pero solo tracción delantera: puede patinar al arrancar en subida mojada (montaña 3). La de Kavak, 2023 con 22,835 km, estaba en $320,999." },
