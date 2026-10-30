@@ -85,6 +85,14 @@
       "por_que": "La más todoterreno; sin pruebas de choque, descontinuada, y la marca sale mal en confiabilidad (J.D. Power México 2025, lugar 19 de 21).",
       "unidades": [
         {
+          "id": "mgrx8-2024-mg-satelite",
+          "anio": 2024, "km": 4511, "precio": 410000, "precio_nota": "registrado en Notion el 29-oct",
+          "ciudad": "Tlalnepantla, Edomex", "vendedor": "MG Seminuevos Satélite",
+          "anuncio": "https://www.seminuevos.com/vehicle/autos-mg-rx8-tlalnepantla_de_baz-2024/4837119",
+          "aviso": "Casi nueva (4,511 km) y vendida por una agencia MG: conviene preguntar si conserva la garantía de fábrica. Sus fotos se bajan solas la próxima vez que corras publicar.bat en tu computadora.",
+          "tres_filas": { "confirmado": true, "nota": "La RX8 es de 7 pasajeros." }
+        },
+        {
           "id": "mgrx8-2024-kavak-cdmx",
           "anio": 2024, "km": 15849, "precio": 341999, "precio_nota": "con Kavak Crédito; de contado $386,999; más tarifa de servicio y tenencia 2026",
           "ciudad": "CDMX", "vendedor": "Kavak",
@@ -106,8 +114,8 @@
       "id": "mgrx9",
       "nombre": "MG RX9 2.0T AWD",
       "ficha": {"potencia": "201 hp", "torque": "350 Nm (258 lb-pie)", "transmision": "Automática de 9 velocidades", "traccion": "Integral (AWD) en la versión Premier; sin reductora", "traccion_corta": "AWD", "transmision_corta": "Automática 9 vel.", "despeje": "No encontrado", "modos": "Seis modos, incluido Todo Terreno (sitio de MG México)", "pendiente": "No encontrado", "bolsas": "No encontrado", "rendimiento": "No encontrado", "valle": "La sucesora de la RX8, pero de otro tipo: chasis de auto con tracción integral, sin reductora ni bloqueo. Buena para lluvia y empedrado; para subir es más justa que la Pro Max (201 hp en una camioneta más grande).", "fuentes": [{"nombre": "MG México", "url": "https://www.mgmotor.com.mx/vehiculos/RX9"}, {"nombre": "Xataka", "url": "https://www.xataka.com.mx/automovil/mg-rx9-llega-a-mexico-motor-2-0-litros-turbo-rines-21-pulgadas-espacio-para-siete-pasajeros-precio-lanzamiento"}]},
-      "calificaciones": { "seguridad": 3.5, "espacio": 4.5, "montana": 4, "estetica": 5, "costo": 2, "confiabilidad": 1.5, "consumo": 2.5, "equipamiento": 5, "agencia": 3 },
-      "por_que": "Estética 5: la que más nos gusta. El resto es calificación provisional. Es la versión nueva de la RX8: más grande y cómoda, con tracción integral, pero sin reductora. Nueva cuesta unos $777,000–870,000; seminueva 2025 desde unos $525,000, arriba del tope.",
+      "calificaciones": { "seguridad": 4.5, "espacio": 4.5, "montana": 4, "estetica": 5, "costo": 2, "confiabilidad": 1.5, "consumo": 2.5, "equipamiento": 5, "agencia": 3 },
+      "por_que": "Estética 5: la que más nos gusta. Seguridad 4.5: tiene 5 estrellas ANCAP (en Australia se vende como MG QS). El resto es calificación provisional. Es la versión nueva de la RX8: más grande y cómoda, con tracción integral, pero sin reductora. Nueva cuesta unos $777,000–870,000; seminueva 2025 desde unos $525,000, arriba del tope.",
       "unidades": [
         {
           "id": "mgrx9-2025-kavak-cdmx",
