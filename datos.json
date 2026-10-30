@@ -152,12 +152,27 @@
       "unidades": [
         {
           "id": "mgrx9-2025-kavak-cdmx",
-          "anio": 2025, "km": 18623, "precio": 525999, "precio_nota": "\"precio desde\" en Kavak, 30-oct",
-          "ciudad": "CDMX", "vendedor": "Kavak",
-          "anuncio": "https://www.kavak.com/mx/seminuevos?keyword=MG+rx9",
-          "descargar_fotos": false,
-          "aviso": "Kavak sí la anuncia (2.0 Premier 4WD, 18,623 km, desde $525,999, entrega en 11 a 15 días), pero el link abre la búsqueda de RX9: no conseguimos el link directo. El precio está muy abajo de otras RX9 2025 ($593,000–690,900): confirmar que sea precio de contado y no de financiamiento.",
-          "tres_filas": { "confirmado": true, "nota": "La RX9 es de 7 pasajeros (2+3+2), según MG México." }
+          "anio": 2025, "km": 18623, "precio": 572999, "precio_nota": "de contado; $541,999 con Kavak Crédito; más tarifa de servicio y tenencia 2026",
+          "ciudad": "CDMX (sucursal Lerma)", "vendedor": "Kavak",
+          "anuncio": "https://www.kavak.com/mx/usado/mg-rx9-20_premier_auto_4wd-suv-2025?id=538276",
+          "aviso": "Confirmado en Kavak: Premier 4WD, 7 pasajeros, entrega inmediata. Los $525,999 que se veían eran con crédito: de contado son $572,999, y pasa el tope por $85,000. Sus fotos se bajan solas la próxima vez que corras publicar.bat en tu computadora; el anuncio no trae fotos de la tercera fila ni de la cajuela.",
+          "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros, 3 filas." }
+        },
+        {
+          "id": "mgrx9-2025-dalton-88494",
+          "anio": 2025, "km": 2402, "precio": 517563, "precio_nota": "de liquidación (30-oct); garantía Dalton aparte por $13,500",
+          "ciudad": "Guadalajara", "vendedor": "Dalton Seminuevos Centro Magno",
+          "anuncio": "https://www.daltonseminuevos.com.mx/autos/mg-rx9-seminuevo-2025-88494",
+          "aviso": "El anuncio se contradice: la descripción dice tracción delantera y la ficha dice 5 asientos, aunque la versión dice 7 pasajeros. En las fotos el emblema trasero solo dice RX9. Pedir a Dalton por escrito tracción y plazas. Ha tenido 2 dueños.",
+          "tres_filas": { "confirmado": false, "nota": "La versión dice 7 pasajeros, pero la ficha dice 5 asientos: confirmar con foto." }
+        },
+        {
+          "id": "mgrx9-2025-dalton-88850",
+          "anio": 2025, "km": 8501, "precio": 517563, "precio_nota": "de liquidación (30-oct); se ha visto hasta en $598,979; garantía Dalton aparte por $13,500",
+          "ciudad": "Zapopan, Jalisco", "vendedor": "Dalton Seminuevos López Mateos",
+          "anuncio": "https://www.daltonseminuevos.com.mx/autos/mg-rx9-seminuevo-2025-88850",
+          "aviso": "El anuncio no dice la tracción y se contradice en las plazas (7 pasajeros en la versión, 5 asientos en la ficha). En las fotos el emblema trasero solo dice RX9. Ha tenido 3 dueños siendo 2025: preguntar por qué.",
+          "tres_filas": { "confirmado": false, "nota": "La versión dice 7 pasajeros, pero la ficha dice 5 asientos: confirmar con foto." }
         }
       ]
     },
@@ -170,20 +185,21 @@
       "unidades": [
         {
           "id": "gs8awd-2024-kavak-cdmx",
-          "anio": 2024, "km": 50422, "precio": 460999, "precio_nota": "en Kavak, 30-oct; en Mercado Libre se ha visto en $466,999 y $538,999",
+          "anio": 2024, "km": 50422, "precio": 466999, "precio_nota": "de contado (30-oct)",
           "ciudad": "CDMX", "vendedor": "Kavak",
-          "anuncio": "https://www.kavak.com/mx/vehiculos/gac/gs8",
-          "descargar_fotos": false,
-          "aviso": "Una búsqueda mostró una GS8 GX 4WD 2024 de Kavak con 17,000 km en $481,999, pero no aparece en ningún otro lado: la quitamos. La que sí está en Kavak tiene 50,422 km (único dueño). El link abre la página de la GS8 en Kavak, no el anuncio directo.",
+          "anuncio": "https://www.kavak.com/mx/usado/gac-gs8-20t_gx_4wd_auto-suv-2024?id=553728",
+          "aviso": "Es la única GS8 GX 4WD que tiene Kavak hoy; pasa del máximo de kilometraje. La de 17,000 km que apareció en una búsqueda ya no está en Kavak (probablemente se vendió). Sus fotos se bajan solas la próxima vez que corras publicar.bat en tu computadora.",
+
           "tres_filas": { "confirmado": true, "nota": "La GS8 es de 7 pasajeros." }
         },
         {
           "id": "gs8awd-2024-dalton-guadalajara",
-          "anio": 2024, "km": 23089, "precio": 483956, "precio_nota": "de liquidación, según la ficha de Dalton (30-oct)",
-          "ciudad": "Guadalajara", "vendedor": "Dalton Seminuevos",
+          "anio": 2024, "km": 23089, "precio": 478356, "precio_nota": "de liquidación (30-oct); garantía Dalton aparte por $13,500",
+          "ciudad": "Zapopan, Jalisco", "vendedor": "Dalton Seminuevos López Mateos",
           "anuncio": "https://www.daltonseminuevos.com.mx/autos/gac-gs8-seminuevo-2024-90237",
           "descargar_fotos": false,
-          "aviso": "La ficha de Dalton dice $483,956 de liquidación (precio de mercado $560,000) y su página de modelos GS8 la muestra en $467,156. En Mercado Libre aparece más cara. Confirmar el precio vigente con la sucursal López Mateos, Guadalajara.",
+          "aviso": "Confirmada: anuncio activo y en las fotos el emblema trasero dice GS8 4WD. El precio ha cambiado varias veces ($467,156 a $483,956; en Mercado Libre, $561,090): confirmar el precio final y si la garantía de $13,500 va aparte.",
+
           "tres_filas": { "confirmado": true, "nota": "La GS8 es de 7 pasajeros." }
         }
       ]
