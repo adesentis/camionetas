@@ -48,7 +48,9 @@ ul.lista li { margin-bottom: 6px; }
 .crit { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
 .crit:last-child { border-bottom: 0; }
 .crit b { font-weight: 600; }
-.crit .peso { font-weight: 600; color: var(--accent); }
+.crit .peso { font-weight: 700; font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+.crit .parte { grid-column: 1 / -1; height: 6px; background: var(--track); border-radius: 3px; overflow: hidden; margin: 2px 0 4px; }
+.crit .parte i { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
 .crit .muted { grid-column: 1 / -1; }
 .leyenda { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; font-size: .85rem; color: var(--muted); }
 .leyenda i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
@@ -240,7 +242,7 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
 
   <section id="calificamos"><h2>Cómo calificamos</h2>
     <div class="card">
-      <p class="muted">Cada criterio se califica de 1 a 5. El peso dice cuánto cuenta; el porcentaje es su parte del total. Puntaje final = suma de (calificación × peso) ÷ suma de pesos. Los criterios marcados "automático" se calculan con los datos de cada anuncio.</p>
+      <p class="muted">Cada camioneta se califica de 1 a 5 en cada criterio. El porcentaje dice cuánto cuenta ese criterio en el puntaje final; entre todos suman 100%. Por ejemplo, Montaña y lluvia vale casi la cuarta parte de la calificación. Los criterios marcados "automático" se calculan solos con el precio, el kilometraje y el año de cada anuncio.</p>
       <div id="criterios"></div>
       <div class="leyenda"><span><i style="background:var(--verde)"></i>4 a 5: bien</span><span><i style="background:var(--azul)"></i>2.5 a 3.5: regular</span><span><i style="background:var(--rojo)"></i>2 o menos: flojo</span></div>
     </div>
@@ -274,7 +276,7 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
 
   <section id="pesos"><h2>Mover los pesos</h2>
     <div class="card">
-      <p class="muted">Mueve los pesos para ver cómo cambiaría el ranking. No tienen que sumar 100: cada uno cuenta en proporción a la suma.</p>
+      <p class="muted">Mueve los deslizadores para darle más o menos importancia a cada criterio y ver cómo cambia el ranking. Junto a cada uno ves cuánto cuenta en el puntaje final; siempre suman 100%.</p>
       <div id="sliders"></div>
       <p class="suma" id="sumaPesos"></p>
       <ol class="ranking" id="rankingPesos"></ol>
@@ -400,7 +402,17 @@ const DATOS = {"titulo": "Camionetas para reemplazar la CX-5", "subtitulo": "Las
   }), { rootMargin: "-45% 0px -50% 0px" });
   document.querySelectorAll("main > section").forEach(s => obs.observe(s));
   $("porRevisar").innerHTML = D.por_revisar.map(r => `<li>${esc(r)}</li>`).join("");
-  $("criterios").innerHTML = C.map(c => `<div class="crit"><b>${esc(c.nombre)}${c.auto ? ` <span class="badge">automático</span>` : ""}</b><span class="peso">${c.peso} <span class="muted">· ${Math.round(c.peso * 100 / C.reduce((s, x) => s + x.peso, 0))}%</span></span><span class="muted">${esc(c.explicacion)}</span></div>`).join("");
+  // Porcentajes enteros que suman exactamente 100 (los que más redondean hacia abajo reciben el punto que falta).
+  function porcentajes(w) {
+    const total = C.reduce((s, c) => s + w[c.id], 0) || 1;
+    const crudo = C.map(c => ({ id: c.id, v: w[c.id] * 100 / total }));
+    const r = Object.fromEntries(crudo.map(x => [x.id, Math.floor(x.v)]));
+    let falta = 100 - Object.values(r).reduce((s, v) => s + v, 0);
+    [...crudo].sort((a, b) => (b.v % 1) - (a.v % 1)).forEach(x => { if (falta > 0 && w[x.id] > 0) { r[x.id]++; falta--; } });
+    return r;
+  }
+  const pct0 = porcentajes(PESOS_ORIG), maxPct = Math.max(...Object.values(pct0));
+  $("criterios").innerHTML = [...C].sort((a, b) => pct0[b.id] - pct0[a.id]).map(c => `<div class="crit"><b>${esc(c.nombre)}${c.auto ? ` <span class="badge">automático</span>` : ""}</b><span class="peso">${pct0[c.id]}%</span><span class="parte"><i style="width:${pct0[c.id] * 100 / maxPct}%"></i></span><span class="muted">${esc(c.explicacion)}</span></div>`).join("");
   const desc = D.descartadas || [];
   if (desc.length) {
     $("descartadasIntro").textContent = D.descartadas_intro || "";
@@ -598,7 +610,7 @@ const DATOS = {"titulo": "Camionetas para reemplazar la CX-5", "subtitulo": "Las
     });
     lineas.push("", "Mis 5 primeras:");
     ordenar(pesos, opinion).slice(0, 5).forEach((x, i) => lineas.push(`${i + 1}. ${x.o.nombre} ${x.u.anio}, ${num(x.u.km)} km, ${dinero(x.u.precio)}: ${fmt(x.p)}`));
-    if (pesosCambiados()) lineas.push("", "Pesos que usé: " + C.map(c => `${c.nombre} ${pesos[c.id]}`).join(", "));
+    if (pesosCambiados()) lineas.push("", "Cuánto le di a cada criterio: " + (pct => C.map(c => `${c.nombre} ${pct[c.id]}%`).join(", "))(porcentajes(pesos)));
     if (comentario.trim()) lineas.push("", "Comentarios generales:", comentario.trim());
     return lineas.join("\n");
   }
@@ -631,9 +643,10 @@ const DATOS = {"titulo": "Camionetas para reemplazar la CX-5", "subtitulo": "Las
       el.textContent = opinion[u.id] != null ? `Cuenta tu ${opinion[u.id]}. Toca el mismo número para quitarlo.`
         : `Sin calificar: cuenta mi ${valor(cOp, o, u)}.`;
     }));
-    C.forEach(c => { $("w-" + c.id).value = pesos[c.id]; $("wv-" + c.id).textContent = pesos[c.id]; });
+    const pct = porcentajes(pesos);
+    C.forEach(c => { $("w-" + c.id).value = pesos[c.id]; $("wv-" + c.id).textContent = pct[c.id] + "%"; });
     const suma = C.reduce((s, c) => s + pesos[c.id], 0);
-    $("sumaPesos").textContent = `Suma de pesos: ${suma}`;
+    $("sumaPesos").textContent = suma ? "" : "Sube al menos un criterio arriba de 0%.";
     pintarTabla(); pintarWhats();
   }
   pintar();
