@@ -86,7 +86,7 @@
       "unidades": [
         {
           "id": "mgrx8-2024-kavak-cdmx",
-          "anio": 2024, "km": 15849, "precio": 386999, "precio_nota": "de contado; $341,999 con Kavak Crédito; más tarifa de servicio y tenencia 2026",
+          "anio": 2024, "km": 15849, "precio": 341999, "precio_nota": "con Kavak Crédito; de contado $386,999; más tarifa de servicio y tenencia 2026",
           "ciudad": "CDMX", "vendedor": "Kavak",
           "revisado": {"fecha": "30-oct", "texto": "activo en Kavak", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/mg-rx8-20_elegance_auto_4wd-suv-2024?id=517216",
@@ -94,7 +94,7 @@
         },
         {
           "id": "mgrx8-2023-kavak-cdmx",
-          "anio": 2023, "km": 11482, "precio": 358999, "precio_nota": "de contado; $350,999 con Kavak Crédito; más tarifa de servicio y tenencia 2026",
+          "anio": 2023, "km": 11482, "precio": 350999, "precio_nota": "con Kavak Crédito; de contado $358,999; más tarifa de servicio y tenencia 2026",
           "ciudad": "CDMX", "vendedor": "Kavak",
           "revisado": {"fecha": "30-oct", "texto": "activo en Kavak", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/mg-rx8-20_elegance_auto_4wd-suv-2023?id=539261",
@@ -111,11 +111,11 @@
       "unidades": [
         {
           "id": "mgrx9-2025-kavak-cdmx",
-          "anio": 2025, "km": 18623, "precio": 572999, "precio_nota": "de contado; $541,999 con Kavak Crédito; más tarifa de servicio y tenencia 2026",
+          "anio": 2025, "km": 18623, "precio": 541999, "precio_nota": "con Kavak Crédito; de contado $572,999; más tarifa de servicio y tenencia 2026",
           "ciudad": "CDMX (sucursal Lerma)", "vendedor": "Kavak",
           "revisado": {"fecha": "30-oct", "texto": "activo, entrega inmediata", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/mg-rx9-20_premier_auto_4wd-suv-2025?id=538276",
-          "aviso": "Confirmado en Kavak: Premier 4WD, 7 pasajeros, entrega inmediata. Los $525,999 que se veían eran con crédito: de contado son $572,999, y pasa el tope por $85,000. Sus fotos se bajan solas la próxima vez que corras publicar.bat en tu computadora; el anuncio no trae fotos de la tercera fila ni de la cajuela.",
+          "aviso": "Confirmado en Kavak: Premier 4WD, 7 pasajeros, entrega inmediata. Con Kavak Crédito cuesta $541,999 (de contado, $572,999): pasa el tope por unos $54,000. Sus fotos se bajan solas la próxima vez que corras publicar.bat en tu computadora; el anuncio no trae fotos de la tercera fila ni de la cajuela.",
           "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros, 3 filas." }
         },
         {
