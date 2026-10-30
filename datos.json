@@ -7,7 +7,7 @@
     "Que quepan dos sillas infantiles.",
     "Vivimos en Valle de Bravo: subidas largas, empedrado y lluvia. Viajamos seguido a CDMX y Querétaro.",
     "Seminueva, modelo 2023 o más reciente, con menos de 30,000 km.",
-    "Pagar como máximo $250,000 de diferencia después de vender la CX-5 (Kavak ofrece unos $238,000).",
+    "Pagar como máximo $250,000 de diferencia después de vender la CX-5 (Kavak ofrece $221,944 a cuenta, vigente hasta el 7 de noviembre; venta directa, $213,805).",
     "Nada 100% eléctrico."
   ],
 
@@ -15,7 +15,7 @@
     "anio_minimo": 2023,
     "anio_referencia": 2026,
     "km_maximo": 30000,
-    "venta_actual": 238000,
+    "venta_actual": 221944,
     "diferencia_maxima": 250000,
     "montana_minima": 4
   },
@@ -123,7 +123,8 @@
           "ciudad": "CDMX (sucursal Lerma)", "vendedor": "Kavak",
           "revisado": {"fecha": "30-oct", "texto": "activo, entrega inmediata", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/mg-rx9-20_premier_auto_4wd-suv-2025?id=538276",
-          "aviso": "Confirmado en Kavak: Premier 4WD, 7 pasajeros, entrega inmediata. Con Kavak Crédito cuesta $541,999 (de contado, $572,999): pasa el tope por unos $54,000. Sus fotos se bajan solas la próxima vez que corras publicar.bat en tu computadora; el anuncio no trae fotos de la tercera fila ni de la cajuela.",
+          "aviso": "Confirmada con Kavak el 30-oct: disponible hoy en Lerma. Con la CX-5 a cuenta ($221,944) la diferencia es $320,055 financiada o $351,055 de contado, sin contar tarifa de servicio ni tenencia 2026: pasa el tope por unos $70,000. Sus fotos se bajan solas la próxima vez que corras publicar.bat en tu computadora; el anuncio no trae fotos de la tercera fila ni de la cajuela.",
+
           "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros, 3 filas." }
         },
         {
