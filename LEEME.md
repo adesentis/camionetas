@@ -94,6 +94,9 @@ Si son capturas del celular, pásaselas a Claude para que les recorte botones, f
 Doble clic en `publicar.bat`. Rehace la página y la sube. En 1 o 2 minutos el link muestra la versión nueva
 (si no la ves en el celular, recarga la página).
 
+**Si sigues viendo la versión anterior:** el navegador guarda la página hasta 10 minutos. Abre el link que
+`publicar.bat` muestra al final (termina en `?v=...`) o, en la computadora, presiona **Ctrl + F5**.
+
 El link no cambia nunca: lo que ya mandaste por WhatsApp siempre muestra la versión más reciente.
 
 ## 6. Usarlo para otra compra (no camionetas)

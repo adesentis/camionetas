@@ -2,6 +2,7 @@
 
 Uso:  python publicar.py
 """
+import re
 import subprocess
 import sys
 from datetime import datetime
@@ -28,6 +29,11 @@ def main():
     if r.returncode:
         sys.exit("\nNo se pudo subir a GitHub:\n" + r.stderr)
     print("\nPublicado. GitHub tarda 1 o 2 minutos en mostrar los cambios en el link.")
+    # El navegador guarda la página hasta 10 minutos; este link con ?v= la abre recién subida.
+    m = re.search(r"github\.com[/:]([^/]+)/([^/.]+)", git("remote", "get-url", "origin").stdout)
+    if m:
+        version = git("rev-parse", "--short", "HEAD").stdout.strip()
+        print(f"Para verla ya, sin la copia vieja del navegador: https://{m.group(1)}.github.io/{m.group(2)}/?v={version}")
 
 
 if __name__ == "__main__":
