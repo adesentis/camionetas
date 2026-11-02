@@ -193,6 +193,10 @@ ol.ranking li.bronce::before { background: #d39a6a; color: #3a1d06; }
 .nov b { display: block; font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 2px; }
 .nov.vieja { display: none; }
 #listaNovedades.todas .nov.vieja { display: block; }
+/* Análisis del día */
+#analisisTexto p { margin: 0 0 10px; line-height: 1.5; }
+#analisisTexto p:last-child { margin-bottom: 0; font-weight: 600; }
+#analisisFecha { margin: 0 0 8px; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; }
 /* Tablero: vista general de modelos arriba de todo */
 .filtros { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 12px; }
 .filtros button { font-size: .82rem; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--text); }
@@ -247,6 +251,10 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
 
   <section id="novedades" hidden><h2>Novedades</h2>
     <div class="card"><div id="listaNovedades"></div></div>
+  </section>
+
+  <section id="analisis" hidden><h2>Análisis del día</h2>
+    <div class="card"><p class="muted" id="analisisFecha"></p><div id="analisisTexto"></div></div>
   </section>
 
   <section id="tablero"><h2>Resumen de modelos</h2>
@@ -525,6 +533,13 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
     $("listaNovedades").innerHTML = NOV.map((n, i) => `<div class="nov ${i > 2 ? "vieja" : ""}"><b>${esc(n.fecha)}</b>${esc(n.texto)}</div>`).join("")
       + (NOV.length > 3 ? `<button type="button" class="btn" id="verNov" style="margin-top:8px">Ver anteriores</button>` : "");
     if ($("verNov")) $("verNov").onclick = e => { $("listaNovedades").classList.add("todas"); e.target.remove(); };
+  }
+
+  // --- Análisis del día (lo reescribe la búsqueda diaria) ---
+  if (D.analisis && (D.analisis.parrafos || []).length) {
+    $("analisis").hidden = false;
+    $("analisisFecha").textContent = "Actualizado: " + D.analisis.fecha;
+    $("analisisTexto").innerHTML = D.analisis.parrafos.map(x => `<p>${esc(x)}</p>`).join("");
   }
 
   // --- Tablero ---

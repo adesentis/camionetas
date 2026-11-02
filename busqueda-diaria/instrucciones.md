@@ -78,7 +78,17 @@ Si en `datos.json` existe `"busqueda_diaria_activa": false`, no hagas nada y ter
    entraron, cuáles salieron, cambios de precio, pistas sin confirmar y bloqueos. Si no hubo cambios,
    dilo en una línea. Deja solo las 15 entradas más recientes.
 
-7. **Publica:** `python publicar.py`. Si falla al subir, escribe el error en
+7. **Análisis del día:** reescribe el campo `analisis` de `datos.json` como
+   `{ "fecha": "DD-mmm", "parrafos": [ ... ] }`, usando las 5 primeras del ranking que imprime
+   `generar.py` (las confirmadas como disponibles primero). Es texto corrido, no tabla:
+   - Un párrafo corto por camioneta: modelo, año, km y precio total; qué la hace buena y qué en contra
+     (presupuesto, montaña y lluvia, seguridad, espacio, confiabilidad, gusto de Alfredo, dudas pendientes).
+     Si dos unidades son del mismo modelo, júntalas en un solo párrafo y di en qué se diferencian.
+   - Un último párrafo de 1 o 2 frases que ayude a decidir ("si manda el presupuesto…, si manda el gusto…").
+   - Palabras sencillas, sin tecnicismos, 180 palabras como máximo en total. Solo datos que estén en
+     `datos.json`; no inventes nada. Luego vuelve a correr `python generar.py`.
+
+8. **Publica:** `python publicar.py`. Si falla al subir, escribe el error en
    `busqueda-diaria/ultimo-error.txt` y termina.
 
 Al final, imprime el mismo resumen de las novedades.

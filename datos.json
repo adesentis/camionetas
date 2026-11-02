@@ -38,6 +38,16 @@
   "criterio_opinion": "estetica",
 
   "busqueda_diaria_activa": true,
+  "analisis": {
+      "fecha": "02-nov",
+      "parrafos": [
+          "MG RX9 2025 de Dalton Guadalajara (2,402 km, $517,563): la que más te gusta y la más nueva, grande y segura (5 estrellas ANCAP). En contra: pasa tu presupuesto por unos $45,000, está en Guadalajara, y su anuncio no deja claro si es 4x4 ni si trae 7 asientos. La de Zapopan (8,501 km, mismo precio) es igual, pero ha tenido 3 dueños.",
+          "MG RX8 2023 de Kavak (11,482 km, $376,949): la más barata de las buenas y la más capaz en montaña, con 4x4 de verdad y reductora. En contra: está descontinuada, MG sale mal en confiabilidad, no tiene pruebas de choque y su diseño es el que menos te gusta.",
+          "MG RX8 2024 de Kavak (15,849 km, $406,349): la misma camioneta un año más nueva, por $29,000 más. Mismos pros y contras que la 2023.",
+          "Tiggo 8 Pro Max AWD 2024 de Puebla (21,135 km, $439,900, negociable): punto medio. Tracción integral y 250 hp para subir, buen equipo y diseño que te gusta; entra en el presupuesto. En contra: gasta más gasolina y la cajuela es chica con la tercera fila arriba.",
+          "En resumen: si el presupuesto manda, la Pro Max de Puebla es la más equilibrada y la RX8 la más barata y todoterreno. Si manda el gusto, la RX9, siempre que Dalton confirme 4x4 y 7 asientos y acepte bajar unos $45,000."
+      ]
+  },
   "novedades": [
     { "fecha": "02-nov", "texto": "Revisión diaria: no entraron unidades nuevas. Salió la Tiggo 8 Pro 2023 de 1,900 km de Kavak (ya no está en su catálogo). Precios corregidos en Kavak: los $320,999 de la Pro Max sin AWD y los $401,999 de la Tiggo 8 Pro 2025 eran con crédito; de contado son $334,999 y $418,999. Bajó el precio con crédito de la RX9 de Kavak ($521,999) y de la Commander ($453,999). La Pro Max AWD de 28,554 km sigue apartada en Kavak. Mercado Libre bloqueó sus páginas: las dos Chirey de ahí no se pudieron revisar. Las RX9 Premier que aparecen en Mercado Libre y Seminuevos.com piden $650,000 o más: arriba del tope." },
     { "fecha": "02-nov", "texto": "Primera revisión desde la PC de escritorio: la RX8 de MG Satélite ya no está publicada (pasa a descartadas); la RX9 de Kavak tiene 18,623 km, no 17,622; el link de la Pro Max apartada de Kavak muestra otra unidad, de 34,756 km. Además, ya no es obligatoria la tracción integral: basta con que suba mejor que la CX-5." },

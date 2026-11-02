@@ -11,7 +11,8 @@ escritorio está en `C:\Users\Alfredo Oficina\Downloads\Proyectos Claude Code\Co
 - `datos.json`: todo el contenido (filtros, criterios, modelos, unidades, descartadas, novedades).
 - `generar.py` arma `index.html` y baja fotos; `publicar.py` (o `publicar.bat`) hace pull, genera y publica.
 - `busqueda-diaria/instrucciones.md`: lo que Claude Code hace cada mañana a las 8:00 en la PC de
-  escritorio (tarea de Windows "Camionetas - busqueda diaria"). Ver `LEEME.md`.
+  escritorio (tarea de Windows "Camionetas - busqueda diaria"): revisa anuncios, busca unidades,
+  escribe Novedades y el "Análisis del día" (top 5 en texto corrido). Ver `LEEME.md`.
 
 ## Cómo trabajar con Alfredo
 
