@@ -158,3 +158,31 @@ De ahí en adelante, solo `publicar.bat`.
   Puedes pegar el contenido del archivo en https://jsonlint.com para que te diga en qué línea está el problema.
 - **"python no se reconoce":** Python no está instalado en esa computadora.
 - **No sube a GitHub:** abre `publicar.bat` otra vez; si pide iniciar sesión, entra con tu cuenta de GitHub.
+
+---
+
+## Búsqueda diaria automática (PC de escritorio)
+
+Todos los días a las 8:00 am, la PC de escritorio le pide a Claude Code que:
+
+1. Revise si las camionetas de la página siguen a la venta y si cambió su precio.
+2. Busque unidades nuevas que cumplan los filtros de `datos.json`.
+3. Baje sus fotos (tapando placas), actualice la página y la publique.
+4. Escriba un resumen en la sección **Novedades**, hasta arriba de la página.
+
+Las instrucciones que sigue están en `busqueda-diaria/instrucciones.md`. Si quieres cambiar
+algo de la búsqueda, se lo pides a Claude y él cambia ese archivo.
+
+**Instalarla (una sola vez, en la PC de escritorio):**
+1. Abre la carpeta `camionetas`, escribe `cmd` en la barra de dirección de arriba y da Enter.
+2. Escribe `git pull` y da Enter, para bajar lo último.
+3. Doble clic en `instalar-busqueda-diaria.bat`.
+4. Para probarla en ese momento, doble clic en `busqueda-diaria.bat` (tarda varios minutos).
+
+**Cosas que conviene saber:**
+- La PC tiene que estar prendida y con tu sesión de Windows abierta. Si a las 8:00 estaba apagada,
+  la búsqueda corre en cuanto la prendas.
+- Usa tu suscripción de Claude, como cuando lo usas a mano.
+- Lo que hizo cada día queda en la carpeta `busqueda-diaria\registro`.
+- **Pausarla:** en `datos.json` cambia `"busqueda_diaria_activa": true` por `false`.
+- **Quitarla del todo** (por ejemplo, cuando ya compres): doble clic en `desinstalar-busqueda-diaria.bat`.

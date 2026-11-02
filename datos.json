@@ -37,6 +37,11 @@
 
   "criterio_opinion": "estetica",
 
+  "busqueda_diaria_activa": true,
+  "novedades": [
+    { "fecha": "02-nov", "texto": "Se preparó la búsqueda diaria: desde mañana, a las 8:00 am, la PC de escritorio revisa los anuncios, busca unidades nuevas y actualiza esta página. Aquí verás cada día qué cambió." }
+  ],
+
   "opciones": [
     {
       "id": "tiggo8promax",

@@ -1,2 +1,6 @@
 __pycache__/
 *.pyc
+
+# Registros de la busqueda diaria (se quedan en la computadora)
+busqueda-diaria/registro/
+busqueda-diaria/ultimo-error.txt

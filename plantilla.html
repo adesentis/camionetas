@@ -180,6 +180,12 @@ ol.ranking li.bronce::before { background: #d39a6a; color: #3a1d06; }
 .desc b { font-weight: 600; }
 .desc .muted { display: block; margin-top: 2px; }
 .suma { font-size: .85rem; color: var(--muted); margin: 10px 0; }
+/* Novedades de la búsqueda diaria */
+.nov { padding: 8px 0; border-bottom: 1px solid var(--line); font-size: .92rem; }
+.nov:last-child { border-bottom: 0; }
+.nov b { display: block; font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 2px; }
+.nov.vieja { display: none; }
+#listaNovedades.todas .nov.vieja { display: block; }
 /* Tablero: vista general de modelos arriba de todo */
 .filtros { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 12px; }
 .filtros button { font-size: .82rem; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--text); }
@@ -231,6 +237,10 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
     <p class="muted" id="subtitulo"></p>
     <div class="resumen" id="resumen"></div>
   </header>
+
+  <section id="novedades" hidden><h2>Novedades</h2>
+    <div class="card"><div id="listaNovedades"></div></div>
+  </section>
 
   <section id="tablero"><h2>Resumen de modelos</h2>
     <p class="muted">Toca un modelo para ver sus detalles, fotos y unidades. El puntaje es el de su mejor unidad.</p>
@@ -500,6 +510,15 @@ footer { margin-top: 36px; font-size: .78rem; color: var(--muted); }
     nav.querySelector("[data-prev]").onclick = () => ir(actual() - 1);
     nav.querySelector("[data-next]").onclick = () => ir(actual() + 1);
   });
+
+  // --- Novedades (las escribe la búsqueda diaria) ---
+  const NOV = D.novedades || [];
+  if (NOV.length) {
+    $("novedades").hidden = false;
+    $("listaNovedades").innerHTML = NOV.map((n, i) => `<div class="nov ${i > 2 ? "vieja" : ""}"><b>${esc(n.fecha)}</b>${esc(n.texto)}</div>`).join("")
+      + (NOV.length > 3 ? `<button type="button" class="btn" id="verNov" style="margin-top:8px">Ver anteriores</button>` : "");
+    if ($("verNov")) $("verNov").onclick = e => { $("listaNovedades").classList.add("todas"); e.target.remove(); };
+  }
 
   // --- Tablero ---
   const marca = o => o.marca || o.nombre.split(" ")[0];
