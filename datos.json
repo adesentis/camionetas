@@ -39,6 +39,7 @@
 
   "busqueda_diaria_activa": true,
   "novedades": [
+    { "fecha": "02-nov", "texto": "Revisión diaria: no entraron unidades nuevas. Salió la Tiggo 8 Pro 2023 de 1,900 km de Kavak (ya no está en su catálogo). Precios corregidos en Kavak: los $320,999 de la Pro Max sin AWD y los $401,999 de la Tiggo 8 Pro 2025 eran con crédito; de contado son $334,999 y $418,999. Bajó el precio con crédito de la RX9 de Kavak ($521,999) y de la Commander ($453,999). La Pro Max AWD de 28,554 km sigue apartada en Kavak. Mercado Libre bloqueó sus páginas: las dos Chirey de ahí no se pudieron revisar. Las RX9 Premier que aparecen en Mercado Libre y Seminuevos.com piden $650,000 o más: arriba del tope." },
     { "fecha": "02-nov", "texto": "Primera revisión desde la PC de escritorio: la RX8 de MG Satélite ya no está publicada (pasa a descartadas); la RX9 de Kavak tiene 18,623 km, no 17,622; el link de la Pro Max apartada de Kavak muestra otra unidad, de 34,756 km. Además, ya no es obligatoria la tracción integral: basta con que suba mejor que la CX-5." },
     { "fecha": "02-nov", "texto": "Se preparó la búsqueda diaria: desde mañana, a las 8:00 am, la PC de escritorio revisa los anuncios, busca unidades nuevas y actualiza esta página. Aquí verás cada día qué cambió." }
   ],
@@ -55,17 +56,17 @@
           "id": "tiggo8promax-2024-kavak-apartada",
           "anio": 2024, "km": 28554, "precio": 409499, "precio_nota": "$389,999 de contado + $19,500 de tarifa de servicio de Kavak (5%, tope $25,000); precio visto antes de que la apartaran; confirmar si es de contado; no incluye tenencia 2026",
           "ciudad": "CDMX", "vendedor": "Kavak",
-          "revisado": {"fecha": "30-oct", "texto": "apartada en Kavak; ofrece avisar si se libera", "tipo": "warn"},
+          "revisado": {"fecha": "02-nov", "texto": "sigue apartada en el catálogo de Kavak, sin precio", "tipo": "warn"},
           "anuncio": "https://www.kavak.com/mx/usado/chirey-tiggo_8_pro_max-20_premium_dct_awd-suv-2024",
           "calificaciones": { "estetica": 3 },
-          "aviso": "El 2-nov el link de Kavak mostraba otra Pro Max, de 34,756 km: la de 28,554 km quizá ya no está. APARTADA: alguien más la reservó, pero si no la compra vuelve a estar disponible. 2.0T Premium AWD con 28,554 km (casi en el límite de 30,000). No sabemos si trae el diseño nuevo: la calificamos con el anterior (estética 3) hasta ver fotos. El link es la página de esa versión en Kavak, sin el número de la unidad.",
+          "aviso": "El 2-nov el link de Kavak muestra otra Pro Max, de 34,756 km, pero la de 28,554 km sigue en el catálogo de Kavak como apartada. APARTADA: alguien más la reservó, pero si no la compra vuelve a estar disponible. 2.0T Premium AWD con 28,554 km (casi en el límite de 30,000). No sabemos si trae el diseño nuevo: la calificamos con el anterior (estética 3) hasta ver fotos. El link es la página de esa versión en Kavak, sin el número de la unidad.",
           "tres_filas": { "confirmado": true, "nota": "La Pro Max es de 7 pasajeros." }
         },
         {
           "id": "tiggo8promax-puebla",
           "anio": 2024, "km": 21135, "precio": 439900, "precio_nota": "negociable",
           "ciudad": "Puebla", "vendedor": "Kia Seminuevos Certificados Serdán",
-          "revisado": {"fecha": "30-oct", "texto": "activo; la ficha confirma 2.0T AWD 4x4", "tipo": "ok"},
+          "revisado": {"fecha": "02-nov", "texto": "activo; la ficha confirma 2.0T AWD 4x4 y 7 pasajeros", "tipo": "ok"},
           "anuncio": "https://seminuevos.com/vehicle/4829748",
           "calificaciones": { "estetica": 3 },
           "tres_filas": { "confirmado": true, "nota": "El anuncio dice 7 pasajeros y tercera fila de asientos." }
@@ -74,7 +75,7 @@
           "id": "tiggo8promax-2023-ml-cdmx",
           "anio": 2023, "km": 13200, "precio": 398445, "precio_nota": "",
           "ciudad": "Álvaro Obregón, CDMX", "vendedor": "Mercado Libre",
-          "revisado": {"fecha": "30-oct", "texto": "no se pudo confirmar: Mercado Libre no se deja abrir; revísalo tú", "tipo": "warn"},
+          "revisado": {"fecha": "02-nov", "texto": "no se pudo confirmar: Mercado Libre bloquea la página; revísalo tú", "tipo": "warn"},
           "anuncio": "https://auto.mercadolibre.com.mx/MLM-3485455377-chirey-tiggo-8-pro-max-20t-premium-4wd-_JM",
           "calificaciones": { "estetica": 3, "montana": 3 },
           "aviso": "Montaña 3 mientras no se confirme la tracción: el título dice 4WD, pero la ficha dice tracción delantera y en sus fotos no se ve el emblema trasero. Si el vendedor confirma 4WD (emblema 390T y 4WD), sube a 4.5 y vuelve a los primeros lugares.",
@@ -94,7 +95,7 @@
           "id": "mgrx8-2024-kavak-cdmx",
           "anio": 2024, "km": 15849, "precio": 406349, "precio_nota": "$386,999 de contado + $19,350 de tarifa (5%); financiado: $359,099 con tarifa, $47,250 menos: conviene solo si se puede liquidar el crédito en el primer mes sin penalización; no incluye tenencia 2026",
           "ciudad": "El Rosario Town Center, CDMX", "vendedor": "Kavak",
-          "revisado": {"fecha": "30-oct", "texto": "activo en Kavak (catálogo del 30-oct)", "tipo": "ok"},
+          "revisado": {"fecha": "02-nov", "texto": "activo en Kavak; mismo precio", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/mg-rx8-20_elegance_auto_4wd-suv-2024?id=517216",
           "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros. La foto de la cajuela muestra la tercera fila plegada." }
         },
@@ -102,7 +103,7 @@
           "id": "mgrx8-2023-kavak-cdmx",
           "anio": 2023, "km": 11482, "precio": 376949, "precio_nota": "$358,999 de contado + $17,950 de tarifa (5%); financiado: $368,549 con tarifa; no incluye tenencia 2026",
           "ciudad": "El Rosario Town Center, CDMX", "vendedor": "Kavak",
-          "revisado": {"fecha": "30-oct", "texto": "activo en Kavak (catálogo del 30-oct)", "tipo": "ok"},
+          "revisado": {"fecha": "02-nov", "texto": "activo en Kavak; mismo precio", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/mg-rx8-20_elegance_auto_4wd-suv-2023?id=539261",
           "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }
         }
@@ -117,9 +118,9 @@
       "unidades": [
         {
           "id": "mgrx9-2025-kavak-cdmx",
-          "anio": 2025, "km": 18623, "precio": 597999, "precio_nota": "$572,999 de contado + $25,000 de tarifa de servicio (tope que dice Kavak; sus términos dicen 5% sin tope = $28,650); financiado: $566,999 con tarifa; no incluye tenencia 2026",
+          "anio": 2025, "km": 18623, "precio": 597999, "precio_nota": "$572,999 de contado + $25,000 de tarifa de servicio (tope que dice Kavak; sus términos dicen 5% sin tope = $28,650); financiado: bajó el 2-nov de $541,999 a $521,999 ($546,999 con tarifa); el de contado no cambió; no incluye tenencia 2026",
           "ciudad": "CDMX (sucursal Lerma)", "vendedor": "Kavak",
-          "revisado": {"fecha": "30-oct", "texto": "activo, entrega inmediata", "tipo": "ok"},
+          "revisado": {"fecha": "02-nov", "texto": "activo en Kavak Lerma; bajó el precio con crédito", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/mg-rx9-20_premier_auto_4wd-suv-2025?id=538276",
           "aviso": "Confirmada con Kavak el 30-oct: disponible en Lerma. Con la CX-5 a cuenta ($221,944) y la tarifa de servicio, la diferencia de contado es $376,055: pasa el tope por $126,055. Con Kavak Crédito a 72 meses (CAT 33.1%) se pagarían unos $830,000 en total. Kavak no hace prueba de manejo, pero en Lerma se puede ver y encender. Sus fotos se bajan solas la próxima vez que corras publicar.bat en tu computadora.",
 
@@ -130,7 +131,7 @@
           "id": "mgrx9-2025-dalton-88494",
           "anio": 2025, "km": 2402, "precio": 517563, "precio_nota": "de liquidación (30-oct); garantía Dalton aparte por $13,500",
           "ciudad": "Guadalajara", "vendedor": "Dalton Seminuevos Centro Magno",
-          "revisado": {"fecha": "30-oct", "texto": "la ficha no dice si sigue disponible: confirmar por teléfono", "tipo": "warn"},
+          "revisado": {"fecha": "02-nov", "texto": "sigue en el sitio de Dalton al mismo precio; faltan tracción y plazas por escrito", "tipo": "ok"},
           "anuncio": "https://www.daltonseminuevos.com.mx/autos/mg-rx9-seminuevo-2025-88494",
           "aviso": "El anuncio se contradice: la descripción dice tracción delantera y la ficha dice 5 asientos, aunque la versión dice 7 pasajeros. En las fotos el emblema trasero solo dice RX9. Pedir a Dalton por escrito tracción y plazas. Ha tenido 2 dueños.",
           "tres_filas": { "confirmado": false, "nota": "La versión dice 7 pasajeros, pero la ficha dice 5 asientos: confirmar con foto." }
@@ -139,7 +140,7 @@
           "id": "mgrx9-2025-dalton-88850",
           "anio": 2025, "km": 8501, "precio": 517563, "precio_nota": "de liquidación (30-oct); se ha visto hasta en $598,979; garantía Dalton aparte por $13,500",
           "ciudad": "Zapopan, Jalisco", "vendedor": "Dalton Seminuevos López Mateos",
-          "revisado": {"fecha": "30-oct", "texto": "la ficha no dice si sigue disponible: confirmar por teléfono", "tipo": "warn"},
+          "revisado": {"fecha": "02-nov", "texto": "sigue en el sitio de Dalton al mismo precio; faltan tracción y plazas por escrito", "tipo": "ok"},
           "anuncio": "https://www.daltonseminuevos.com.mx/autos/mg-rx9-seminuevo-2025-88850",
           "aviso": "El anuncio no dice la tracción y se contradice en las plazas (7 pasajeros en la versión, 5 asientos en la ficha). En las fotos el emblema trasero solo dice RX9. Ha tenido 3 dueños siendo 2025: preguntar por qué.",
           "tres_filas": { "confirmado": false, "nota": "La versión dice 7 pasajeros, pero la ficha dice 5 asientos: confirmar con foto." }
@@ -155,8 +156,9 @@
       "unidades": [
         {
           "id": "tiggo8promax2wd-2023-kavak-cdmx",
-          "anio": 2023, "km": 22835, "precio": 337049, "precio_nota": "$320,999 visto en Kavak el 29-oct (confirmar si es de contado) + $16,050 de tarifa de servicio (5%); no incluye tenencia",
-          "ciudad": "CDMX", "vendedor": "Kavak",
+          "anio": 2023, "km": 22835, "precio": 351749, "precio_nota": "$334,999 de contado + $16,750 de tarifa de servicio (5%). Sube $14,700 contra lo anterior: los $320,999 del 29-oct eran el precio con Kavak Crédito ($337,049 con tarifa), no el de contado. No incluye tenencia 2026",
+          "ciudad": "CDMX (Kavak Plaza Fortuna)", "vendedor": "Kavak",
+          "revisado": {"fecha": "02-nov", "texto": "activo en Kavak; se corrigió el precio de contado", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/chirey-tiggo_8_pro_max-20_luxury_dct-suv-2023?id=543434",
           "calificaciones": { "estetica": 3 },
           "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }
@@ -174,28 +176,23 @@
           "id": "tiggo8pro-izcalli",
           "anio": 2025, "km": 15133, "precio": 379990, "precio_nota": "",
           "ciudad": "Cuautitlán Izcalli", "vendedor": "Chevrolet Excelencia",
+          "revisado": {"fecha": "02-nov", "texto": "activo en Seminuevos.com; mismo precio", "tipo": "ok"},
           "anuncio": "https://www.seminuevos.com/vehicle/autos-chirey-tiggo_8_pro-cuautitlan_izcalli-2025/4836822",
           "tres_filas": { "confirmado": false, "nota": "El anuncio no dice cuántos pasajeros; el modelo es de 7. Pedir foto de la tercera fila." }
         },
         {
           "id": "tiggo8pro-kavak-cdmx",
-          "anio": 2025, "km": 7785, "precio": 422099, "precio_nota": "$401,999 visto en Kavak el 29-oct (confirmar si es de contado) + $20,100 de tarifa de servicio (5%); no incluye tenencia",
+          "anio": 2025, "km": 7785, "precio": 439949, "precio_nota": "$418,999 de contado + $20,950 de tarifa de servicio (5%). Sube $17,850 contra lo anterior: los $401,999 del 29-oct eran el precio con Kavak Crédito ($422,099 con tarifa), no el de contado. Solo se vende en línea. No incluye tenencia 2026",
           "ciudad": "CDMX", "vendedor": "Kavak",
+          "revisado": {"fecha": "02-nov", "texto": "activo en Kavak; se corrigió el precio de contado", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/chirey-tiggo_8_pro-16_premium_dct-suv-2025?id=519919",
           "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros. La foto de la cajuela muestra la tercera fila plegada." }
-        },
-        {
-          "id": "tiggo8pro-2023-kavak-cdmx",
-          "anio": 2023, "km": 1900, "precio": 390599, "precio_nota": "$371,999 visto en Kavak el 29-oct (confirmar si es de contado) + $18,600 de tarifa de servicio (5%); no incluye tenencia",
-          "ciudad": "CDMX", "vendedor": "Kavak",
-          "anuncio": "https://www.kavak.com/mx/usado/chirey-tiggo_8_pro-16_premium_dct-suv-2023?id=483574",
-          "calificaciones": { "estetica": 3 },
-          "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }
         },
         {
           "id": "tiggo8pro-2025-ml-tlalnepantla",
           "anio": 2025, "km": 60, "precio": 459900, "precio_nota": "",
           "ciudad": "Tlalnepantla, Edomex", "vendedor": "Mercado Libre",
+          "revisado": {"fecha": "02-nov", "texto": "no se pudo confirmar: Mercado Libre bloquea la página; revísalo tú", "tipo": "warn"},
           "anuncio": "https://auto.mercadolibre.com.mx/MLM-6364338596-chirey-tiggo-8-pro-max-20t-premium-4wd-_JM",
           "aviso": "El anuncio dice Pro Max 2.0T 4WD, pero en las fotos traseras el emblema dice \"Tiggo 8 Pro\" y \"290T\" (motor 1.6T, tracción delantera). La Pro Max lleva \"390T\". Por eso la calificamos como Tiggo 8 Pro 1.6T.",
           "tres_filas": { "confirmado": false, "nota": "El anuncio dice 5 personas, pero el modelo es de 7 en México: confirmar con foto." }
@@ -211,15 +208,17 @@
       "unidades": [
         {
           "id": "x70plus-2023-kavak-cdmx",
-          "anio": 2023, "km": 29635, "precio": 314999, "precio_nota": "$299,999 visto en Kavak el 29-oct (confirmar si es de contado) + $15,000 de tarifa de servicio (5%); no incluye tenencia",
+          "anio": 2023, "km": 29635, "precio": 314999, "precio_nota": "$299,999 de contado (confirmado el 2-nov; antes $306,999) + $15,000 de tarifa de servicio (5%); con Kavak Crédito, el mismo precio; no incluye tenencia 2026",
           "ciudad": "CDMX", "vendedor": "Kavak",
+          "revisado": {"fecha": "02-nov", "texto": "activo en Kavak; mismo precio", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/jetour-x70_plus-16_dct-suv-2023?id=534747",
           "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }
         },
         {
           "id": "x70plus-2023-kavak-guadalajara",
-          "anio": 2023, "km": 18306, "precio": 321299, "precio_nota": "$305,999 visto en Kavak el 29-oct (confirmar si es de contado) + $15,300 de tarifa de servicio (5%); no incluye tenencia",
+          "anio": 2023, "km": 18306, "precio": 321299, "precio_nota": "$305,999 de contado (confirmado el 2-nov) + $15,300 de tarifa de servicio (5%); con Kavak Crédito, el mismo precio; no incluye tenencia 2026",
           "ciudad": "Guadalajara", "vendedor": "Kavak",
+          "revisado": {"fecha": "02-nov", "texto": "activo en Kavak; mismo precio", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/jetour-x70_plus-16_dct-suv-2023?id=554376",
           "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }
         }
@@ -234,8 +233,9 @@
       "unidades": [
         {
           "id": "commander-kavak-queretaro",
-          "anio": 2025, "km": 31131, "precio": 497699, "precio_nota": "$473,999 de contado (registrado en Notion; $460,999 con Kavak Crédito) + $23,700 de tarifa de servicio (5%); no incluye tenencia",
+          "anio": 2025, "km": 31131, "precio": 497699, "precio_nota": "$473,999 de contado (confirmado el 2-nov) + $23,700 de tarifa de servicio (5%); con Kavak Crédito bajó de $460,999 a $453,999 ($476,699 con tarifa); no incluye tenencia 2026",
           "ciudad": "Querétaro", "vendedor": "Kavak",
+          "revisado": {"fecha": "02-nov", "texto": "activo en Kavak; bajó el precio con crédito", "tipo": "ok"},
           "anuncio": "https://www.kavak.com/mx/usado/jeep-commander-13_overland_auto-suv-2025?id=545924",
           "tres_filas": { "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }
         }
@@ -257,6 +257,7 @@
 
   "descartadas_intro": "Antes de quedarnos con estas opciones revisamos otras camionetas de 3 filas que se venden en México (búsqueda del 29 de octubre de 2026 en Kavak, Wahu, Albacar, Seminuevos y Mercado Libre).",
   "descartadas": [
+    { "nombre": "Chirey Tiggo 8 Pro 1.6T 2023, Kavak CDMX", "motivo": "1,900 km en $371,999. El 2-nov ya no estaba en el catálogo de Kavak y su link muestra otra unidad, de 82,278 km: probablemente se vendió." },
     { "nombre": "MG RX8 2024, MG Seminuevos Satélite", "motivo": "4,511 km en $410,000. El 2-nov su anuncio ya no existía en Seminuevos.com (error 404): probablemente se vendió." },
     { "nombre": "MG RX9 Premier 2024, Cuajimalpa (Mercado Libre)", "motivo": "22,916 km en $440,000: era la única RX9 dentro del presupuesto, pero la publicación ya está finalizada (30-oct). Si el vendedor la vuelve a publicar, regresa al ranking." },
     { "nombre": "Tiggo 8 Pro Max 2025 que no se pudieron confirmar", "motivo": "La de Monterrey (Albacar, 1,000 km) aparece en Autocosmos como Pro Max 4x4, pero su anuncio de Seminuevos.com dice Tiggo 8 Pro 1.5 híbrida enchufable, en $449,999. La de Dalton Zapopan (5,694 km, $599,000) ya no está en el sitio de Dalton y pasaba el tope. No encontramos ninguna Pro Max AWD 2025 activa dentro del presupuesto." },
