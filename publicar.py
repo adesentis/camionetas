@@ -17,6 +17,13 @@ def git(*args):
 
 
 def main():
+    # Primero trae lo que se haya cambiado desde otro lado (por ejemplo, desde Claude en la nube),
+    # para no armar la página con datos viejos.
+    if git("remote", "get-url", "origin").stdout.strip():
+        r = git("pull", "--ff-only")
+        if r.returncode:
+            sys.exit("\nNo pude bajar los cambios más recientes de GitHub:\n" + r.stderr
+                     + "\nPídele ayuda a Claude antes de publicar.")
     generar.main()
     if not git("remote", "get-url", "origin").stdout.strip():
         sys.exit("\nTodavía no hay repositorio en GitHub conectado. Sigue el paso 'Publicar por primera vez' del LEEME.md.")
