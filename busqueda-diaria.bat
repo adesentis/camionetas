@@ -1,6 +1,8 @@
 @echo off
 rem Busqueda diaria de camionetas: Claude Code revisa anuncios, busca unidades
 rem nuevas, baja fotos y publica la pagina. Lo corre Windows cada manana.
+rem En Windows, Claude corre los comandos con PowerShell: por eso los permisos
+rem van dobles (Bash y PowerShell). Sin los de PowerShell, git pull pide aprobacion.
 cd /d "%~dp0"
 if not exist "busqueda-diaria\registro" mkdir "busqueda-diaria\registro"
 for /f %%d in ('powershell -NoProfile -Command "Get-Date -Format yyyy-MM-dd"') do set HOY=%%d
