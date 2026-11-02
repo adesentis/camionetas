@@ -12,9 +12,11 @@ Si en `datos.json` existe `"busqueda_diaria_activa": false`, no hagas nada y ter
   (no dice vendido, apartado ni "publicación finalizada") y tienes su link exacto (el que abre esa
   camioneta, no una búsqueda). Si solo la viste en resultados de un buscador, no la agregues:
   menciónala en las novedades como "pista sin confirmar".
-- **Tracción verificada.** Solo cuentan tracción integral, AWD, 4WD o 4x4 confirmada en el título,
-  la ficha o el emblema trasero de las fotos. Ojo: en Chirey, el emblema "290T" es el motor 1.6T con
-  tracción delantera aunque el anuncio diga "Pro Max 4WD"; la Pro Max 2.0T lleva "390T".
+- **Que suba mejor que la CX-5 actual** (Mazda 2.0 sin turbo, 155 hp y 203 Nm, tracción delantera).
+  Sirven motores turbo o con más torque, con tracción delantera o integral; la tracción integral o
+  4x4 suma puntos en "Montaña y lluvia", pero no es obligatoria. Verifica motor y tracción en el
+  título, la ficha o el emblema trasero de las fotos. Ojo: en Chirey, el emblema "290T" es el motor
+  1.6T con tracción delantera aunque el anuncio diga "Pro Max 4WD"; la Pro Max 2.0T lleva "390T".
 - **Si un sitio bloquea** la página o las fotos, no busques trucos para saltarte el bloqueo:
   anótalo en las novedades y sigue con lo demás.
 - **No cambies** pesos, criterios ni calificaciones de modelos que ya existen. No contactes
@@ -42,7 +44,8 @@ Si en `datos.json` existe `"busqueda_diaria_activa": false`, no hagas nada y ter
 
 3. **Busca unidades nuevas** que cumplan todo esto (los números salen de `filtros` en `datos.json`):
    - 3 filas de asientos (7 pasajeros).
-   - Tracción integral o 4x4 confirmada.
+   - Que suba mejor que la CX-5 actual (motor turbo o con más torque; tracción delantera o integral,
+     confirmada).
    - Modelo `anio_minimo` o más reciente, con menos de `km_maximo` km.
    - Precio total (con tarifas como la de Kavak) menos `venta_actual` no mayor a `diferencia_maxima`.
    - Nada 100% eléctrico. Nada de GAC ni Peugeot (no les gustan).
