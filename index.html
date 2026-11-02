@@ -112,7 +112,14 @@ tr:last-child th, tr:last-child td { border-bottom: 0; }
 
 /* Opinión */
 .op { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
-.op img, .op .ph { width: 64px; height: 48px; object-fit: cover; border-radius: 6px; background: var(--track); flex: none; }
+.op .ph { width: 64px; height: 48px; border-radius: 6px; background: var(--track); flex: none; }
+.op .tira { flex: 1 1 100%; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: thin; padding-bottom: 4px; }
+.op .tira img { width: 150px; height: 105px; object-fit: cover; border-radius: 8px; background: var(--track); flex: none; cursor: zoom-in; }
+.op .verficha { font-size: .82rem; }
+ol.ranking li[data-ir] { cursor: pointer; }
+ol.ranking li[data-ir]:hover .nom > span:first-child { text-decoration: underline; }
+.visor { position: fixed; inset: 0; z-index: 20; background: rgba(0,0,0,.88); display: flex; align-items: center; justify-content: center; padding: 12px; cursor: zoom-out; }
+.visor img { max-width: 100%; max-height: 100%; border-radius: 8px; }
 .op .nom { flex: 1; min-width: 140px; font-size: .92rem; }
 .estrellas { display: flex; gap: 4px; }
 .estrellas button { width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); font-weight: 600; cursor: pointer; }
@@ -565,6 +572,14 @@ const DATOS = {"titulo": "Camionetas para reemplazar la CX-5", "subtitulo": "Las
   }
   $("listaTablero").onclick = e => { const b = e.target.closest("[data-ir]"); if (b) irA(b.dataset.ir); };
   document.addEventListener("click", e => {
+    const fila = e.target.closest("ol.ranking li[data-ir]");
+    if (fila) { irA(fila.dataset.ir); return; }
+    const foto = e.target.closest("img[data-ampliar]");
+    if (foto) {
+      const v = document.createElement("div");
+      v.className = "visor"; v.innerHTML = `<img src="${foto.getAttribute("src")}" alt="">`;
+      v.onclick = () => v.remove(); document.body.appendChild(v); return;
+    }
     const a = e.target.closest('a[href^="#u-"], a[href^="#op-"]'); if (!a) return;
     e.preventDefault(); irA(a.getAttribute("href").slice(1));
   });
@@ -602,7 +617,11 @@ const DATOS = {"titulo": "Camionetas para reemplazar la CX-5", "subtitulo": "Las
   }
 
   // --- Opinión (estética de cada unidad) ---
-  $("listaOpinion").innerHTML = todas.map(({ o, u }) => `<div class="op">${u.fotos[0] ? `<img src="${esc(u.fotos[0])}" alt="" loading="lazy">` : `<span class="ph"></span>`}<span class="nom"><a href="#u-${esc(u.id)}">${esc(o.nombre)}</a><br><span class="muted">${u.anio} · ${num(u.km)} km · ${esc(u.ciudad)}</span></span>${miOpinion(o, u)}</div>`).join("");
+  // Cada unidad muestra sus fotos para calificar la estética viéndolas; tocar una la amplía.
+  $("listaOpinion").innerHTML = todas.map(({ o, u }) => `<div class="op"><span class="nom"><b>${esc(o.nombre)}</b><br><span class="muted">${u.anio} · ${num(u.km)} km · ${esc(u.ciudad)}</span></span>
+    <a class="verficha" href="#u-${esc(u.id)}">Ver ficha completa →</a>
+    ${u.fotos.length ? `<div class="tira">${u.fotos.map(f => `<img src="${esc(f)}" alt="" loading="lazy" data-ampliar>`).join("")}</div>` : `<span class="ph"></span><span class="muted">Sin fotos todavía</span>`}
+    ${miOpinion(o, u)}</div>`).join("");
 
   // Botones y notas funcionan igual en la tarjeta y aquí: se sincronizan.
   document.addEventListener("click", e => {
@@ -647,7 +666,8 @@ const DATOS = {"titulo": "Camionetas para reemplazar la CX-5", "subtitulo": "Las
   $("btnReset").onclick = () => { pesos = { ...PESOS_ORIG }; pintar(); };
 
   const podio = ["oro", "plata", "bronce"];
-  const li = (x, conLink, i) => `<li class="${x.ok ? podio[i] || "" : "fuera"}">${x.u.fotos[0] ? `<img class="mini" src="${esc(x.u.fotos[0])}" alt="" loading="lazy">` : ""}<span class="nom">${conLink ? `<a href="#u-${esc(x.u.id)}">${esc(x.o.nombre)}</a>` : esc(x.o.nombre)}<br><span class="muted">${esc(detalle(x.u))}</span>${x.u.revisado && x.u.revisado.tipo !== "ok" ? `<br><span class="nosube">⚠ ${esc(x.u.revisado.texto.split(";")[0].split(":")[0])}</span>` : ""}${x.ok ? "" : `<br><span class="nosube">No sube bien: va al final</span>`}</span><span class="pts">${fmt(x.p)}</span></li>`;
+  // Toda la fila lleva a la unidad (con su tarjeta abierta).
+  const li = (x, conLink, i) => `<li class="${x.ok ? podio[i] || "" : "fuera"}" data-ir="u-${esc(x.u.id)}">${x.u.fotos[0] ? `<img class="mini" src="${esc(x.u.fotos[0])}" alt="" loading="lazy">` : ""}<span class="nom"><span>${esc(x.o.nombre)}</span><br><span class="muted">${esc(detalle(x.u))}</span>${x.u.revisado && x.u.revisado.tipo !== "ok" ? `<br><span class="nosube">⚠ ${esc(x.u.revisado.texto.split(";")[0].split(":")[0])}</span>` : ""}${x.ok ? "" : `<br><span class="nosube">No sube bien: va al final</span>`}</span><span class="pts">${fmt(x.p)}</span></li>`;
 
   function pintar() {
     const r = ordenar(pesos, opinion);
