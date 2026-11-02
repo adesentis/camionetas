@@ -40,7 +40,9 @@ Si en `datos.json` existe `"busqueda_diaria_activa": false`, no hagas nada y ter
      contado, con tope de $25,000 según Kavak). En `precio_nota` deja también el precio con Kavak
      Crédito. Sus precios no incluyen la tenencia.
    - Si la unidad ya se vendió o la publicación terminó, quítala de `unidades` y agrégala al
-     principio de `descartadas` con su motivo y la fecha. Borra su carpeta de `fotos/`.
+     principio de `descartadas` con su motivo y la fecha. Borra su carpeta de `fotos/`
+     con Python (`python -c "import shutil; shutil.rmtree('fotos/<id>')"`): en esta sesión solo
+     están permitidos `git` y `python`, no `rm` ni `Remove-Item`.
 
 3. **Busca unidades nuevas** que cumplan todo esto (los números salen de `filtros` en `datos.json`):
    - 3 filas de asientos (7 pasajeros).
