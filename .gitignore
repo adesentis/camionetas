@@ -4,3 +4,6 @@ __pycache__/
 # Registros de la busqueda diaria (se quedan en la computadora)
 busqueda-diaria/registro/
 busqueda-diaria/ultimo-error.txt
+
+# Carpetas de trabajo de Claude Code (rompen GitHub Pages si se suben)
+.claude/worktrees/
