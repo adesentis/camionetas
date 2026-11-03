@@ -1,6 +1,6 @@
 # Estado del proyecto (para retomar en un chat nuevo)
 
-Última actualización: 2 de noviembre de 2026.
+Última actualización: 3 de noviembre de 2026.
 
 ## Qué es
 
@@ -39,10 +39,18 @@ escritorio está en `C:\Users\Alfredo Oficina\Downloads\Proyectos Claude Code\Co
 
 ## Situación actual
 
-- Favorita: MG RX9 Premier AWD. Ninguna dentro del presupuesto: dos 2025 en Dalton Guadalajara
-  ($517,563, falta confirmar tracción y 7 asientos) y una en Kavak Lerma ($572,999 de contado + $25,000).
-- Opciones dentro del presupuesto: MG RX8 2023 y 2024 (Kavak El Rosario), Tiggo 8 Pro Max AWD 2024 (Puebla).
+- Favorita: MG RX9 Premier AWD. Ninguna dentro del presupuesto (precio máximo $471,944): dos 2025 en Dalton
+  Guadalajara ($517,563 "con garantía incluida"; Dalton y Mercado Libre también dicen $504,063 de contado;
+  falta confirmar por escrito tracción y 7 asientos; la versión dice "7Pas.") y una en Kavak Lerma
+  ($572,999 de contado + $25,000). El resto en Mercado Libre pide $560,000 o más (revisado 3-nov).
+- Opciones dentro del presupuesto: Tiggo 8 Pro Max AWD 2024 en Guadalajara ($415,000 y $429,900, Mercado
+  Libre; 1.ª y 2.ª del ranking), MG RX8 2023 y 2024 (Kavak y Mercado Libre), Pro Max AWD 2024 de Puebla.
 - Pendiente de Alfredo: refactura y cambio de propietario de la CX-5 con Dalton (sin eso no se puede vender);
   respuesta de Kavak sobre el tope de la tarifa y la mejora de la oferta por la CX-5.
-- Mercado Libre: su página no se deja leer automáticamente. Opciones: API oficial (requiere que Alfredo cree
-  una app gratuita en developers.mercadolibre.com.mx), su propio Chrome, o alertas de búsqueda guardada.
+- Mercado Libre (investigado 3-nov): la API oficial NO sirve. Sin token responde 403; su documentación ya solo
+  ofrece buscar en las publicaciones propias o de un vendedor, y desde 2025 hay reportes de 403 en la búsqueda
+  pública incluso con app y token. Decisión: no crear la app. Sus páginas normales sí se leen (el 2-nov
+  bloqueó, el 3-nov funcionó, con límite de velocidad a media revisión): se sigue así, sin saltarse límites.
+  Opcional para Alfredo: "Guardar búsqueda" de MG RX9 en Mercado Libre para que le lleguen avisos por correo.
+- Búsqueda diaria: el 3-nov corrió a las 8:52 (la PC estaba apagada a las 8:00) y terminó bien, pero no
+  actualizó el "Análisis del día"; se rehizo a mano. Si se repite, revisar el paso 7 de las instrucciones.
