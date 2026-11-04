@@ -7,7 +7,7 @@
     "Que quepan dos sillas infantiles.",
     "Vivimos en Valle de Bravo: subidas largas, empedrado y lluvia. Viajamos seguido a CDMX y Querétaro.",
     "Seminueva, modelo 2023 o más reciente, con menos de 30,000 km.",
-    "Pagar como máximo $250,000 de diferencia después de vender la CX-5 (Kavak ofrece $221,944 a cuenta, vigente hasta el 7 de noviembre; venta directa, $213,805).",
+    "Pagar como máximo $250,000 de diferencia después de vender la CX-5. Kavak ofrece $221,944 si se compra otra unidad con ellos (a cuenta) o $213,805 si solo se la vendemos; vigente hasta el 7 de noviembre y sujeto a inspección. Las unidades de otros vendedores se comparan con $213,805.",
     "Nada 100% eléctrico."
   ],
 
@@ -16,6 +16,7 @@
     "anio_referencia": 2026,
     "km_maximo": 30000,
     "venta_actual": 221944,
+    "venta_directa": 213805,
     "diferencia_maxima": 250000,
     "montana_minima": 1.5
   },
@@ -42,12 +43,13 @@
       "fecha": "03-nov",
       "parrafos": [
           "Tiggo 8 Pro Max AWD 2024 de Guadalajara (10,121 km, $415,000 negociable, Tratocar; o 10,975 km, $429,900): las nuevas punteras. Tracción integral y 250 hp para subir, poco kilometraje y entran en el presupuesto con margen. En contra: gasta más gasolina, la cajuela es chica con la tercera fila arriba y la de $429,900 todavía no confirma los 7 asientos.",
-          "MG RX9 2025 de Dalton Guadalajara (2,402 km, $517,563): la que más te gusta, la más nueva y segura. En contra: pasa el tope por unos $45,000 ($32,000 si los $504,063 de contado son reales), y faltan por escrito tracción y 7 asientos.",
+          "MG RX9 2025 de Dalton Guadalajara (2,402 km, $517,563): la que más te gusta, la más nueva y segura. En contra: como no es de Kavak, la CX-5 cuenta en $213,805 y pasa el tope por unos $54,000 ($40,000 si los $504,063 de contado son reales), y faltan por escrito tracción y 7 asientos.",
           "MG RX8 2023 de Kavak (11,482 km, $376,949) y 2024 de Huixquilucan (18,870 km, $390,000): las más baratas y las más capaces en montaña, con 4x4 y reductora. En contra: está descontinuada, MG sale mal en confiabilidad, su diseño es el que menos te gusta y la de Huixquilucan no confirma los 7 asientos.",
           "En resumen: si manda el presupuesto, la Pro Max de $415,000; si manda el gusto, la RX9, siempre que Dalton confirme y baje el precio."
       ]
   },
   "novedades": [
+    { "fecha": "04-nov", "texto": "Respuesta de Kavak sobre la CX-5 (cifras preliminares, sujetas a inspección, vigentes hasta el 7 de noviembre): $213,805 si solo se la vendemos (pago el mismo día que se complete la venta y se validen los documentos) o $221,944 en intercambio, como pago contra la unidad que se compre con ellos ($8,139 más). La tarifa de servicio solo se cobra al comprar un auto de su catálogo; al vender sola la CX-5 no hay tarifa. Confirmaron la tarifa de las RX8 de El Rosario: $19,350 la 2024 y $17,950 la 2023 (de contado), y que con la 2023 de contado la diferencia a pagar es de unos $155,000, igual a lo que calcula la página. Cambio en la página: las unidades que NO son de Kavak ahora se comparan con $213,805 (la venta directa), así que su diferencia sube $8,139. No respondieron si la tarifa tiene tope de $25,000 (importa para la RX9 de Lerma) ni mejoraron la oferta." },
     { "fecha": "03-nov", "texto": "Revisión a mano (tarde). MG RX9: sigue sin haber ninguna dentro del tope (precio máximo $471,944). Las más baratas son las dos de Dalton: en Mercado Libre aparecen en $504,063 de contado, $32,119 arriba del tope; en su sitio, $517,563 con garantía de 1 año incluida. Kavak solo tiene la de Lerma y el resto pide $560,000 o más. Mercado Libre: su API oficial ya no sirve para buscar autos de otros vendedores (sin credenciales responde \"prohibido\", su documentación ya solo permite buscar por vendedor, y otros desarrolladores reportan lo mismo aun con app propia), así que no conviene crear la app; su página sí se pudo leer hoy, con límites de velocidad." },
     { "fecha": "03-nov", "texto": "Entraron 5: dos Pro Max 2.0T AWD 2024 en Guadalajara (10,121 km en $415,000 de Tratocar, y 10,975 km en $429,900; en ambas se ve el emblema 390T y AWD) y tres MG RX8 2024 de Mercado Libre: Huixquilucan (18,870 km, $390,000), Xalapa (18,000 km, $397,000) y Querétaro (27,718 km, $389,000). Las dos Pro Max quedan 1.º y 2.º del ranking. No salió ninguna y ningún precio cambió. La Pro Max de 28,554 km sigue apartada en Kavak, pero ya tiene su link directo. OJO: la Pro Max de Mercado Libre CDMX (13,200 km) dice en su descripción motor 1.6L de 194 hp y tracción delantera: probablemente es una Tiggo 8 Pro, no Pro Max. Calificaban pero no entraron por el tope de 5 al día: Tiggo 8 Pro 2023 en Kavak Monterrey (29,048 km, $337,049 con tarifa), Tiggo 8 Pro 2024 en Dalton (11,811 km, $380,000), Pro Max 2.0T sin AWD 2023 en Dalton (27,736 km, $403,110) y en Puebla (28,000 km, $399,900), y Pro Max AWD 2023 en Oaxaca (20,000 km, $430,000). Se taparon placas en las fotos de las RX8 y se quitaron 3 fotos de la de Querétaro que eran de otra camioneta. La Pro Max apartada de Kavak sigue sin fotos." },
     { "fecha": "02-nov", "texto": "Revisión diaria: no entraron unidades nuevas. Salió la Tiggo 8 Pro 2023 de 1,900 km de Kavak (ya no está en su catálogo). Precios corregidos en Kavak: los $320,999 de la Pro Max sin AWD y los $401,999 de la Tiggo 8 Pro 2025 eran con crédito; de contado son $334,999 y $418,999. Bajó el precio con crédito de la RX9 de Kavak ($521,999) y de la Commander ($453,999). La Pro Max AWD de 28,554 km sigue apartada en Kavak. Mercado Libre bloqueó sus páginas: las dos Chirey de ahí no se pudieron revisar. Las RX9 Premier que aparecen en Mercado Libre y Seminuevos.com piden $650,000 o más: arriba del tope." },

@@ -171,10 +171,17 @@ def precio_unidad(diferencia, tope, extra=50_000):
     return r2(max(1, 3 - 2 * (diferencia - tope) / extra))
 
 
+def venta(u, f):
+    """Lo que vale la CX-5 para esta unidad: a cuenta si se compra en Kavak; si no, la venta directa a Kavak."""
+    if u.get("vendedor") == "Kavak" or f.get("venta_directa") is None:
+        return f["venta_actual"]
+    return f["venta_directa"]
+
+
 def automatica(c, u, f):
     """Criterios que se califican solos con los datos del anuncio (misma fórmula que la página)."""
     if c["auto"] == "precio":
-        return precio_unidad(u["precio"] - f["venta_actual"], f["diferencia_maxima"])
+        return precio_unidad(u["precio"] - venta(u, f), f["diferencia_maxima"])
     if c["auto"] == "km":
         return lineal(u["km"], 0, f["km_maximo"])
     if c["auto"] == "anio":

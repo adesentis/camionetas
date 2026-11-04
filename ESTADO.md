@@ -1,6 +1,6 @@
 # Estado del proyecto (para retomar en un chat nuevo)
 
-Última actualización: 3 de noviembre de 2026.
+Última actualización: 4 de noviembre de 2026.
 
 ## Qué es
 
@@ -26,10 +26,15 @@ escritorio está en `C:\Users\Alfredo Oficina\Downloads\Proyectos Claude Code\Co
 
 ## Decisiones tomadas
 
-- Presupuesto: diferencia máxima de $250,000 después de entregar la CX-5. Kavak ofrece $221,944 a cuenta
-  ($213,805 en venta directa), vigente hasta el 7 de noviembre de 2026 y sujeta a inspección.
+- Presupuesto: diferencia máxima de $250,000 después de entregar la CX-5. Kavak (respuesta del 4-nov, cifras
+  preliminares, sujetas a inspección, vigentes hasta el 7 de noviembre de 2026): $221,944 en intercambio (a cuenta
+  de una unidad de su catálogo) o $213,805 si solo se la vendemos (pago el mismo día, al validar documentos; sin
+  tarifa de servicio). La página usa $221,944 para unidades de Kavak y $213,805 para las de otros vendedores
+  (`venta_actual` y `venta_directa` en `filtros`).
 - Kavak: comparar con precio de contado + tarifa de servicio (5% del precio, tope $25,000 según Kavak;
   sus términos dicen 5% sin tope y que el precio publicado ya la incluye: contradicción a favor de Alfredo).
+  La tarifa solo se cobra al comprar con ellos. Kavak confirmó el 4-nov: RX8 2024 $19,350 y RX8 2023 $17,950;
+  con la RX8 2023 de contado la diferencia es de unos $155,000 (cuadra con la página).
   Su crédito a 72 meses tiene CAT de 33.1%: no conviene salvo liquidarlo pronto (sin penalización desde el mes 4).
 - Montaña y lluvia: basta con que suba mejor que la CX-5 (2.0 sin turbo, 155 hp, 203 Nm). La tracción
   integral suma puntos pero no es obligatoria (`montana_minima` 1.5).
@@ -39,14 +44,15 @@ escritorio está en `C:\Users\Alfredo Oficina\Downloads\Proyectos Claude Code\Co
 
 ## Situación actual
 
-- Favorita: MG RX9 Premier AWD. Ninguna dentro del presupuesto (precio máximo $471,944): dos 2025 en Dalton
-  Guadalajara ($517,563 "con garantía incluida"; Dalton y Mercado Libre también dicen $504,063 de contado;
+- Favorita: MG RX9 Premier AWD. Ninguna dentro del presupuesto (precio máximo $471,944 en Kavak, $463,805 en otro lado): dos 2025 en Dalton
+  Guadalajara ($517,563 "con garantía incluida", unos $54,000 arriba del tope; Dalton y Mercado Libre también dicen $504,063 de contado;
   falta confirmar por escrito tracción y 7 asientos; la versión dice "7Pas.") y una en Kavak Lerma
   ($572,999 de contado + $25,000). El resto en Mercado Libre pide $560,000 o más (revisado 3-nov).
 - Opciones dentro del presupuesto: Tiggo 8 Pro Max AWD 2024 en Guadalajara ($415,000 y $429,900, Mercado
   Libre; 1.ª y 2.ª del ranking), MG RX8 2023 y 2024 (Kavak y Mercado Libre), Pro Max AWD 2024 de Puebla.
 - Pendiente de Alfredo: refactura y cambio de propietario de la CX-5 con Dalton (sin eso no se puede vender);
-  respuesta de Kavak sobre el tope de la tarifa y la mejora de la oferta por la CX-5.
+  Kavak ya contestó las cifras (4-nov), pero no si la tarifa tiene tope de $25,000 (pesa en la RX9 de Lerma)
+  ni mejoró la oferta. Kavak invita a ver las dos RX8 en El Rosario. La oferta vence el 7 de noviembre.
 - Mercado Libre (investigado 3-nov): la API oficial NO sirve. Sin token responde 403; su documentación ya solo
   ofrece buscar en las publicaciones propias o de un vendedor, y desde 2025 hay reportes de 403 en la búsqueda
   pública incluso con app y token. Decisión: no crear la app. Sus páginas normales sí se leen (el 2-nov

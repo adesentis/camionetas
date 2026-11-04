@@ -49,7 +49,10 @@ Si en `datos.json` existe `"busqueda_diaria_activa": false`, no hagas nada y ter
    - Que suba mejor que la CX-5 actual (motor turbo o con más torque; tracción delantera o integral,
      confirmada).
    - Modelo `anio_minimo` o más reciente, con menos de `km_maximo` km.
-   - Precio total (con tarifas como la de Kavak) menos `venta_actual` no mayor a `diferencia_maxima`.
+   - Precio total (con tarifas como la de Kavak) menos lo que vale la CX-5 no mayor a `diferencia_maxima`.
+     La CX-5 vale `venta_actual` ($221,944, a cuenta) si la unidad es de Kavak, y `venta_directa`
+     ($213,805, venderla sola a Kavak) si es de otro vendedor. El vendedor debe decir exactamente
+     `"Kavak"` para que se use el valor a cuenta.
    - Nada 100% eléctrico. Nada de GAC ni Peugeot (no les gustan).
    - No repitas unidades que ya estén en `opciones` o en `descartadas`.
 
