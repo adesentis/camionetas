@@ -22,6 +22,8 @@ escritorio está en `C:\Users\Alfredo Oficina\Downloads\Proyectos Claude Code\Co
   Ya pasó que un anuncio decía "Pro Max 2.0T 4WD" y era 1.6T (emblema 290T), y que un precio era de crédito.
 - No saltarse bloqueos de sitios. Desde la nube no se pueden abrir Kavak, Mercado Libre ni Dalton;
   desde la PC de escritorio sí (excepto Mercado Libre, que bloquea la lectura automática).
+- 7 pasajeros: se confirman con la ficha del modelo y la versión (fabricante, Kavak u otra ficha técnica
+  confiable), no con fotos ni con el campo "pasajeros" que llena el vendedor (ya pasó que decía 5 y era de 7).
 - Privacidad: sin apellidos, teléfonos, direcciones ni placas (tapar placas en fotos).
 
 ## Decisiones tomadas
@@ -49,9 +51,7 @@ escritorio está en `C:\Users\Alfredo Oficina\Downloads\Proyectos Claude Code\Co
   falta confirmar por escrito tracción y 7 asientos; la versión dice "7Pas.") y una en Kavak Lerma
   ($572,999 de contado + $25,000). El resto en Mercado Libre pide $560,000 o más (revisado 3-nov).
 - Opciones dentro del presupuesto: Tiggo 8 Pro Max AWD 2024 en Guadalajara ($415,000 y $429,900, Mercado
-  Libre; 1.ª y 2.ª del ranking), (revisado 4-nov: son Tiggo 8 Pro Max de 3 filas; en México
-  ese modelo solo es de 7; la tercera fila va doblada en el piso de la cajuela y ninguna foto la muestra; falta
-  que cada vendedor mande foto de la cajuela con la tercera fila arriba), MG RX8 2023 y 2024 (Kavak y Mercado Libre), Pro Max AWD 2024 de Puebla.
+  Libre; 1.ª y 2.ª del ranking), (7 pasajeros confirmados por la ficha del modelo), MG RX8 2023 y 2024 (Kavak y Mercado Libre), Pro Max AWD 2024 de Puebla.
 - Pendiente de Alfredo: refactura y cambio de propietario de la CX-5 con Dalton (sin eso no se puede vender);
   Kavak ya contestó las cifras (4-nov), pero no si la tarifa tiene tope de $25,000 (pesa en la RX9 de Lerma)
   ni mejoró la oferta. Kavak invita a ver las dos RX8 en El Rosario. La oferta vence el 7 de noviembre.

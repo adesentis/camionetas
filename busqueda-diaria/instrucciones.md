@@ -45,7 +45,11 @@ Si en `datos.json` existe `"busqueda_diaria_activa": false`, no hagas nada y ter
      están permitidos `git` y `python`, no `rm` ni `Remove-Item`.
 
 3. **Busca unidades nuevas** que cumplan todo esto (los números salen de `filtros` en `datos.json`):
-   - 3 filas de asientos (7 pasajeros).
+   - 3 filas de asientos (7 pasajeros). Confírmalo con la **ficha del modelo y la versión** (fabricante,
+     Kavak u otra ficha técnica confiable), no con las fotos ni con el campo de pasajeros del anuncio:
+     los vendedores lo llenan mal y la tercera fila casi nunca sale en las fotos. Lo que sí hay que
+     revisar en el anuncio es que el modelo y la versión sean los correctos (por ejemplo, Tiggo 8 y no
+     Tiggo 7). Marca `tres_filas.confirmado` en `false` solo si ese modelo o versión existe de 5 asientos.
    - Que suba mejor que la CX-5 actual (motor turbo o con más torque; tracción delantera o integral,
      confirmada).
    - Modelo `anio_minimo` o más reciente, con menos de `km_maximo` km.

@@ -44,8 +44,9 @@ Hoy compara camionetas, pero sirve para cualquier cosa: solo cambias los datos.
    - `"id"`: un nombre corto **sin espacios, sin acentos y sin mayúsculas**, distinto a los demás. Ejemplo: `"mgrx8-2024-toluca"`. Es el nombre de su carpeta de fotos.
    - `"anio"`, `"km"`, `"precio"`, `"ciudad"`, `"vendedor"`, `"anuncio"` (el link).
    - `"precio_nota"`: algo como `"más tarifa de servicio"`, o déjalo vacío: `""`.
-   - `"tres_filas"`: `{ "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }`. Si el anuncio no lo dice
-     o dice otra cosa, pon `false` y explica en la nota; la página muestra "3 filas por confirmar" en naranja.
+   - `"tres_filas"`: `{ "confirmado": true, "nota": "Ficha de Kavak: 7 pasajeros." }`. Se confirma con la ficha
+     del modelo y la versión, no con las fotos ni con lo que llena el vendedor. Pon `false` solo si ese modelo
+     o versión también se vende de 5 asientos y no sabes cuál es, y explica en la nota; la página muestra "3 filas por confirmar" en naranja.
    - Opcional, `"calificaciones": { "estetica": 3 }`: cambia una calificación **solo para esa unidad**
      (por ejemplo, una Chirey con el diseño anterior). Lo que no pongas lo toma de su modelo.
    - En Kavak, usa el link con `?id=NNN` al final (el número de la unidad): así siempre abre esa misma camioneta.
